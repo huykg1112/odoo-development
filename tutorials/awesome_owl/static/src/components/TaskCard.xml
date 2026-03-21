@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-name="awesome_owl.TaskCard">
-        <div class="task-card" t-on-click="onClickEdit">
+        <div class="task-card" role="button" tabindex="0" t-on-click="onClickEdit" t-on-keydown="onCardKeyDown">
             <!-- Header: Title + Actions -->
             <div class="task-card-header">
                 <span class="task-card-title" t-esc="props.task.title"/>
                 <div class="task-card-actions">
-                    <button class="btn-icon" t-on-click="onClickEdit" title="Edit">
-                        <i class="fa fa-pencil"/>
+                    <button class="btn-icon" type="button" t-on-click="onClickEdit" title="Edit" aria-label="Edit task">
+                        <i class="fa fa-pencil" aria-hidden="true"/>
                     </button>
-                    <button class="btn-icon" t-on-click="onClickDelete" title="Delete" style="color: #ef4444;">
-                        <i class="fa fa-trash"/>
+                    <button class="btn-icon" type="button" t-on-click="onClickDelete" title="Delete" aria-label="Delete task" style="color: #ef4444;">
+                        <i class="fa fa-trash" aria-hidden="true"/>
                     </button>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 </div>
                 <t t-if="formattedDueDate">
                     <span t-attf-class="task-card-due {{ formattedDueDate.overdue ? 'overdue' : '' }}">
-                        <i class="fa fa-clock-o"/>
+                        <i class="fa fa-clock-o" aria-hidden="true"/>
                         <t t-esc="formattedDueDate.text"/>
                     </span>
                 </t>
@@ -52,12 +52,12 @@
             <!-- Quick Status Buttons -->
             <div class="task-status-actions">
                 <t t-if="prevStatus">
-                    <button class="status-move-btn" t-on-click="onMovePrev">
+                    <button class="status-move-btn" type="button" t-on-click="onMovePrev">
                         ← <t t-esc="getStatusLabel(prevStatus)"/>
                     </button>
                 </t>
                 <t t-if="nextStatus">
-                    <button class="status-move-btn" t-on-click="onMoveNext">
+                    <button class="status-move-btn" type="button" t-on-click="onMoveNext">
                         <t t-esc="getStatusLabel(nextStatus)"/> →
                     </button>
                 </t>

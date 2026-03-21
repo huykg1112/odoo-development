@@ -5,8 +5,8 @@
             <div class="modal">
                 <div class="modal-header">
                     <h2 class="modal-title" t-esc="formTitle"/>
-                    <button class="btn-icon" t-on-click="onCancel">
-                        <i class="fa fa-times"/>
+                    <button class="btn-icon" type="button" t-on-click="onCancel" aria-label="Close form">
+                        <i class="fa fa-times" aria-hidden="true"/>
                     </button>
                 </div>
 
@@ -14,8 +14,10 @@
                     <!-- Title -->
                     <div class="form-group">
                         <label class="form-label">Task Title *</label>
-                        <input type="text" class="form-input" 
-                               placeholder="Enter task title..."
+                           <input type="text" class="form-input"
+                               name="title"
+                               autocomplete="off"
+                               placeholder="Enter task title…"
                                t-att-value="state.title"
                                t-on-input="(ev) => this.onInput('title', ev)"/>
                     </div>
@@ -24,7 +26,9 @@
                     <div class="form-group">
                         <label class="form-label">Description</label>
                         <textarea class="form-textarea" 
-                                  placeholder="Describe the task..."
+                                  name="description"
+                                  autocomplete="off"
+                                  placeholder="Describe the task…"
                                   t-on-input="(ev) => this.onInput('description', ev)"
                                   t-esc="state.description"/>
                     </div>
@@ -34,6 +38,7 @@
                         <div class="form-group">
                             <label class="form-label">Status</label>
                             <select class="form-select" 
+                                    name="status"
                                     t-att-value="state.status"
                                     t-on-change="(ev) => this.onInput('status', ev)">
                                 <t t-if="props.statuses">
@@ -49,6 +54,7 @@
                         <div class="form-group">
                             <label class="form-label">Priority</label>
                             <select class="form-select"
+                                    name="priority"
                                     t-att-value="state.priority"
                                     t-on-change="(ev) => this.onInput('priority', ev)">
                                 <option value="low">Low</option>
@@ -64,6 +70,7 @@
                         <div class="form-group">
                             <label class="form-label">Category</label>
                             <select class="form-select"
+                                    name="category"
                                     t-att-value="state.category"
                                     t-on-change="(ev) => this.onInput('category', ev)">
                                 <t t-if="props.categories">
@@ -78,10 +85,17 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Assignee</label>
-                            <input type="text" class="form-input"
-                                   placeholder="Assignee name..."
-                                   t-att-value="state.assignee"
-                                   t-on-input="(ev) => this.onInput('assignee', ev)"/>
+                            <select class="form-select"
+                                    name="assigneeId"
+                                    t-att-value="state.assigneeId"
+                                    t-on-change="(ev) => this.onInput('assigneeId', ev)">
+                                <option value="">Unassigned</option>
+                                <t t-if="props.assignees">
+                                    <t t-foreach="props.assignees" t-as="u" t-key="u.id">
+                                        <option t-att-value="u.id" t-esc="u.name"/>
+                                    </t>
+                                </t>
+                            </select>
                         </div>
                     </div>
 
@@ -89,6 +103,7 @@
                     <div class="form-group">
                         <label class="form-label">Due Date</label>
                         <input type="date" class="form-input"
+                               name="due_date"
                                t-att-value="state.dueDate"
                                t-on-input="(ev) => this.onInput('dueDate', ev)"/>
                     </div>
@@ -97,7 +112,7 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" t-on-click="onCancel">Cancel</button>
                     <button class="btn btn-primary" t-on-click="onSubmit">
-                        <i t-attf-class="fa {{ isEditing ? 'fa-save' : 'fa-plus' }}"/>
+                        <i t-attf-class="fa {{ isEditing ? 'fa-save' : 'fa-plus' }}" aria-hidden="true"/>
                         <t t-if="isEditing">Save Changes</t>
                         <t t-else="">Create Task</t>
                     </button>

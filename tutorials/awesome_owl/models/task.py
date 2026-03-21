@@ -26,6 +26,17 @@ class TaskCategory(models.Model):
     name = fields.Char(string='Category Name', required=True, translate=True)
     color = fields.Integer(string='Color Index')
 
+
+class TaskUser(models.Model):
+    _name = 'task.user'
+    _description = 'Task User'
+    _order = 'name, id'
+
+    name = fields.Char(string='Name', required=True, translate=True)
+    email = fields.Char(string='Email')
+    active = fields.Boolean(default=True)
+    color = fields.Integer(string='Color Index')
+
 class Task(models.Model):
     _name = 'task.task'
     _description = 'Task Record'
@@ -43,7 +54,8 @@ class Task(models.Model):
     
     status_id = fields.Many2one('task.status', string='Status', required=True, tracking=True, group_expand='_read_group_status_ids')
     category_id = fields.Many2one('task.category', string='Category', tracking=True)
-    user_id = fields.Many2one('res.users', string='Assignee', default=lambda self: self.env.user, tracking=True)
+    assignee_id = fields.Many2one('task.user', string='Assignee', tracking=True)
+    user_id = fields.Many2one('res.users', string='Assigned To (System User)', default=lambda self: self.env.user, tracking=True)
     date_deadline = fields.Date(string='Deadline', tracking=True)
     sequence = fields.Integer(default=10)
     active = fields.Boolean(default=True)
@@ -61,9 +73,13 @@ class Task(models.Model):
         return super().write(vals)
 
     @api.model
-    def _read_group_status_ids(self, statuses, domain, order):
-        """ Always show all status columns in Kanban even if empty """
-        return self.env['task.status'].search([], order=order)
+    def _read_group_status_ids(self, statuses, domain, order=None, **kwargs):
+        """Always show all status columns in Kanban even if empty.
+
+        Odoo may call group_expand methods with (statuses, domain) or
+        (statuses, domain, order), depending on version/context.
+        """
+        return self.env['task.status'].search([], order=order or 'sequence, id')
 
     @api.onchange('status_id')
     def _onchange_status_id(self):

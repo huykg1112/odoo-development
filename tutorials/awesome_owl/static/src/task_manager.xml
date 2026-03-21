@@ -20,30 +20,39 @@
                         <div class="view-toggle">
                             <button t-attf-class="view-toggle-btn {{ state.ui.activeView === 'kanban' ? 'active' : '' }}"
                                     t-on-click="() => this.setView('kanban')">
-                                <i class="fa fa-th-large"/> Kanban
+                                <i class="fa fa-th-large" aria-hidden="true"/> Kanban
                             </button>
                             <button t-attf-class="view-toggle-btn {{ state.ui.activeView === 'list' ? 'active' : '' }}"
                                     t-on-click="() => this.setView('list')">
-                                <i class="fa fa-list"/> List
+                                <i class="fa fa-list" aria-hidden="true"/> List
                             </button>
                         </div>
                     </div>
                     <div class="top-header-actions">
-                        <button class="btn btn-secondary" t-on-click="toggleLog">
-                            <i class="fa fa-history"/> Log
+                        <button class="btn btn-secondary" t-on-click="toggleLog" t-att-disabled="isBusy">
+                            <i class="fa fa-history" aria-hidden="true"/> Log
                         </button>
-                        <button class="btn btn-secondary" t-on-click="openSettings">
-                            <i class="fa fa-cogs"/> Settings
+                        <button class="btn btn-secondary" t-on-click="openSettings" t-att-disabled="isBusy">
+                            <i class="fa fa-cogs" aria-hidden="true"/> Settings
                         </button>
-                        <button class="btn btn-primary" t-on-click="openCreateForm">
-                            <i class="fa fa-plus"/> Add Task
+                        <button class="btn btn-primary" t-on-click="openCreateForm" t-att-disabled="isBusy">
+                            <i class="fa fa-plus" aria-hidden="true"/> Add Task
                         </button>
                     </div>
                 </header>
 
+                <t t-if="isBusy">
+                    <div class="loading-overlay" role="status" aria-live="polite">
+                        <div class="loading-card">
+                            <span class="spinner" aria-hidden="true"/>
+                            <span class="loading-text">Loading…</span>
+                        </div>
+                    </div>
+                </t>
+
                 <!-- Date Filter -->
                 <div class="filter-bar">
-                    <select class="form-select filter-select" t-model="state.filters.dateRange">
+                    <select class="form-select filter-select" t-model="state.filters.dateRange" t-on-change="onDateFilterChange" aria-label="Date range">
                         <option value="all">All Time</option>
                         <option value="today">Today</option>
                         <option value="this_month">This Month</option>
@@ -52,9 +61,9 @@
                     </select>
                     
                     <t t-if="state.filters.dateRange === 'custom'">
-                        <input type="date" class="form-input date-input" t-model="state.filters.customStart"/>
+                        <input type="date" class="form-input date-input" t-model="state.filters.customStart" t-on-change="onDateFilterChange" aria-label="Start date"/>
                         <span class="date-sep">-</span>
-                        <input type="date" class="form-input date-input" t-model="state.filters.customEnd"/>
+                        <input type="date" class="form-input date-input" t-model="state.filters.customEnd" t-on-change="onDateFilterChange" aria-label="End date"/>
                     </t>
                 </div>
 
@@ -82,6 +91,7 @@
                                                 task="task"
                                                 statusConfig="statusConfig"
                                                 statusList="statusList"
+                                                categories="categories"
                                                 onEdit.bind="openEditForm"
                                                 onDelete.bind="confirmDelete"
                                                 onStatusChange.bind="onStatusChange"/>
@@ -143,11 +153,11 @@
                                         </td>
                                         <td>
                                             <div class="list-actions">
-                                                <button class="btn-icon" t-on-click.stop="() => this.openEditForm(task)" title="Edit">
-                                                    <i class="fa fa-pencil"/>
+                                                <button class="btn-icon" t-on-click.stop="() => this.openEditForm(task)" title="Edit" aria-label="Edit task">
+                                                    <i class="fa fa-pencil" aria-hidden="true"/>
                                                 </button>
-                                                <button class="btn-icon" t-on-click.stop="() => this.confirmDelete(task.id)" title="Delete" style="color: #ef4444;">
-                                                    <i class="fa fa-trash"/>
+                                                <button class="btn-icon" t-on-click.stop="() => this.confirmDelete(task.id)" title="Delete" aria-label="Delete task" style="color: #ef4444;">
+                                                    <i class="fa fa-trash" aria-hidden="true"/>
                                                 </button>
                                             </div>
                                         </td>
@@ -156,7 +166,7 @@
                             </tbody>
                         </table>
 
-                        <t t-if="filteredTasks.length &gt; 0">
+                        <t t-if="state.table.total &gt; 0">
                             <div class="pagination-bar">
                                 <div class="pagination-info">
                                     <t t-esc="pageInfo.from"/>-<t t-esc="pageInfo.to"/> / <t t-esc="pageInfo.total"/>
@@ -175,7 +185,7 @@
                             </div>
                         </t>
 
-                        <t t-if="filteredTasks.length === 0">
+                        <t t-if="state.table.total === 0">
                             <div class="kanban-empty" style="padding: 48px; text-align: center;">
                                 No tasks match your filters
                             </div>
@@ -190,6 +200,7 @@
                     task="state.ui.editingTask"
                     statuses="statusList"
                     categories="categories"
+                    assignees="assignees"
                     onSave.bind="onSaveTask"
                     onClose.bind="closeForm"/>
             </t>
@@ -205,7 +216,8 @@
             <t t-if="state.ui.showSettings">
                 <StatusSettings
                     onClose.bind="closeSettings"
-                    onUpdate.bind="loadData"/>
+                    onUpdate.bind="loadData"
+                    onNotify.bind="notify"/>
             </t>
 
             <!-- Delete Confirmation -->
@@ -217,7 +229,7 @@
                         <div class="confirm-dialog-actions">
                             <button class="btn btn-secondary" t-on-click="cancelDelete">Cancel</button>
                             <button class="btn btn-danger" t-on-click="deleteTask">
-                                <i class="fa fa-trash"/> Delete
+                                <i class="fa fa-trash" aria-hidden="true"/> Delete
                             </button>
                         </div>
                     </div>

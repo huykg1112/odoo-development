@@ -10,8 +10,11 @@
                 </div>
                 <!-- Search -->
                 <div class="sidebar-search">
-                    <i class="fa fa-search sidebar-search-icon"/>
-                    <input type="text" placeholder="Search tasks..."
+                    <i class="fa fa-search sidebar-search-icon" aria-hidden="true"/>
+                    <input type="text" placeholder="Search tasks…"
+                           aria-label="Search tasks"
+                           name="search"
+                           autocomplete="off"
                            t-att-value="props.filters.search"
                            t-on-input="onSearch"/>
                 </div>
@@ -26,11 +29,11 @@
                         <span class="stat-label">Total</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-number" t-esc="props.stats.byStatus['done'] || 0"/>
+                        <span class="stat-number" t-esc="props.stats.done || 0"/>
                         <span class="stat-label">Done</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-number" t-esc="props.stats.byStatus['in_progress'] || 0"/>
+                        <span class="stat-number" t-esc="props.stats.active || 0"/>
                         <span class="stat-label">Active</span>
                     </div>
                     <div class="stat-card">

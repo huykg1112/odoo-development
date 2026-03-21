@@ -17,10 +17,26 @@ export class TaskManager extends Component {
         this.orm = useService("orm");
         this.statusConfig = {};
         this.categories = [];
+        this.assignees = [];
         this.statusList = []; // Array for consistent ordering
 
+        this._searchDebounce = null;
+
         this.state = useState({
-            tasks: [],
+            kanbanTasks: [],
+            table: {
+                tasks: [],
+                total: 0,
+            },
+            stats: {
+                total: 0,
+                done: 0,
+                active: 0,
+                overdue: 0,
+                byStatus: {},
+                byPriority: {},
+                byCategory: {},
+            },
             logs: [],
             nextLogId: 1,
             filters: {
@@ -48,6 +64,15 @@ export class TaskManager extends Component {
                 activeView: "kanban",
                 showDeleteConfirm: false,
                 deleteTaskId: null,
+                loading: {
+                    initial: true,
+                    tasks: false,
+                    saveTask: false,
+                    deleteTask: false,
+                    statusChange: false,
+                    settings: false,
+                    createCategory: false,
+                },
             },
             notifications: [],
             nextNotifId: 1,
@@ -59,30 +84,44 @@ export class TaskManager extends Component {
     }
 
     async loadData() {
+        await this.withLoading("initial", async () => {
+            await this.loadConfig();
+            await this.refreshAll({ resetPage: true });
+        });
+    }
+
+    async loadConfig() {
         // Fetch Statuses with transitions
         const statuses = await this.orm.searchRead(
-            "task.status", 
-            [], 
-            ["id", "name", "color", "sequence", "can_transition_to_ids"], 
+            "task.status",
+            [],
+            ["id", "name", "color", "sequence", "fold", "can_transition_to_ids"],
             { order: "sequence, id" }
         );
-        this.statusConfig = Object.fromEntries(statuses.map(s => [s.id, { 
-            label: s.name, 
-            color: this.getColor(s.color), 
-            id: s.id,
-            validTransitions: s.can_transition_to_ids 
-        }]));
+        this.statusConfig = Object.fromEntries(
+            statuses.map((s) => [
+                s.id,
+                {
+                    label: s.name,
+                    color: this.getColor(s.color),
+                    id: s.id,
+                    fold: !!s.fold,
+                    validTransitions: s.can_transition_to_ids,
+                },
+            ])
+        );
         this.statusList = statuses;
 
         // Fetch Categories
         this.categories = await this.orm.searchRead("task.category", [], ["id", "name", "color"]);
 
-        // Fetch Tasks
-        // We fetch all for now. In real app might want domain.
-        const tasks = await this.orm.searchRead("task.task", [], 
-            ["id", "name", "description", "priority", "status_id", "category_id", "user_id", "date_deadline", "create_date", "write_date"]);
-        
-        this.state.tasks = tasks.map(t => this.formatTask(t));
+        // Fetch Assignees
+        this.assignees = await this.orm.searchRead(
+            "task.user",
+            [["active", "=", true]],
+            ["id", "name", "email", "color"],
+            { order: "name, id" }
+        );
     }
 
     getColor(index) {
@@ -128,7 +167,8 @@ export class TaskManager extends Component {
             status: t.status_id ? t.status_id[0] : (this.statusList[0]?.id || 0),
             priority: this.mapPriority(t.priority),
             category: t.category_id ? t.category_id[0] : null,
-            assignee: t.user_id ? t.user_id[1] : "", // Display name
+            assigneeId: t.assignee_id ? t.assignee_id[0] : null,
+            assignee: t.assignee_id ? t.assignee_id[1] : "", // Display name
             dueDate: t.date_deadline,
             createdAt: new Date(t.create_date),
             updatedAt: new Date(t.write_date),
@@ -144,6 +184,29 @@ export class TaskManager extends Component {
     reversePriority(val) {
         const map = { 'low': '0', 'medium': '1', 'high': '2', 'urgent': '3' };
         return map[val] || '1';
+    }
+
+    // ─── Loading helpers ──────────────────────────────────
+    get isBusy() {
+        const l = this.state.ui.loading;
+        return !!(
+            l.initial ||
+            l.tasks ||
+            l.saveTask ||
+            l.deleteTask ||
+            l.statusChange ||
+            l.settings ||
+            l.createCategory
+        );
+    }
+
+    async withLoading(key, fn) {
+        this.state.ui.loading[key] = true;
+        try {
+            return await fn();
+        } finally {
+            this.state.ui.loading[key] = false;
+        }
     }
 
     // ─── Notifications ─────────────────────────────────────
@@ -167,109 +230,16 @@ export class TaskManager extends Component {
     }
 
     // ─── Computed ───────────────────────────────────────────
-    get filteredTasks() {
-        let tasks = this.state.tasks;
-        const f = this.state.filters;
-        
-        // existing filters
-        if (f.status) tasks = tasks.filter((t) => t.status === f.status);
-        if (f.priority) tasks = tasks.filter((t) => t.priority === f.priority);
-        if (f.category) tasks = tasks.filter((t) => t.category === f.category);
-        if (f.search) {
-            const q = f.search.toLowerCase();
-            tasks = tasks.filter(
-                (t) =>
-                    t.title.toLowerCase().includes(q) ||
-                    t.description.toLowerCase().includes(q) ||
-                    (t.assignee && t.assignee.toLowerCase().includes(q))
-            );
-        }
-
-        // Date Filter
-        if (f.dateRange !== 'all') {
-            const now = new Date();
-            const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-            const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
-            
-            tasks = tasks.filter(t => {
-                if (!t.dueDate) return false; // Exclude no-date tasks from time filters
-                const d = new Date(t.dueDate);
-                
-                switch(f.dateRange) {
-                    case 'today':
-                        return d >= startOfDay && d <= endOfDay;
-                    case 'this_month':
-                        return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
-                    case 'this_year':
-                        return d.getFullYear() === now.getFullYear();
-                    case 'custom':
-                        const start = f.customStart ? new Date(f.customStart) : null;
-                        const end = f.customEnd ? new Date(f.customEnd) : null;
-                        if (end) end.setHours(23, 59, 59);
-                        if (start && d < start) return false;
-                        if (end && d > end) return false;
-                        return true;
-                    default: return true;
-                }
-            });
-        }
-
-        // Sorting
-        const { field, order } = this.state.sort;
-        if (field) {
-            tasks = [...tasks].sort((a, b) => { // Copy to avoid mutating
-                let valA, valB;
-                
-                if (field === 'priority') {
-                    // Logic to sort priority: urgent > high > medium > low
-                    const pMap = { urgent: 3, high: 2, medium: 1, low: 0 };
-                    valA = pMap[a.priority] || 0;
-                    valB = pMap[b.priority] || 0;
-                } else if (field === 'status') {
-                     // Sort by status sequence/order
-                     const idxA = this.statusList.findIndex(s => s.id === a.status);
-                     const idxB = this.statusList.findIndex(s => s.id === b.status);
-                     valA = idxA;
-                     valB = idxB;
-                } else if (field === 'dueDate') {
-                    valA = a.dueDate ? new Date(a.dueDate).getTime() : 0;
-                    valB = b.dueDate ? new Date(b.dueDate).getTime() : 0;
-                    // Put no-date at end always? Or beginning? Let's treat 0 as very old.
-                    // If we want no-date at bottom for ASC, assign huge number.
-                    if (!a.dueDate) valA = order === 'asc' ? 9999999999999 : -1;
-                    if (!b.dueDate) valB = order === 'asc' ? 9999999999999 : -1;
-                } else {
-                    if (field === "category") {
-                        valA = this.getCategoryName(a.category) || "";
-                        valB = this.getCategoryName(b.category) || "";
-                    } else {
-                        valA = a[field] || "";
-                        valB = b[field] || "";
-                    }
-                }
-
-                if (valA < valB) return order === 'asc' ? -1 : 1;
-                if (valA > valB) return order === 'asc' ? 1 : -1;
-                return 0;
-            });
-        }
-
-        return tasks;
-    }
-
     get totalPages() {
-        return Math.max(1, Math.ceil(this.filteredTasks.length / this.state.pagination.pageSize));
+        return Math.max(1, Math.ceil((this.state.table.total || 0) / this.state.pagination.pageSize));
     }
 
     get pagedTasks() {
-        const page = Math.min(this.state.pagination.page, this.totalPages);
-        const start = (page - 1) * this.state.pagination.pageSize;
-        const end = start + this.state.pagination.pageSize;
-        return this.filteredTasks.slice(start, end);
+        return this.state.table.tasks;
     }
 
     get pageInfo() {
-        const total = this.filteredTasks.length;
+        const total = this.state.table.total || 0;
         if (!total) return { from: 0, to: 0, total };
         const page = Math.min(this.state.pagination.page, this.totalPages);
         const from = (page - 1) * this.state.pagination.pageSize + 1;
@@ -278,11 +248,15 @@ export class TaskManager extends Component {
     }
 
     goPrevPage() {
+        if (this.state.pagination.page <= 1) return;
         this.state.pagination.page = Math.max(1, this.state.pagination.page - 1);
+        void this.refreshAll();
     }
 
     goNextPage() {
+        if (this.state.pagination.page >= this.totalPages) return;
         this.state.pagination.page = Math.min(this.totalPages, this.state.pagination.page + 1);
+        void this.refreshAll();
     }
 
     // ─── Sorting & Settings ──────────────────────────────
@@ -294,6 +268,7 @@ export class TaskManager extends Component {
             this.state.sort.order = 'asc';
         }
         this.state.pagination.page = 1;
+        void this.refreshAll();
     }
 
     openSettings() {
@@ -302,7 +277,10 @@ export class TaskManager extends Component {
 
     closeSettings() {
         this.state.ui.showSettings = false;
-        this.loadData(); // Reload config
+        void this.withLoading("settings", async () => {
+            await this.loadConfig();
+            await this.refreshAll({ resetPage: true });
+        });
     }
     
     // ─── Drag and Drop ──────────────────────────────────
@@ -337,26 +315,11 @@ export class TaskManager extends Component {
     }
 
     get stats() {
-        const tasks = this.state.tasks;
-        const now = new Date();
-        return {
-            total: tasks.length,
-            overdue: tasks.filter((t) => t.dueDate && new Date(t.dueDate) < now && t.status !== "done").length,
-            byStatus: this.countBy(tasks, "status"),
-            byPriority: this.countBy(tasks, "priority"),
-            byCategory: this.countBy(tasks, "category"),
-        };
-    }
-
-    countBy(arr, key) {
-        return arr.reduce((acc, item) => {
-            acc[item[key]] = (acc[item[key]] || 0) + 1;
-            return acc;
-        }, {});
+        return this.state.stats;
     }
 
     getTasksByStatus(status) {
-        return this.filteredTasks.filter((t) => t.status === status);
+        return this.state.kanbanTasks.filter((t) => t.status === status);
     }
 
     get statusColumns() {
@@ -393,28 +356,28 @@ export class TaskManager extends Component {
             status_id: Number(data.status),
             priority: this.reversePriority(data.priority),
             category_id: data.category ? Number(data.category) : false,
-            date_deadline: data.dueDate, 
-            // assignee: ignored as we don't have user selection yet
+            assignee_id: data.assigneeId ? Number(data.assigneeId) : false,
+            date_deadline: data.dueDate ? this.formatDate(data.dueDate) : false,
         };
 
-        try {
-            if (this.state.ui.editingTask) {
-                // Update
-                await this.orm.write("task.task", [this.state.ui.editingTask.id], vals);
-                this.addLog(this.state.ui.editingTask.id, "updated", `Task "${data.title}" was updated`);
-                this.notify(`Task "${data.title}" updated!`);
-            } else {
-                // Create
-                const [newId] = await this.orm.create("task.task", [vals]);
-                this.addLog(newId, "created", `Task "${data.title}" was created`);
-                this.notify(`Task "${data.title}" created!`);
+        await this.withLoading("saveTask", async () => {
+            try {
+                if (this.state.ui.editingTask) {
+                    await this.orm.write("task.task", [this.state.ui.editingTask.id], vals);
+                    this.addLog(this.state.ui.editingTask.id, "updated", `Task "${data.title}" was updated`);
+                    this.notify(`Saved "${data.title}".`, "success");
+                } else {
+                    const [newId] = await this.orm.create("task.task", [vals]);
+                    this.addLog(newId, "created", `Task "${data.title}" was created`);
+                    this.notify(`Created "${data.title}".`, "success");
+                }
+                await this.refreshAll();
+                this.closeForm();
+            } catch (e) {
+                console.error(e);
+                this.notify("Couldn’t save task. Try again.", "danger");
             }
-            await this.loadData();
-            this.closeForm();
-        } catch (e) {
-            console.error(e);
-            this.notify("Error saving task", "danger");
-        }
+        });
     }
 
     // Delete
@@ -430,16 +393,18 @@ export class TaskManager extends Component {
 
     async deleteTask() {
         if (!this.state.ui.deleteTaskId) return;
-        try {
-            await this.orm.unlink("task.task", [this.state.ui.deleteTaskId]);
-            this.notify("Task deleted successfully");
-            await this.loadData();
-        } catch (e) {
-            console.error(e);
-            this.notify("Error deleting task", "danger");
-        }
-        this.state.ui.showDeleteConfirm = false;
-        this.state.ui.deleteTaskId = null;
+        await this.withLoading("deleteTask", async () => {
+            try {
+                await this.orm.unlink("task.task", [this.state.ui.deleteTaskId]);
+                this.notify("Deleted task.", "success");
+                await this.refreshAll({ resetPage: true });
+            } catch (e) {
+                console.error(e);
+                this.notify("Couldn’t delete task. It may be restricted.", "danger");
+            }
+            this.state.ui.showDeleteConfirm = false;
+            this.state.ui.deleteTaskId = null;
+        });
     }
 
     executeDelete() {
@@ -451,29 +416,47 @@ export class TaskManager extends Component {
     async onStatusChange(taskId, newStatusId) {
         // Optimistic update or wait for server?
         // Let's do simple wait for server
-        try {
-            await this.orm.write("task.task", [taskId], { status_id: Number(newStatusId) });
-            await this.loadData();
-            this.notify("Task status updated");
-        } catch(e) {
-            this.notify("Failed to move task", "danger");
-        }
+        await this.withLoading("statusChange", async () => {
+            try {
+                await this.orm.write("task.task", [taskId], { status_id: Number(newStatusId) });
+                await this.refreshAll();
+                this.notify("Moved task.", "success");
+            } catch (e) {
+                this.notify("Couldn’t move task.", "danger");
+            }
+        });
     }
 
     // ─── Filters ────────────────────────────────────────────
     onFilterChange(filterKey, value) {
         this.state.filters[filterKey] = value;
         this.state.pagination.page = 1;
+        void this.refreshAll({ resetPage: true });
     }
 
     onSearchInput(value) {
         this.state.filters.search = value;
         this.state.pagination.page = 1;
+
+        if (this._searchDebounce) {
+            clearTimeout(this._searchDebounce);
+        }
+        this._searchDebounce = setTimeout(() => {
+            void this.refreshAll({ resetPage: true });
+        }, 250);
+    }
+
+    onDateFilterChange() {
+        this.state.pagination.page = 1;
+        void this.refreshAll({ resetPage: true });
     }
 
     // ─── View Toggle ────────────────────────────────────────
     setView(view) {
         this.state.ui.activeView = view;
+        if (view === "kanban") {
+            void this.refreshKanban();
+        }
     }
 
     // ─── Log Panel ──────────────────────────────────────────
@@ -483,5 +466,210 @@ export class TaskManager extends Component {
 
     closeLog() {
         this.state.ui.showLog = false;
+    }
+
+    // ─── Backend filtering/sorting/pagination ─────────────
+    formatDate(d) {
+        if (!d) return "";
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, "0");
+        const day = String(d.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+    }
+
+    buildDomain({ omitStatus = false, omitPriority = false, omitCategory = false } = {}) {
+        const f = this.state.filters;
+        const domain = [];
+
+        if (!omitStatus && f.status) domain.push(["status_id", "=", Number(f.status)]);
+        if (!omitPriority && f.priority) domain.push(["priority", "=", this.reversePriority(f.priority)]);
+        if (!omitCategory && f.category) domain.push(["category_id", "=", Number(f.category)]);
+
+        if (f.search) {
+            domain.push(
+                "|",
+                "|",
+                ["name", "ilike", f.search],
+                ["description", "ilike", f.search],
+                ["assignee_id", "ilike", f.search]
+            );
+        }
+
+        if (f.dateRange && f.dateRange !== "all") {
+            const now = new Date();
+            if (f.dateRange === "today") {
+                const s = this.formatDate(now);
+                domain.push(["date_deadline", "=", s]);
+            } else if (f.dateRange === "this_month") {
+                const start = new Date(now.getFullYear(), now.getMonth(), 1);
+                const end = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+                domain.push(["date_deadline", ">=", this.formatDate(start)]);
+                domain.push(["date_deadline", "<=", this.formatDate(end)]);
+            } else if (f.dateRange === "this_year") {
+                const start = new Date(now.getFullYear(), 0, 1);
+                const end = new Date(now.getFullYear(), 11, 31);
+                domain.push(["date_deadline", ">=", this.formatDate(start)]);
+                domain.push(["date_deadline", "<=", this.formatDate(end)]);
+            } else if (f.dateRange === "custom") {
+                if (f.customStart) domain.push(["date_deadline", ">=", f.customStart]);
+                if (f.customEnd) domain.push(["date_deadline", "<=", f.customEnd]);
+            }
+        }
+
+        return domain;
+    }
+
+    buildOrder() {
+        const { field, order } = this.state.sort;
+        const dir = order === "desc" ? "desc" : "asc";
+        switch (field) {
+            case "title":
+                return `name ${dir}`;
+            case "status":
+                return `status_id.sequence ${dir}, status_id ${dir}, id desc`;
+            case "priority":
+                return `priority ${dir}, id desc`;
+            case "category":
+                return `category_id ${dir}, id desc`;
+            case "dueDate":
+                return `date_deadline ${dir}, id desc`;
+            default:
+                return `id desc`;
+        }
+    }
+
+    async refreshAll({ resetPage = false } = {}) {
+        if (resetPage) this.state.pagination.page = 1;
+        await this.withLoading("tasks", async () => {
+            const domain = this.buildDomain();
+            const order = this.buildOrder();
+
+            await Promise.all([
+                this.loadStats(domain),
+                this.loadTableTasks(domain, order),
+                this.state.ui.activeView === "kanban" ? this.loadKanbanTasks(domain, order) : Promise.resolve(),
+            ]);
+        });
+    }
+
+    async refreshKanban() {
+        const domain = this.buildDomain();
+        const order = this.buildOrder();
+        await this.withLoading("tasks", async () => {
+            await this.loadKanbanTasks(domain, order);
+        });
+    }
+
+    async loadTableTasks(domain, order) {
+        const limit = this.state.pagination.pageSize;
+        const offset = (this.state.pagination.page - 1) * limit;
+        const fields = [
+            "id",
+            "name",
+            "description",
+            "priority",
+            "status_id",
+            "category_id",
+            "assignee_id",
+            "date_deadline",
+            "create_date",
+            "write_date",
+        ];
+
+        const total = await this.orm.call("task.task", "search_count", [domain]);
+
+        // Clamp invalid page
+        const lastPage = Math.max(1, Math.ceil(total / limit));
+        if (this.state.pagination.page > lastPage) {
+            this.state.pagination.page = lastPage;
+        }
+
+        const actualOffset = (this.state.pagination.page - 1) * limit;
+        const records = await this.orm.searchRead("task.task", domain, fields, {
+            order,
+            offset: actualOffset,
+            limit,
+        });
+
+        this.state.table.total = total;
+        this.state.table.tasks = records.map((t) => this.formatTask(t));
+    }
+
+    async loadKanbanTasks(domain, order) {
+        const fields = [
+            "id",
+            "name",
+            "description",
+            "priority",
+            "status_id",
+            "category_id",
+            "assignee_id",
+            "date_deadline",
+            "create_date",
+            "write_date",
+        ];
+        const records = await this.orm.searchRead("task.task", domain, fields, { order });
+        this.state.kanbanTasks = records.map((t) => this.formatTask(t));
+    }
+
+
+    async loadStats(domain) {
+        const fullDomain = domain || this.buildDomain();
+        const statusDomain = this.buildDomain({ omitStatus: true });
+        const priorityDomain = this.buildDomain({ omitPriority: true });
+        const categoryDomain = this.buildDomain({ omitCategory: true });
+
+        const total = await this.orm.call("task.task", "search_count", [fullDomain]);
+
+        const today = this.formatDate(new Date());
+        const overdueDomain = [...fullDomain, ["date_deadline", "<", today], ["status_id.fold", "=", false]];
+        const overdue = await this.orm.call("task.task", "search_count", [overdueDomain]);
+
+        const [byStatusFullGroups, byStatusGroups, byPriorityGroups, byCategoryGroups] = await Promise.all([
+            this.orm.call("task.task", "read_group", [fullDomain, ["status_id"], ["status_id"]], { lazy: false }),
+            this.orm.call("task.task", "read_group", [statusDomain, ["status_id"], ["status_id"]], { lazy: false }),
+            this.orm.call("task.task", "read_group", [priorityDomain, ["priority"], ["priority"]], { lazy: false }),
+            this.orm.call("task.task", "read_group", [categoryDomain, ["category_id"], ["category_id"]], { lazy: false }),
+        ]);
+
+        const byStatusFull = {};
+        for (const g of byStatusFullGroups) {
+            const id = g.status_id ? g.status_id[0] : null;
+            if (id) byStatusFull[id] = g.__count;
+        }
+
+        const byStatus = {};
+        for (const g of byStatusGroups) {
+            const id = g.status_id ? g.status_id[0] : null;
+            if (id) byStatus[id] = g.__count;
+        }
+
+        const byPriority = {};
+        for (const g of byPriorityGroups) {
+            const key = g.priority;
+            if (key !== undefined && key !== null && key !== false) {
+                byPriority[this.mapPriority(String(key))] = g.__count;
+            }
+        }
+
+        const byCategory = {};
+        for (const g of byCategoryGroups) {
+            const id = g.category_id ? g.category_id[0] : null;
+            if (id) byCategory[id] = g.__count;
+        }
+
+        let done = 0;
+        for (const [statusIdStr, count] of Object.entries(byStatusFull)) {
+            const statusId = Number(statusIdStr);
+            if (this.statusConfig[statusId]?.fold) done += count;
+        }
+
+        this.state.stats.total = total;
+        this.state.stats.overdue = overdue;
+        this.state.stats.byStatus = byStatus;
+        this.state.stats.byPriority = byPriority;
+        this.state.stats.byCategory = byCategory;
+        this.state.stats.done = done;
+        this.state.stats.active = Math.max(0, total - done);
     }
 }

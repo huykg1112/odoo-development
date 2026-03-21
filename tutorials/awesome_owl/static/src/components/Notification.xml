@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-name="awesome_owl.Notification">
-        <div class="toast-container">
+        <div class="toast-container" role="status" aria-live="polite" aria-relevant="additions text">
             <t t-foreach="props.notifications" t-as="notif" t-key="notif.id">
                 <div t-attf-class="toast {{ notif.type }}">
                     <span class="toast-icon">
                         <t t-if="notif.type === 'success'">✓</t>
-                        <t t-if="notif.type === 'error'">✕</t>
+                        <t t-if="notif.type === 'error' or notif.type === 'danger'">✕</t>
                         <t t-if="notif.type === 'info'">ℹ</t>
                     </span>
                     <span class="toast-message" t-esc="notif.message"/>

@@ -8,6 +8,7 @@ export class TaskForm extends Component {
         task: { type: [Object, { value: null }], optional: true },
         statuses: { type: Array, optional: true },
         categories: { type: Array, optional: true },
+        assignees: { type: Array, optional: true },
         onSave: { type: Function },
         onClose: { type: Function },
     };
@@ -20,8 +21,9 @@ export class TaskForm extends Component {
             status: t ? t.status : (this.props.statuses?.[0]?.id || ""),
             priority: t ? t.priority : "medium",
             category: t ? t.category : (this.props.categories?.[0]?.id || ""),
-            assignee: t ? t.assignee : "",
+            assigneeId: t ? (t.assigneeId || "") : (this.props.assignees?.[0]?.id || ""),
             dueDate: t ? (t.dueDate ? this.toInputDate(t.dueDate) : "") : "",
+
         });
     }
 
@@ -43,15 +45,15 @@ export class TaskForm extends Component {
         this.state[field] = ev.target.value;
     }
 
-    onSubmit() {
+    async onSubmit() {
         if (!this.state.title.trim()) return;
-        this.props.onSave({
+        await this.props.onSave({
             title: this.state.title.trim(),
             description: this.state.description.trim(),
             status: this.state.status,
             priority: this.state.priority,
             category: this.state.category,
-            assignee: this.state.assignee.trim(),
+            assigneeId: this.state.assigneeId,
             dueDate: this.state.dueDate ? new Date(this.state.dueDate) : null,
         });
     }

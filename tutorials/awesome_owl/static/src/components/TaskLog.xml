@@ -4,10 +4,10 @@
         <div class="log-panel">
             <div class="log-panel-header">
                 <h3 class="log-panel-title">
-                    <i class="fa fa-history"/> Activity Log
+                    <i class="fa fa-history" aria-hidden="true"/> Activity Log
                 </h3>
-                <button class="btn-icon" t-on-click="props.onClose">
-                    <i class="fa fa-times"/>
+                <button class="btn-icon" type="button" t-on-click="props.onClose" aria-label="Close activity log">
+                    <i class="fa fa-times" aria-hidden="true"/>
                 </button>
             </div>
             <div class="log-panel-body">
@@ -20,7 +20,7 @@
                 <t t-foreach="props.logs" t-as="log" t-key="log.id">
                     <div class="log-entry">
                         <div t-attf-class="log-entry-icon {{ log.action }}">
-                            <i t-attf-class="fa {{ getIcon(log.action) }}"/>
+                            <i t-attf-class="fa {{ getIcon(log.action) }}" aria-hidden="true"/>
                         </div>
                         <div class="log-entry-content">
                             <div class="log-entry-text" t-esc="log.details"/>

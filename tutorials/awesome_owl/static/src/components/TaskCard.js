@@ -11,6 +11,7 @@ export class TaskCard extends Component {
         onStatusChange: { type: Function },
         statusConfig: { type: Object },
         statusList: { type: Array, optional: true },
+        categories: { type: Array, optional: true },
     };
 
     get priorityClass() {
@@ -23,14 +24,10 @@ export class TaskCard extends Component {
     }
 
     get categoryLabel() {
-        const labels = {
-            development: "Dev",
-            design: "Design",
-            testing: "QA",
-            documentation: "Docs",
-            other: "Other",
-        };
-        return labels[this.props.task.category] || "Other";
+        const id = this.props.task.category;
+        if (!id) return "—";
+        const cat = (this.props.categories || []).find((c) => c.id === id);
+        return cat ? cat.name : String(id);
     }
 
     get assigneeInitials() {
@@ -73,6 +70,13 @@ export class TaskCard extends Component {
     onClickEdit(ev) {
         ev.stopPropagation();
         this.props.onEdit(this.props.task);
+    }
+
+    onCardKeyDown(ev) {
+        if (ev.key === "Enter" || ev.key === " ") {
+            ev.preventDefault();
+            this.props.onEdit(this.props.task);
+        }
     }
 
     onClickDelete(ev) {
