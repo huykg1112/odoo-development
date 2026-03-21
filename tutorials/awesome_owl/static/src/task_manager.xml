@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_owl.TaskManager">
+        <div class="app-container">
+            <!-- Sidebar -->
+            <Sidebar 
+                filters="state.filters"
+                stats="stats"
+                statusConfig="statusConfig"
+                onFilterChange.bind="onFilterChange"
+                onSearchInput.bind="onSearchInput"/>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Top Header -->
+                <header class="top-header">
+                    <div class="top-header-left">
+                        <h1 class="top-header-title">Task Board</h1>
+                        <div class="view-toggle">
+                            <button t-attf-class="view-toggle-btn {{ state.ui.activeView === 'kanban' ? 'active' : '' }}"
+                                    t-on-click="() => this.setView('kanban')">
+                                <i class="fa fa-th-large"/> Kanban
+                            </button>
+                            <button t-attf-class="view-toggle-btn {{ state.ui.activeView === 'list' ? 'active' : '' }}"
+                                    t-on-click="() => this.setView('list')">
+                                <i class="fa fa-list"/> List
+                            </button>
+                        </div>
+                    </div>
+                    <div class="top-header-actions">
+                        <button class="btn btn-secondary" t-on-click="toggleLog">
+                            <i class="fa fa-history"/> Log
+                        </button>
+                        <button class="btn btn-primary" t-on-click="openCreateForm">
+                            <i class="fa fa-plus"/> Add Task
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Kanban View -->
+                <t t-if="state.ui.activeView === 'kanban'">
+                    <div class="kanban-board">
+                        <t t-foreach="statusColumns" t-as="col" t-key="col.key">
+                            <div class="kanban-column">
+                                <div class="kanban-column-header">
+                                    <div class="kanban-column-title">
+                                        <span class="kanban-column-dot" t-attf-style="background: {{ col.color }}"/>
+                                        <t t-esc="col.label"/>
+                                    </div>
+                                    <span class="kanban-column-count" t-esc="col.tasks.length"/>
+                                </div>
+                                <div class="kanban-column-body">
+                                    <t t-if="col.tasks.length === 0">
+                                        <div class="kanban-empty">No tasks</div>
+                                    </t>
+                                    <t t-foreach="col.tasks" t-as="task" t-key="task.id">
+                                        <TaskCard
+                                            task="task"
+                                            statusConfig="statusConfig"
+                                            onEdit.bind="openEditForm"
+                                            onDelete.bind="confirmDelete"
+                                            onStatusChange.bind="onStatusChange"/>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+
+                <!-- List View -->
+                <t t-if="state.ui.activeView === 'list'">
+                    <div class="list-view">
+                        <table class="list-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Status</th>
+                                    <th>Priority</th>
+                                    <th>Category</th>
+                                    <th>Assignee</th>
+                                    <th>Due Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="filteredTasks" t-as="task" t-key="task.id">
+                                    <tr t-on-click="() => this.openEditForm(task)">
+                                        <td>
+                                            <span class="list-task-title" t-esc="task.title"/>
+                                        </td>
+                                        <td>
+                                            <span t-attf-class="badge badge-status"
+                                                  t-attf-style="background: {{ statusConfig[task.status] ? 'var(--status-' + task.status.replace('_', '-') + '-bg)' : '' }}; color: {{ statusConfig[task.status] ? 'var(--status-' + task.status.replace('_', '-') + ')' : '' }}"
+                                                  t-esc="statusConfig[task.status] ? statusConfig[task.status].label : task.status"/>
+                                        </td>
+                                        <td>
+                                            <span t-attf-class="badge badge-priority-{{ task.priority }}"
+                                                  t-esc="task.priority"/>
+                                        </td>
+                                        <td t-esc="task.category"/>
+                                        <td t-esc="task.assignee || '—'"/>
+                                        <td>
+                                            <t t-if="task.dueDate">
+                                                <t t-esc="new Date(task.dueDate).toLocaleDateString('vi-VN')"/>
+                                            </t>
+                                            <t t-else="">—</t>
+                                        </td>
+                                        <td>
+                                            <div class="list-actions">
+                                                <button class="btn-icon" t-on-click.stop="() => this.openEditForm(task)" title="Edit">
+                                                    <i class="fa fa-pencil"/>
+                                                </button>
+                                                <button class="btn-icon" t-on-click.stop="() => this.confirmDelete(task.id)" title="Delete" style="color: #ef4444;">
+                                                    <i class="fa fa-trash"/>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <t t-if="filteredTasks.length === 0">
+                            <div class="kanban-empty" style="padding: 48px; text-align: center;">
+                                No tasks match your filters
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </div>
+
+            <!-- Task Form Modal -->
+            <t t-if="state.ui.showForm">
+                <TaskForm
+                    task="state.ui.editingTask"
+                    onSave.bind="onSaveTask"
+                    onClose.bind="closeForm"/>
+            </t>
+
+            <!-- Activity Log Panel -->
+            <t t-if="state.ui.showLog">
+                <TaskLog
+                    logs="state.logs"
+                    onClose.bind="closeLog"/>
+            </t>
+
+            <!-- Delete Confirmation -->
+            <t t-if="state.ui.showDeleteConfirm">
+                <div class="confirm-overlay" t-on-click.stop="cancelDelete">
+                    <div class="confirm-dialog" t-on-click.stop="() => {}">
+                        <div class="confirm-dialog-title">Delete Task?</div>
+                        <p class="confirm-dialog-text">This action cannot be undone. The task will be permanently removed.</p>
+                        <div class="confirm-dialog-actions">
+                            <button class="btn btn-secondary" t-on-click="cancelDelete">Cancel</button>
+                            <button class="btn btn-danger" t-on-click="executeDelete">
+                                <i class="fa fa-trash"/> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </t>
+
+            <!-- Notifications -->
+            <Notification notifications="state.notifications"/>
+        </div>
+    </t>
+</templates>

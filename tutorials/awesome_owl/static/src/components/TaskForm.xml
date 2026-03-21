@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_owl.TaskForm">
+        <div class="modal-overlay" t-on-click="onOverlayClick">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title" t-esc="formTitle"/>
+                    <button class="btn-icon" t-on-click="onCancel">
+                        <i class="fa fa-times"/>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- Title -->
+                    <div class="form-group">
+                        <label class="form-label">Task Title *</label>
+                        <input type="text" class="form-input" 
+                               placeholder="Enter task title..."
+                               t-att-value="state.title"
+                               t-on-input="(ev) => this.onInput('title', ev)"/>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-textarea" 
+                                  placeholder="Describe the task..."
+                                  t-on-input="(ev) => this.onInput('description', ev)"
+                                  t-esc="state.description"/>
+                    </div>
+
+                    <!-- Status + Priority Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" 
+                                    t-att-value="state.status"
+                                    t-on-change="(ev) => this.onInput('status', ev)">
+                                <option value="backlog">Backlog</option>
+                                <option value="todo">To Do</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="review">Review</option>
+                                <option value="done">Done</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Priority</label>
+                            <select class="form-select"
+                                    t-att-value="state.priority"
+                                    t-on-change="(ev) => this.onInput('priority', ev)">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Category + Assignee Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <select class="form-select"
+                                    t-att-value="state.category"
+                                    t-on-change="(ev) => this.onInput('category', ev)">
+                                <option value="development">Development</option>
+                                <option value="design">Design</option>
+                                <option value="testing">Testing</option>
+                                <option value="documentation">Documentation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Assignee</label>
+                            <input type="text" class="form-input"
+                                   placeholder="Assignee name..."
+                                   t-att-value="state.assignee"
+                                   t-on-input="(ev) => this.onInput('assignee', ev)"/>
+                        </div>
+                    </div>
+
+                    <!-- Due Date -->
+                    <div class="form-group">
+                        <label class="form-label">Due Date</label>
+                        <input type="date" class="form-input"
+                               t-att-value="state.dueDate"
+                               t-on-input="(ev) => this.onInput('dueDate', ev)"/>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" t-on-click="onCancel">Cancel</button>
+                    <button class="btn btn-primary" t-on-click="onSubmit">
+                        <i t-attf-class="fa {{ isEditing ? 'fa-save' : 'fa-plus' }}"/>
+                        <t t-if="isEditing">Save Changes</t>
+                        <t t-else="">Create Task</t>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

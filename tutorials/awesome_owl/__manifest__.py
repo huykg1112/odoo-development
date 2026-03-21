@@ -20,10 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web'],
+    'depends': ['base', 'web', 'mail'],
     'application': True,
     'installable': True,
     'data': [
+        'security/ir.model.access.csv',
+        'data/default_data.xml',
+        'views/task_views.xml',
         'views/templates.xml',
     ],
     'assets': {

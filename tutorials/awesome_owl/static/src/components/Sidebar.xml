@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_owl.Sidebar">
+        <aside class="sidebar">
+            <!-- Logo -->
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon">📋</div>
+                    <span class="sidebar-logo-text">TaskFlow ERP</span>
+                </div>
+                <!-- Search -->
+                <div class="sidebar-search">
+                    <i class="fa fa-search sidebar-search-icon"/>
+                    <input type="text" placeholder="Search tasks..."
+                           t-att-value="props.filters.search"
+                           t-on-input="onSearch"/>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Overview</div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number" t-esc="props.stats.total"/>
+                        <span class="stat-label">Total</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" t-esc="props.stats.byStatus['done'] || 0"/>
+                        <span class="stat-label">Done</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" t-esc="props.stats.byStatus['in_progress'] || 0"/>
+                        <span class="stat-label">Active</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" t-esc="props.stats.overdue"/>
+                        <span class="stat-label">Overdue</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Filter -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Status</div>
+                <div class="filter-group">
+                    <button t-attf-class="filter-btn {{ !props.filters.status ? 'active' : '' }}"
+                            t-on-click="() => this.toggleStatusFilter(null)">
+                        <span class="filter-btn-label">All Statuses</span>
+                        <span class="filter-btn-count" t-esc="props.stats.total"/>
+                    </button>
+                    <t t-foreach="statusList" t-as="s" t-key="s.key">
+                        <button t-attf-class="filter-btn {{ props.filters.status === s.key ? 'active' : '' }}"
+                                t-on-click="() => this.toggleStatusFilter(s.key)">
+                            <span class="filter-btn-label">
+                                <span class="filter-btn-dot" t-attf-style="background: {{ s.color }}"/>
+                                <t t-esc="s.label"/>
+                            </span>
+                            <span class="filter-btn-count" t-esc="s.count"/>
+                        </button>
+                    </t>
+                </div>
+            </div>
+
+            <!-- Priority Filter -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Priority</div>
+                <div class="filter-group">
+                    <t t-foreach="priorityList" t-as="p" t-key="p.key">
+                        <button t-attf-class="filter-btn {{ props.filters.priority === p.key ? 'active' : '' }}"
+                                t-on-click="() => this.togglePriorityFilter(p.key)">
+                            <span class="filter-btn-label">
+                                <span class="filter-btn-dot" t-attf-style="background: {{ p.color }}"/>
+                                <t t-esc="p.label"/>
+                            </span>
+                            <span class="filter-btn-count" t-esc="p.count"/>
+                        </button>
+                    </t>
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Category</div>
+                <div class="filter-group">
+                    <t t-foreach="categoryList" t-as="c" t-key="c.key">
+                        <button t-attf-class="filter-btn {{ props.filters.category === c.key ? 'active' : '' }}"
+                                t-on-click="() => this.toggleCategoryFilter(c.key)">
+                            <span class="filter-btn-label">
+                                <t t-esc="c.label"/>
+                            </span>
+                            <span class="filter-btn-count" t-esc="c.count"/>
+                        </button>
+                    </t>
+                </div>
+            </div>
+        </aside>
+    </t>
+</templates>

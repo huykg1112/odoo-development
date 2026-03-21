@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_owl.TaskCard">
+        <div class="task-card" t-on-click="onClickEdit">
+            <!-- Header: Title + Actions -->
+            <div class="task-card-header">
+                <span class="task-card-title" t-esc="props.task.title"/>
+                <div class="task-card-actions">
+                    <button class="btn-icon" t-on-click="onClickEdit" title="Edit">
+                        <i class="fa fa-pencil"/>
+                    </button>
+                    <button class="btn-icon" t-on-click="onClickDelete" title="Delete" style="color: #ef4444;">
+                        <i class="fa fa-trash"/>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <t t-if="props.task.description">
+                <p class="task-card-description" t-esc="props.task.description"/>
+            </t>
+
+            <!-- Meta: Priority + Category -->
+            <div class="task-card-meta">
+                <span t-attf-class="badge {{ priorityClass }}">
+                    <t t-esc="priorityLabel"/>
+                </span>
+                <span class="badge badge-category">
+                    <t t-esc="categoryLabel"/>
+                </span>
+            </div>
+
+            <!-- Footer: Assignee + Due Date -->
+            <div class="task-card-footer">
+                <div class="task-card-assignee">
+                    <t t-if="props.task.assignee">
+                        <span class="task-card-assignee-avatar" t-esc="assigneeInitials"/>
+                        <span t-esc="props.task.assignee"/>
+                    </t>
+                    <t t-else="">
+                        <span style="color: var(--text-muted); font-style: italic;">Unassigned</span>
+                    </t>
+                </div>
+                <t t-if="formattedDueDate">
+                    <span t-attf-class="task-card-due {{ formattedDueDate.overdue ? 'overdue' : '' }}">
+                        <i class="fa fa-clock-o"/>
+                        <t t-esc="formattedDueDate.text"/>
+                    </span>
+                </t>
+            </div>
+
+            <!-- Quick Status Buttons -->
+            <div class="task-status-actions">
+                <t t-if="prevStatus">
+                    <button class="status-move-btn" t-on-click="onMovePrev">
+                        ← <t t-esc="getStatusLabel(prevStatus)"/>
+                    </button>
+                </t>
+                <t t-if="nextStatus">
+                    <button class="status-move-btn" t-on-click="onMoveNext">
+                        <t t-esc="getStatusLabel(nextStatus)"/> →
+                    </button>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>
