@@ -36,11 +36,14 @@
                             <select class="form-select" 
                                     t-att-value="state.status"
                                     t-on-change="(ev) => this.onInput('status', ev)">
-                                <option value="backlog">Backlog</option>
-                                <option value="todo">To Do</option>
-                                <option value="in_progress">In Progress</option>
-                                <option value="review">Review</option>
-                                <option value="done">Done</option>
+                                <t t-if="props.statuses">
+                                    <t t-foreach="props.statuses" t-as="status" t-key="status.id">
+                                        <option t-att-value="status.id" t-esc="status.name"/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <option value="">Loading...</option>
+                                </t>
                             </select>
                         </div>
                         <div class="form-group">
@@ -63,11 +66,14 @@
                             <select class="form-select"
                                     t-att-value="state.category"
                                     t-on-change="(ev) => this.onInput('category', ev)">
-                                <option value="development">Development</option>
-                                <option value="design">Design</option>
-                                <option value="testing">Testing</option>
-                                <option value="documentation">Documentation</option>
-                                <option value="other">Other</option>
+                                <t t-if="props.categories">
+                                    <t t-foreach="props.categories" t-as="cat" t-key="cat.id">
+                                        <option t-att-value="cat.id" t-esc="cat.name"/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <option value="">Loading...</option>
+                                </t>
                             </select>
                         </div>
                         <div class="form-group">

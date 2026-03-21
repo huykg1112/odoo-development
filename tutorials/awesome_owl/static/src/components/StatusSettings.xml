@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_owl.StatusSettings">
+        <div class="modal-overlay">
+            <div class="modal modal-lg">
+                <div class="modal-header">
+                    <h2 class="modal-title">Status Configuration</h2>
+                    <button class="btn-icon" t-on-click="props.onClose">
+                        <i class="fa fa-times"/>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="settings-layout">
+                        <!-- List -->
+                        <div class="settings-list">
+                            <div class="settings-list-header">
+                                <h3>Statuses</h3>
+                                <button class="btn btn-sm btn-primary" t-on-click="startCreate" t-if="!isEditing">
+                                    <i class="fa fa-plus"/> New
+                                </button>
+                            </div>
+                            <div class="status-items">
+                                <t t-foreach="state.statuses" t-as="status" t-key="status.id">
+                                    <div t-attf-class="status-item {{ state.editingId === status.id ? 'active' : '' }}"
+                                         t-on-click="() => this.startEdit(status)">
+                                        <div class="status-color-dot" t-att-style="'background:' + getColorStyle(status.color)"/>
+                                        <span class="status-name" t-esc="status.name"/>
+                                        <button class="btn-icon-sm danger" 
+                                                t-on-click.stop="() => this.deleteStatus(status.id)"
+                                                t-if="state.editingId !== status.id">
+                                            <i class="fa fa-trash"/>
+                                        </button>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+
+                        <!-- Edit Form -->
+                        <div class="settings-form" t-if="isEditing">
+                            <h3>
+                                <t t-if="state.isCreating">New Status</t>
+                                <t t-else="">Edit Status</t>
+                            </h3>
+                            
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-input" 
+                                       t-model="state.editData.name" 
+                                       placeholder="Status Name"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Color Index</label>
+                                <input type="number" class="form-input" 
+                                       t-model="state.editData.color" 
+                                       min="0" max="10"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Allowed Transitions (Move to...)</label>
+                                <div class="transition-checklist">
+                                    <t t-foreach="state.statuses" t-as="s" t-key="s.id">
+                                        <label class="checkbox-label" t-if="s.id !== state.editingId">
+                                            <input type="checkbox" 
+                                                   t-att-checked="state.editData.transitionIds.includes(s.id)"
+                                                   t-on-change="() => this.toggleTransition(s.id)"/>
+                                            <span t-esc="s.name"/>
+                                        </label>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn btn-secondary" t-on-click="cancelEdit">Cancel</button>
+                                <button class="btn btn-primary" t-on-click="saveStatus">Save</button>
+                            </div>
+                        </div>
+                        <div class="settings-preview" t-else="">
+                            <div class="empty-state">Select a status to edit or create new</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

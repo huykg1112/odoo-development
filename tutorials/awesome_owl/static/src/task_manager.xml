@@ -7,6 +7,7 @@
                 filters="state.filters"
                 stats="stats"
                 statusConfig="statusConfig"
+                categories="categories"
                 onFilterChange.bind="onFilterChange"
                 onSearchInput.bind="onSearchInput"/>
 
@@ -31,17 +32,39 @@
                         <button class="btn btn-secondary" t-on-click="toggleLog">
                             <i class="fa fa-history"/> Log
                         </button>
+                        <button class="btn btn-secondary" t-on-click="openSettings">
+                            <i class="fa fa-cogs"/> Settings
+                        </button>
                         <button class="btn btn-primary" t-on-click="openCreateForm">
                             <i class="fa fa-plus"/> Add Task
                         </button>
                     </div>
                 </header>
 
+                <!-- Date Filter -->
+                <div class="filter-bar">
+                    <select class="form-select filter-select" t-model="state.filters.dateRange">
+                        <option value="all">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="this_month">This Month</option>
+                        <option value="this_year">This Year</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+                    
+                    <t t-if="state.filters.dateRange === 'custom'">
+                        <input type="date" class="form-input date-input" t-model="state.filters.customStart"/>
+                        <span class="date-sep">-</span>
+                        <input type="date" class="form-input date-input" t-model="state.filters.customEnd"/>
+                    </t>
+                </div>
+
                 <!-- Kanban View -->
                 <t t-if="state.ui.activeView === 'kanban'">
                     <div class="kanban-board">
                         <t t-foreach="statusColumns" t-as="col" t-key="col.key">
-                            <div class="kanban-column">
+                            <div class="kanban-column"
+                                 t-on-dragover="onDragOver"
+                                 t-on-drop="(ev) => this.onTaskDrop(ev, col.key)">
                                 <div class="kanban-column-header">
                                     <div class="kanban-column-title">
                                         <span class="kanban-column-dot" t-attf-style="background: {{ col.color }}"/>
@@ -54,12 +77,15 @@
                                         <div class="kanban-empty">No tasks</div>
                                     </t>
                                     <t t-foreach="col.tasks" t-as="task" t-key="task.id">
-                                        <TaskCard
-                                            task="task"
-                                            statusConfig="statusConfig"
-                                            onEdit.bind="openEditForm"
-                                            onDelete.bind="confirmDelete"
-                                            onStatusChange.bind="onStatusChange"/>
+                                        <div class="task-card-wrapper" draggable="true" t-on-dragstart="(ev) => this.onTaskDragStart(ev, task)">
+                                            <TaskCard
+                                                task="task"
+                                                statusConfig="statusConfig"
+                                                statusList="statusList"
+                                                onEdit.bind="openEditForm"
+                                                onDelete.bind="confirmDelete"
+                                                onStatusChange.bind="onStatusChange"/>
+                                        </div>
                                     </t>
                                 </div>
                             </div>
@@ -73,31 +99,41 @@
                         <table class="list-table">
                             <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Status</th>
-                                    <th>Priority</th>
-                                    <th>Category</th>
+                                    <th t-on-click="() => this.toggleSort('title')" class="sortable">
+                                        Title <i t-if="state.sort.field === 'title'" t-attf-class="fa fa-sort-{{ state.sort.order }}"/>
+                                    </th>
+                                    <th t-on-click="() => this.toggleSort('status')" class="sortable">
+                                        Status <i t-if="state.sort.field === 'status'" t-attf-class="fa fa-sort-{{ state.sort.order }}"/>
+                                    </th>
+                                    <th t-on-click="() => this.toggleSort('priority')" class="sortable">
+                                        Priority <i t-if="state.sort.field === 'priority'" t-attf-class="fa fa-sort-{{ state.sort.order }}"/>
+                                    </th>
+                                    <th t-on-click="() => this.toggleSort('category')" class="sortable">
+                                        Category <i t-if="state.sort.field === 'category'" t-attf-class="fa fa-sort-{{ state.sort.order }}"/>
+                                    </th>
                                     <th>Assignee</th>
-                                    <th>Due Date</th>
+                                    <th t-on-click="() => this.toggleSort('dueDate')" class="sortable">
+                                        Due Date <i t-if="state.sort.field === 'dueDate'" t-attf-class="fa fa-sort-{{ state.sort.order }}"/>
+                                    </th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="filteredTasks" t-as="task" t-key="task.id">
+                                <t t-foreach="pagedTasks" t-as="task" t-key="task.id">
                                     <tr t-on-click="() => this.openEditForm(task)">
                                         <td>
                                             <span class="list-task-title" t-esc="task.title"/>
                                         </td>
                                         <td>
                                             <span t-attf-class="badge badge-status"
-                                                  t-attf-style="background: {{ statusConfig[task.status] ? 'var(--status-' + task.status.replace('_', '-') + '-bg)' : '' }}; color: {{ statusConfig[task.status] ? 'var(--status-' + task.status.replace('_', '-') + ')' : '' }}"
-                                                  t-esc="statusConfig[task.status] ? statusConfig[task.status].label : task.status"/>
+                                                  t-att-style="getStatusBadgeStyle(task.status)"
+                                                  t-esc="getStatusLabel(task.status)"/>
                                         </td>
                                         <td>
                                             <span t-attf-class="badge badge-priority-{{ task.priority }}"
                                                   t-esc="task.priority"/>
                                         </td>
-                                        <td t-esc="task.category"/>
+                                        <td t-esc="getCategoryName(task.category)"/>
                                         <td t-esc="task.assignee || '—'"/>
                                         <td>
                                             <t t-if="task.dueDate">
@@ -119,6 +155,26 @@
                                 </t>
                             </tbody>
                         </table>
+
+                        <t t-if="filteredTasks.length &gt; 0">
+                            <div class="pagination-bar">
+                                <div class="pagination-info">
+                                    <t t-esc="pageInfo.from"/>-<t t-esc="pageInfo.to"/> / <t t-esc="pageInfo.total"/>
+                                </div>
+                                <div class="pagination-actions">
+                                    <button class="btn btn-secondary" t-on-click="goPrevPage" t-att-disabled="state.pagination.page &lt;= 1">
+                                        Prev
+                                    </button>
+                                    <span class="pagination-page">
+                                        <t t-esc="state.pagination.page"/> / <t t-esc="totalPages"/>
+                                    </span>
+                                    <button class="btn btn-secondary" t-on-click="goNextPage" t-att-disabled="state.pagination.page &gt;= totalPages">
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </t>
+
                         <t t-if="filteredTasks.length === 0">
                             <div class="kanban-empty" style="padding: 48px; text-align: center;">
                                 No tasks match your filters
@@ -132,6 +188,8 @@
             <t t-if="state.ui.showForm">
                 <TaskForm
                     task="state.ui.editingTask"
+                    statuses="statusList"
+                    categories="categories"
                     onSave.bind="onSaveTask"
                     onClose.bind="closeForm"/>
             </t>
@@ -143,6 +201,13 @@
                     onClose.bind="closeLog"/>
             </t>
 
+            <!-- Settings Modal -->
+            <t t-if="state.ui.showSettings">
+                <StatusSettings
+                    onClose.bind="closeSettings"
+                    onUpdate.bind="loadData"/>
+            </t>
+
             <!-- Delete Confirmation -->
             <t t-if="state.ui.showDeleteConfirm">
                 <div class="confirm-overlay" t-on-click.stop="cancelDelete">
@@ -151,7 +216,7 @@
                         <p class="confirm-dialog-text">This action cannot be undone. The task will be permanently removed.</p>
                         <div class="confirm-dialog-actions">
                             <button class="btn btn-secondary" t-on-click="cancelDelete">Cancel</button>
-                            <button class="btn btn-danger" t-on-click="executeDelete">
+                            <button class="btn btn-danger" t-on-click="deleteTask">
                                 <i class="fa fa-trash"/> Delete
                             </button>
                         </div>

@@ -6,6 +6,8 @@ export class TaskForm extends Component {
     static template = "awesome_owl.TaskForm";
     static props = {
         task: { type: [Object, { value: null }], optional: true },
+        statuses: { type: Array, optional: true },
+        categories: { type: Array, optional: true },
         onSave: { type: Function },
         onClose: { type: Function },
     };
@@ -15,9 +17,9 @@ export class TaskForm extends Component {
         this.state = useState({
             title: t ? t.title : "",
             description: t ? t.description : "",
-            status: t ? t.status : "backlog",
+            status: t ? t.status : (this.props.statuses?.[0]?.id || ""),
             priority: t ? t.priority : "medium",
-            category: t ? t.category : "development",
+            category: t ? t.category : (this.props.categories?.[0]?.id || ""),
             assignee: t ? t.assignee : "",
             dueDate: t ? (t.dueDate ? this.toInputDate(t.dueDate) : "") : "",
         });

@@ -1,171 +1,50 @@
 /** @odoo-module **/
 
-import { Component, useState } from "@odoo/owl";
+import { Component, useState, onWillStart } from "@odoo/owl";
+import { useService } from "@web/core/utils/hooks";
 import { TaskCard } from "./components/TaskCard";
 import { TaskForm } from "./components/TaskForm";
 import { TaskLog } from "./components/TaskLog";
 import { Sidebar } from "./components/Sidebar";
 import { Notification } from "./components/Notification";
-
-const STATUS_CONFIG = {
-    backlog: { label: "Backlog", color: "var(--status-backlog)" },
-    todo: { label: "To Do", color: "var(--status-todo)" },
-    in_progress: { label: "In Progress", color: "var(--status-progress)" },
-    review: { label: "Review", color: "var(--status-review)" },
-    done: { label: "Done", color: "var(--status-done)" },
-};
-
-const SAMPLE_TASKS = [
-    {
-        id: 1,
-        title: "Setup Project Architecture",
-        description: "Define folder structure, install dependencies, and configure build tools for the new ERP module",
-        status: "done",
-        priority: "high",
-        category: "development",
-        assignee: "Nguyen Van A",
-        createdAt: new Date("2026-03-18"),
-        updatedAt: new Date("2026-03-20"),
-        dueDate: new Date("2026-03-20"),
-        tags: [],
-    },
-    {
-        id: 2,
-        title: "Design Dashboard Mockup",
-        description: "Create wireframes and high-fidelity mockups for the main task management dashboard",
-        status: "review",
-        priority: "medium",
-        category: "design",
-        assignee: "Tran Thi B",
-        createdAt: new Date("2026-03-19"),
-        updatedAt: new Date("2026-03-21"),
-        dueDate: new Date("2026-03-22"),
-        tags: [],
-    },
-    {
-        id: 3,
-        title: "Implement Kanban Board",
-        description: "Build the interactive Kanban board with drag support and status columns",
-        status: "in_progress",
-        priority: "urgent",
-        category: "development",
-        assignee: "Nguyen Van A",
-        createdAt: new Date("2026-03-20"),
-        updatedAt: new Date("2026-03-21"),
-        dueDate: new Date("2026-03-25"),
-        tags: [],
-    },
-    {
-        id: 4,
-        title: "Write Unit Tests",
-        description: "Create comprehensive test suite for task CRUD operations and state management",
-        status: "todo",
-        priority: "medium",
-        category: "testing",
-        assignee: "Le Van C",
-        createdAt: new Date("2026-03-20"),
-        updatedAt: new Date("2026-03-20"),
-        dueDate: new Date("2026-03-28"),
-        tags: [],
-    },
-    {
-        id: 5,
-        title: "API Documentation",
-        description: "Write API documentation for all task management endpoints and data models",
-        status: "backlog",
-        priority: "low",
-        category: "documentation",
-        assignee: "",
-        createdAt: new Date("2026-03-21"),
-        updatedAt: new Date("2026-03-21"),
-        dueDate: null,
-        tags: [],
-    },
-    {
-        id: 6,
-        title: "User Authentication Flow",
-        description: "Implement login, logout, and session management for the ERP system",
-        status: "todo",
-        priority: "high",
-        category: "development",
-        assignee: "Pham Thi D",
-        createdAt: new Date("2026-03-19"),
-        updatedAt: new Date("2026-03-19"),
-        dueDate: new Date("2026-03-24"),
-        tags: [],
-    },
-    {
-        id: 7,
-        title: "Performance Optimization",
-        description: "Profile and optimize rendering performance for large task lists",
-        status: "backlog",
-        priority: "medium",
-        category: "development",
-        assignee: "",
-        createdAt: new Date("2026-03-21"),
-        updatedAt: new Date("2026-03-21"),
-        dueDate: null,
-        tags: [],
-    },
-    {
-        id: 8,
-        title: "UI Accessibility Audit",
-        description: "Review all components for WCAG 2.1 compliance and keyboard navigation",
-        status: "backlog",
-        priority: "low",
-        category: "testing",
-        assignee: "Le Van C",
-        createdAt: new Date("2026-03-21"),
-        updatedAt: new Date("2026-03-21"),
-        dueDate: new Date("2026-03-30"),
-        tags: [],
-    },
-];
+import { StatusSettings } from "./components/StatusSettings";
 
 export class TaskManager extends Component {
     static template = "awesome_owl.TaskManager";
-    static components = { TaskCard, TaskForm, TaskLog, Sidebar, Notification };
+    static components = { TaskCard, TaskForm, TaskLog, Sidebar, Notification, StatusSettings };
 
     setup() {
-        this.statusConfig = STATUS_CONFIG;
+        this.orm = useService("orm");
+        this.statusConfig = {};
+        this.categories = [];
+        this.statusList = []; // Array for consistent ordering
 
         this.state = useState({
-            tasks: SAMPLE_TASKS,
-            logs: [
-                {
-                    id: 1,
-                    taskId: 1,
-                    action: "created",
-                    details: 'Task "Setup Project Architecture" was created',
-                    timestamp: new Date("2026-03-18T09:00:00"),
-                },
-                {
-                    id: 2,
-                    taskId: 1,
-                    action: "status_changed",
-                    details: 'Task "Setup Project Architecture" moved to Done',
-                    timestamp: new Date("2026-03-20T14:30:00"),
-                },
-                {
-                    id: 3,
-                    taskId: 3,
-                    action: "created",
-                    details: 'Task "Implement Kanban Board" was created',
-                    timestamp: new Date("2026-03-20T10:00:00"),
-                },
-            ],
-            nextId: 9,
-            nextLogId: 4,
+            tasks: [],
+            logs: [],
+            nextLogId: 1,
             filters: {
                 status: null,
                 priority: null,
                 category: null,
                 search: "",
+                dateRange: "all", // all, today, this_month, this_year, custom
+                customStart: "",
+                customEnd: "",
+            },
+            sort: {
+                field: "dueDate", // dueDate, priority, status
+                order: "asc", // asc, desc
+            },
+            pagination: {
+                page: 1,
+                pageSize: 10,
             },
             ui: {
                 showForm: false,
                 editingTask: null,
                 showLog: false,
+                showSettings: false,
                 activeView: "kanban",
                 showDeleteConfirm: false,
                 deleteTaskId: null,
@@ -173,6 +52,98 @@ export class TaskManager extends Component {
             notifications: [],
             nextNotifId: 1,
         });
+
+        onWillStart(async () => {
+            await this.loadData();
+        });
+    }
+
+    async loadData() {
+        // Fetch Statuses with transitions
+        const statuses = await this.orm.searchRead(
+            "task.status", 
+            [], 
+            ["id", "name", "color", "sequence", "can_transition_to_ids"], 
+            { order: "sequence, id" }
+        );
+        this.statusConfig = Object.fromEntries(statuses.map(s => [s.id, { 
+            label: s.name, 
+            color: this.getColor(s.color), 
+            id: s.id,
+            validTransitions: s.can_transition_to_ids 
+        }]));
+        this.statusList = statuses;
+
+        // Fetch Categories
+        this.categories = await this.orm.searchRead("task.category", [], ["id", "name", "color"]);
+
+        // Fetch Tasks
+        // We fetch all for now. In real app might want domain.
+        const tasks = await this.orm.searchRead("task.task", [], 
+            ["id", "name", "description", "priority", "status_id", "category_id", "user_id", "date_deadline", "create_date", "write_date"]);
+        
+        this.state.tasks = tasks.map(t => this.formatTask(t));
+    }
+
+    getColor(index) {
+        // Simple mapping or return hex if stored. Model has integer color index.
+        const colors = [
+            "#71639e", "#d85c5c", "#e2a046", "#5cb85c", "#5bc0de", "#f0ad4e", "#d9534f", "#292b2c", "#f7f7f9"
+        ];
+        return colors[index % colors.length] || "#71639e";
+    }
+
+    hexToRgba(hex, alpha) {
+        if (!hex || typeof hex !== "string") return "";
+        const clean = hex.replace("#", "");
+        if (clean.length !== 6) return "";
+        const r = parseInt(clean.slice(0, 2), 16);
+        const g = parseInt(clean.slice(2, 4), 16);
+        const b = parseInt(clean.slice(4, 6), 16);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    getStatusLabel(statusId) {
+        return this.statusConfig[statusId]?.label || String(statusId || "");
+    }
+
+    getStatusBadgeStyle(statusId) {
+        const color = this.statusConfig[statusId]?.color;
+        if (!color) return "";
+        const bg = this.hexToRgba(color, 0.15);
+        return `background: ${bg}; color: ${color};`;
+    }
+
+    getCategoryName(categoryId) {
+        if (!categoryId) return "—";
+        const cat = this.categories.find((c) => c.id === categoryId);
+        return cat ? cat.name : String(categoryId);
+    }
+
+    formatTask(t) {
+        return {
+            id: t.id,
+            title: t.name,
+            description: t.description || "",
+            status: t.status_id ? t.status_id[0] : (this.statusList[0]?.id || 0),
+            priority: this.mapPriority(t.priority),
+            category: t.category_id ? t.category_id[0] : null,
+            assignee: t.user_id ? t.user_id[1] : "", // Display name
+            dueDate: t.date_deadline,
+            createdAt: new Date(t.create_date),
+            updatedAt: new Date(t.write_date),
+            tags: [],
+        };
+    }
+
+    mapPriority(val) {
+        const map = { '0': 'low', '1': 'medium', '2': 'high', '3': 'urgent' };
+        return map[val] || 'medium';
+    }
+
+    reversePriority(val) {
+        const map = { 'low': '0', 'medium': '1', 'high': '2', 'urgent': '3' };
+        return map[val] || '1';
     }
 
     // ─── Notifications ─────────────────────────────────────
@@ -199,6 +170,8 @@ export class TaskManager extends Component {
     get filteredTasks() {
         let tasks = this.state.tasks;
         const f = this.state.filters;
+        
+        // existing filters
         if (f.status) tasks = tasks.filter((t) => t.status === f.status);
         if (f.priority) tasks = tasks.filter((t) => t.priority === f.priority);
         if (f.category) tasks = tasks.filter((t) => t.category === f.category);
@@ -211,7 +184,156 @@ export class TaskManager extends Component {
                     (t.assignee && t.assignee.toLowerCase().includes(q))
             );
         }
+
+        // Date Filter
+        if (f.dateRange !== 'all') {
+            const now = new Date();
+            const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+            
+            tasks = tasks.filter(t => {
+                if (!t.dueDate) return false; // Exclude no-date tasks from time filters
+                const d = new Date(t.dueDate);
+                
+                switch(f.dateRange) {
+                    case 'today':
+                        return d >= startOfDay && d <= endOfDay;
+                    case 'this_month':
+                        return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+                    case 'this_year':
+                        return d.getFullYear() === now.getFullYear();
+                    case 'custom':
+                        const start = f.customStart ? new Date(f.customStart) : null;
+                        const end = f.customEnd ? new Date(f.customEnd) : null;
+                        if (end) end.setHours(23, 59, 59);
+                        if (start && d < start) return false;
+                        if (end && d > end) return false;
+                        return true;
+                    default: return true;
+                }
+            });
+        }
+
+        // Sorting
+        const { field, order } = this.state.sort;
+        if (field) {
+            tasks = [...tasks].sort((a, b) => { // Copy to avoid mutating
+                let valA, valB;
+                
+                if (field === 'priority') {
+                    // Logic to sort priority: urgent > high > medium > low
+                    const pMap = { urgent: 3, high: 2, medium: 1, low: 0 };
+                    valA = pMap[a.priority] || 0;
+                    valB = pMap[b.priority] || 0;
+                } else if (field === 'status') {
+                     // Sort by status sequence/order
+                     const idxA = this.statusList.findIndex(s => s.id === a.status);
+                     const idxB = this.statusList.findIndex(s => s.id === b.status);
+                     valA = idxA;
+                     valB = idxB;
+                } else if (field === 'dueDate') {
+                    valA = a.dueDate ? new Date(a.dueDate).getTime() : 0;
+                    valB = b.dueDate ? new Date(b.dueDate).getTime() : 0;
+                    // Put no-date at end always? Or beginning? Let's treat 0 as very old.
+                    // If we want no-date at bottom for ASC, assign huge number.
+                    if (!a.dueDate) valA = order === 'asc' ? 9999999999999 : -1;
+                    if (!b.dueDate) valB = order === 'asc' ? 9999999999999 : -1;
+                } else {
+                    if (field === "category") {
+                        valA = this.getCategoryName(a.category) || "";
+                        valB = this.getCategoryName(b.category) || "";
+                    } else {
+                        valA = a[field] || "";
+                        valB = b[field] || "";
+                    }
+                }
+
+                if (valA < valB) return order === 'asc' ? -1 : 1;
+                if (valA > valB) return order === 'asc' ? 1 : -1;
+                return 0;
+            });
+        }
+
         return tasks;
+    }
+
+    get totalPages() {
+        return Math.max(1, Math.ceil(this.filteredTasks.length / this.state.pagination.pageSize));
+    }
+
+    get pagedTasks() {
+        const page = Math.min(this.state.pagination.page, this.totalPages);
+        const start = (page - 1) * this.state.pagination.pageSize;
+        const end = start + this.state.pagination.pageSize;
+        return this.filteredTasks.slice(start, end);
+    }
+
+    get pageInfo() {
+        const total = this.filteredTasks.length;
+        if (!total) return { from: 0, to: 0, total };
+        const page = Math.min(this.state.pagination.page, this.totalPages);
+        const from = (page - 1) * this.state.pagination.pageSize + 1;
+        const to = Math.min(total, page * this.state.pagination.pageSize);
+        return { from, to, total };
+    }
+
+    goPrevPage() {
+        this.state.pagination.page = Math.max(1, this.state.pagination.page - 1);
+    }
+
+    goNextPage() {
+        this.state.pagination.page = Math.min(this.totalPages, this.state.pagination.page + 1);
+    }
+
+    // ─── Sorting & Settings ──────────────────────────────
+    toggleSort(field) {
+        if (this.state.sort.field === field) {
+            this.state.sort.order = this.state.sort.order === 'asc' ? 'desc' : 'asc';
+        } else {
+            this.state.sort.field = field;
+            this.state.sort.order = 'asc';
+        }
+        this.state.pagination.page = 1;
+    }
+
+    openSettings() {
+        this.state.ui.showSettings = true;
+    }
+
+    closeSettings() {
+        this.state.ui.showSettings = false;
+        this.loadData(); // Reload config
+    }
+    
+    // ─── Drag and Drop ──────────────────────────────────
+    onTaskDragStart(ev, task) {
+        ev.dataTransfer.setData("text/plain", JSON.stringify(task));
+        ev.dataTransfer.effectAllowed = "move";
+    }
+
+    onTaskDrop(ev, targetStatusId) {
+        ev.preventDefault();
+        const data = ev.dataTransfer.getData("text/plain");
+        if (!data) return;
+        const task = JSON.parse(data);
+
+        if (task.status === targetStatusId) return;
+
+        // Check Valid Transition
+        const currentStatus = this.statusConfig[task.status];
+        if (currentStatus && currentStatus.validTransitions && currentStatus.validTransitions.length > 0) {
+            if (!currentStatus.validTransitions.includes(targetStatusId)) {
+                this.notify(`Cannot move from "${currentStatus.label}" to this status.`, "danger");
+                return;
+            }
+        }
+
+        this.onStatusChange(task.id, targetStatusId);
+    }
+
+    onDragOver(ev) {
+        ev.preventDefault(); // Allow Drop
+        ev.dataTransfer.dropEffect = "move";
     }
 
     get stats() {
@@ -238,11 +360,13 @@ export class TaskManager extends Component {
     }
 
     get statusColumns() {
-        return Object.entries(this.statusConfig).map(([key, cfg]) => ({
-            key,
-            label: cfg.label,
-            color: cfg.color,
-            tasks: this.getTasksByStatus(key),
+        // Iterate over statusList instead of config entries to maintain order if using list
+        // Or if using dynamic loaded config based on backend order.
+        return this.statusList.map((status) => ({
+            key: status.id,
+            label: status.name,
+            color: this.statusConfig[status.id].color,
+            tasks: this.getTasksByStatus(status.id),
         }));
     }
 
@@ -262,29 +386,35 @@ export class TaskManager extends Component {
         this.state.ui.editingTask = null;
     }
 
-    onSaveTask(data) {
-        if (this.state.ui.editingTask) {
-            // Update existing
-            const id = this.state.ui.editingTask.id;
-            this.state.tasks = this.state.tasks.map((t) =>
-                t.id === id ? { ...t, ...data, updatedAt: new Date() } : t
-            );
-            this.addLog(id, "updated", `Task "${data.title}" was updated`);
-            this.notify(`Task "${data.title}" updated successfully!`);
-        } else {
-            // Create new
-            const newTask = {
-                id: this.state.nextId++,
-                ...data,
-                createdAt: new Date(),
-                updatedAt: new Date(),
-                tags: [],
-            };
-            this.state.tasks.push(newTask);
-            this.addLog(newTask.id, "created", `Task "${data.title}" was created`);
-            this.notify(`Task "${data.title}" created!`);
+    async onSaveTask(data) {
+        const vals = {
+            name: data.title,
+            description: data.description,
+            status_id: Number(data.status),
+            priority: this.reversePriority(data.priority),
+            category_id: data.category ? Number(data.category) : false,
+            date_deadline: data.dueDate, 
+            // assignee: ignored as we don't have user selection yet
+        };
+
+        try {
+            if (this.state.ui.editingTask) {
+                // Update
+                await this.orm.write("task.task", [this.state.ui.editingTask.id], vals);
+                this.addLog(this.state.ui.editingTask.id, "updated", `Task "${data.title}" was updated`);
+                this.notify(`Task "${data.title}" updated!`);
+            } else {
+                // Create
+                const [newId] = await this.orm.create("task.task", [vals]);
+                this.addLog(newId, "created", `Task "${data.title}" was created`);
+                this.notify(`Task "${data.title}" created!`);
+            }
+            await this.loadData();
+            this.closeForm();
+        } catch (e) {
+            console.error(e);
+            this.notify("Error saving task", "danger");
         }
-        this.closeForm();
     }
 
     // Delete
@@ -298,37 +428,47 @@ export class TaskManager extends Component {
         this.state.ui.deleteTaskId = null;
     }
 
-    executeDelete() {
-        const id = this.state.ui.deleteTaskId;
-        const task = this.state.tasks.find((t) => t.id === id);
-        if (task) {
-            this.state.tasks = this.state.tasks.filter((t) => t.id !== id);
-            this.addLog(id, "deleted", `Task "${task.title}" was deleted`);
-            this.notify(`Task "${task.title}" deleted`, "info");
+    async deleteTask() {
+        if (!this.state.ui.deleteTaskId) return;
+        try {
+            await this.orm.unlink("task.task", [this.state.ui.deleteTaskId]);
+            this.notify("Task deleted successfully");
+            await this.loadData();
+        } catch (e) {
+            console.error(e);
+            this.notify("Error deleting task", "danger");
         }
-        this.cancelDelete();
+        this.state.ui.showDeleteConfirm = false;
+        this.state.ui.deleteTaskId = null;
+    }
+
+    executeDelete() {
+        // Redundant with deleteTask
+        this.deleteTask();
     }
 
     // Status change
-    onStatusChange(taskId, newStatus) {
-        const task = this.state.tasks.find((t) => t.id === taskId);
-        if (task) {
-            const oldStatus = this.statusConfig[task.status]?.label || task.status;
-            const newLabel = this.statusConfig[newStatus]?.label || newStatus;
-            task.status = newStatus;
-            task.updatedAt = new Date();
-            this.addLog(taskId, "status_changed", `Task "${task.title}" moved from ${oldStatus} to ${newLabel}`);
-            this.notify(`Moved to ${newLabel}`);
+    async onStatusChange(taskId, newStatusId) {
+        // Optimistic update or wait for server?
+        // Let's do simple wait for server
+        try {
+            await this.orm.write("task.task", [taskId], { status_id: Number(newStatusId) });
+            await this.loadData();
+            this.notify("Task status updated");
+        } catch(e) {
+            this.notify("Failed to move task", "danger");
         }
     }
 
     // ─── Filters ────────────────────────────────────────────
     onFilterChange(filterKey, value) {
         this.state.filters[filterKey] = value;
+        this.state.pagination.page = 1;
     }
 
     onSearchInput(value) {
         this.state.filters.search = value;
+        this.state.pagination.page = 1;
     }
 
     // ─── View Toggle ────────────────────────────────────────

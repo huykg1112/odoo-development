@@ -10,6 +10,7 @@ export class TaskCard extends Component {
         onDelete: { type: Function },
         onStatusChange: { type: Function },
         statusConfig: { type: Object },
+        statusList: { type: Array, optional: true },
     };
 
     get priorityClass() {
@@ -54,15 +55,15 @@ export class TaskCard extends Component {
     }
 
     get prevStatus() {
-        const order = ["backlog", "todo", "in_progress", "review", "done"];
-        const idx = order.indexOf(this.props.task.status);
-        return idx > 0 ? order[idx - 1] : null;
+        const list = this.props.statusList || [];
+        const idx = list.findIndex((s) => s.id === this.props.task.status);
+        return idx > 0 ? list[idx - 1].id : null;
     }
 
     get nextStatus() {
-        const order = ["backlog", "todo", "in_progress", "review", "done"];
-        const idx = order.indexOf(this.props.task.status);
-        return idx < order.length - 1 ? order[idx + 1] : null;
+        const list = this.props.statusList || [];
+        const idx = list.findIndex((s) => s.id === this.props.task.status);
+        return idx >= 0 && idx < list.length - 1 ? list[idx + 1].id : null;
     }
 
     getStatusLabel(status) {

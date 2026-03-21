@@ -8,18 +8,20 @@ export class Sidebar extends Component {
         filters: { type: Object },
         stats: { type: Object },
         statusConfig: { type: Object },
+        categories: { type: Array, optional: true },
         onFilterChange: { type: Function },
         onSearchInput: { type: Function },
     };
 
     get statusList() {
         return Object.entries(this.props.statusConfig).map(([key, cfg]) => ({
-            key,
+            key: Number(key) || key, // Handle ID keys
             label: cfg.label,
             color: cfg.color,
             count: this.props.stats.byStatus[key] || 0,
         }));
     }
+
 
     get priorityList() {
         return [
@@ -34,17 +36,16 @@ export class Sidebar extends Component {
     }
 
     get categoryList() {
-        return [
-            { key: "development", label: "Development" },
-            { key: "design", label: "Design" },
-            { key: "testing", label: "Testing" },
-            { key: "documentation", label: "Documentation" },
-            { key: "other", label: "Other" },
-        ].map((c) => ({
-            ...c,
-            count: this.props.stats.byCategory[c.key] || 0,
-        }));
+        if (this.props.categories) {
+            return this.props.categories.map((c) => ({
+                key: c.id,
+                label: c.name,
+                count: this.props.stats.byCategory[c.id] || 0,
+            }));
+        }
+        return [];
     }
+
 
     onSearch(ev) {
         this.props.onSearchInput(ev.target.value);
