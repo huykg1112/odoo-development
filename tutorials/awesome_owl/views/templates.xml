@@ -1,15 +1,18 @@
 <odoo>
-    <data>
-          <template id="awesome_owl.playground" name="Awesome T-Shirt thank you">
+    <data> <!-- data là thẻ chứa các template, data là bắt buộc -->
+        <template id="awesome_owl.playground" name="Awesome T-Shirt thank you"> <!-- id là tên của
+            template, name là tên hiển thị của template -->
             <html>
                 <head>
-                    <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico"/>
-                    <t t-call-assets="awesome_owl.assets_playground"/>
+                    <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico" />
+                    <t t-call-assets="awesome_owl.assets_playground" /> <!-- t-call-assets là thẻ
+                    dùng để gọi các assets, t-call-assets là bắt buộc -->
+                    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
                 </head>
 
                 <body>
                 </body>
             </html>
-          </template>
+        </template>
     </data>
 </odoo>

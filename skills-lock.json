@@ -5,6 +5,11 @@
       "source": "mindrally/skills",
       "sourceType": "github",
       "computedHash": "14dd05775e04659845f67455ff741aa8203c337390971f6bce6b8c8083209222"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "computedHash": "d8e7d3afe37dcc8a97b99ffb5afdb4d0919ae0092ea8b68f44eb201f035e33ac"
     }
   }
 }
