@@ -15,13 +15,14 @@ export class TaskForm extends Component {
 
     setup() {
         const t = this.props.task;
+        const toSelectValue = (value) => (value === null || value === undefined || value === false ? "" : String(value));
         this.state = useState({
             title: t ? t.title : "",
             description: t ? t.description : "",
-            status: t ? t.status : (this.props.statuses?.[0]?.id || ""),
+            status: t ? toSelectValue(t.status) : toSelectValue(this.props.statuses?.[0]?.id),
             priority: t ? t.priority : "medium",
-            category: t ? t.category : (this.props.categories?.[0]?.id || ""),
-            assigneeId: t ? (t.assigneeId || "") : (this.props.assignees?.[0]?.id || ""),
+            category: t ? toSelectValue(t.category) : toSelectValue(this.props.categories?.[0]?.id),
+            assigneeId: t ? toSelectValue(t.assigneeId) : toSelectValue(this.props.assignees?.[0]?.id),
             dueDate: t ? (t.dueDate ? this.toInputDate(t.dueDate) : "") : "",
 
         });

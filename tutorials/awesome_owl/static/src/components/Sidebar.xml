@@ -69,6 +69,11 @@
             <div class="sidebar-section">
                 <div class="sidebar-section-title">Priority</div>
                 <div class="filter-group">
+                    <button t-attf-class="filter-btn {{ !props.filters.priority ? 'active' : '' }}"
+                            t-on-click="() => this.togglePriorityFilter(null)">
+                        <span class="filter-btn-label">All Priorities</span>
+                        <span class="filter-btn-count" t-esc="props.stats.total"/>
+                    </button>
                     <t t-foreach="priorityList" t-as="p" t-key="p.key">
                         <button t-attf-class="filter-btn {{ props.filters.priority === p.key ? 'active' : '' }}"
                                 t-on-click="() => this.togglePriorityFilter(p.key)">
@@ -86,6 +91,11 @@
             <div class="sidebar-section">
                 <div class="sidebar-section-title">Category</div>
                 <div class="filter-group">
+                    <button t-attf-class="filter-btn {{ !props.filters.category ? 'active' : '' }}"
+                            t-on-click="() => this.toggleCategoryFilter(null)">
+                        <span class="filter-btn-label">All Categories</span>
+                        <span class="filter-btn-count" t-esc="props.stats.total"/>
+                    </button>
                     <t t-foreach="categoryList" t-as="c" t-key="c.key">
                         <button t-attf-class="filter-btn {{ props.filters.category === c.key ? 'active' : '' }}"
                                 t-on-click="() => this.toggleCategoryFilter(c.key)">

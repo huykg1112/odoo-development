@@ -39,11 +39,12 @@
                             <label class="form-label">Status</label>
                             <select class="form-select" 
                                     name="status"
-                                    t-att-value="state.status"
                                     t-on-change="(ev) => this.onInput('status', ev)">
                                 <t t-if="props.statuses">
                                     <t t-foreach="props.statuses" t-as="status" t-key="status.id">
-                                        <option t-att-value="status.id" t-esc="status.name"/>
+                                        <option t-att-value="status.id"
+                                            t-att-selected="('' + status.id) === state.status"
+                                                t-esc="status.name"/>
                                     </t>
                                 </t>
                                 <t t-else="">
@@ -55,12 +56,11 @@
                             <label class="form-label">Priority</label>
                             <select class="form-select"
                                     name="priority"
-                                    t-att-value="state.priority"
                                     t-on-change="(ev) => this.onInput('priority', ev)">
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
-                                <option value="urgent">Urgent</option>
+                                <option value="low" t-att-selected="state.priority === 'low'">Low</option>
+                                <option value="medium" t-att-selected="state.priority === 'medium'">Medium</option>
+                                <option value="high" t-att-selected="state.priority === 'high'">High</option>
+                                <option value="urgent" t-att-selected="state.priority === 'urgent'">Urgent</option>
                             </select>
                         </div>
                     </div>
@@ -71,11 +71,12 @@
                             <label class="form-label">Category</label>
                             <select class="form-select"
                                     name="category"
-                                    t-att-value="state.category"
                                     t-on-change="(ev) => this.onInput('category', ev)">
                                 <t t-if="props.categories">
                                     <t t-foreach="props.categories" t-as="cat" t-key="cat.id">
-                                        <option t-att-value="cat.id" t-esc="cat.name"/>
+                                        <option t-att-value="cat.id"
+                                                t-att-selected="('' + cat.id) === state.category"
+                                                t-esc="cat.name"/>
                                     </t>
                                 </t>
                                 <t t-else="">
@@ -87,12 +88,13 @@
                             <label class="form-label">Assignee</label>
                             <select class="form-select"
                                     name="assigneeId"
-                                    t-att-value="state.assigneeId"
                                     t-on-change="(ev) => this.onInput('assigneeId', ev)">
-                                <option value="">Unassigned</option>
+                                <option value="" t-att-selected="state.assigneeId === ''">Unassigned</option>
                                 <t t-if="props.assignees">
                                     <t t-foreach="props.assignees" t-as="u" t-key="u.id">
-                                        <option t-att-value="u.id" t-esc="u.name"/>
+                                        <option t-att-value="u.id"
+                                                t-att-selected="('' + u.id) === state.assigneeId"
+                                                t-esc="u.name"/>
                                     </t>
                                 </t>
                             </select>

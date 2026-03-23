@@ -44,7 +44,7 @@ class Task(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Task Title', required=True, tracking=True)
-    description = fields.Html(string='Description')
+    description = fields.Text(string='Description')
     priority = fields.Selection([
         ('0', 'Low'),
         ('1', 'Medium'),
