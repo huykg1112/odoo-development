@@ -5,29 +5,35 @@
         <field name="name">task.task.kanban</field>
         <field name="model">task.task</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="status_id" class="o_kanban_small_column" records_draggable="true">
-                <field name="status_id"/>
-                <field name="color"/>
-                <field name="priority"/>
+            <kanban default_group_by="status_id" class="o_kanban_small_column"
+                records_draggable="true">
+                <field name="status_id" />
+                <field name="color" />
+                <field name="priority" />
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click oe_kanban_card">
                             <div class="oe_kanban_content">
                                 <div class="o_kanban_record_top">
                                     <div class="o_kanban_record_headings">
-                                        <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                        <strong class="o_kanban_record_title">
+                                            <field name="name" />
+                                        </strong>
                                     </div>
-                                    <field name="priority" widget="priority"/>
+                                    <field name="priority" widget="priority" />
                                 </div>
                                 <div class="o_kanban_record_body">
-                                    <field name="category_id" widget="badge"/>
+                                    <field name="description" />
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <field name="category_id" widget="badge" />
                                 </div>
                                 <div class="o_kanban_record_bottom">
                                     <div class="oe_kanban_bottom_left">
-                                        <field name="date_deadline" widget="remaining_days"/>
+                                        <field name="date_deadline" widget="remaining_days" />
                                     </div>
                                     <div class="oe_kanban_bottom_right">
-                                        <field name="assignee_id"/>
+                                        <field name="assignee_id" />
                                     </div>
                                 </div>
                             </div>
@@ -42,14 +48,15 @@
         <field name="name">task.task.list</field>
         <field name="model">task.task</field>
         <field name="arch" type="xml">
-            <list decoration-danger="date_deadline and date_deadline &lt; current_date" decoration-muted="status_id == %(awesome_owl.status_done)d">
-                <field name="sequence" widget="handle"/>
-                <field name="name"/>
-                <field name="status_id"/>
-                <field name="priority" widget="priority"/>
-                <field name="category_id"/>
-                <field name="assignee_id"/>
-                <field name="date_deadline"/>
+            <list decoration-danger="date_deadline and date_deadline &lt; current_date"
+                decoration-muted="status_id == %(awesome_owl.status_done)d">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="status_id" />
+                <field name="priority" widget="priority" />
+                <field name="category_id" />
+                <field name="assignee_id" />
+                <field name="date_deadline" />
             </list>
         </field>
     </record>
@@ -60,29 +67,31 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="status_id" widget="statusbar" options="{'clickable': '1'}"/>
+                    <field name="status_id" widget="statusbar" options="{'clickable': '1'}" />
                 </header>
                 <sheet>
                     <div class="oe_title">
-                        <h1><field name="name" placeholder="Task Title..."/></h1>
+                        <h1>
+                            <field name="name" placeholder="Task Title..." />
+                        </h1>
                     </div>
                     <group>
                         <group>
-                            <field name="category_id"/>
-                            <field name="priority" widget="priority"/>
+                            <field name="category_id" />
+                            <field name="priority" widget="priority" />
                         </group>
                         <group>
-                            <field name="assignee_id"/>
-                            <field name="date_deadline"/>
+                            <field name="assignee_id" />
+                            <field name="date_deadline" />
                         </group>
                     </group>
                     <notebook>
                         <page string="Description">
-                            <field name="description" placeholder="Add details..."/>
+                            <field name="description" placeholder="Add details..." />
                         </page>
                     </notebook>
                 </sheet>
-                <chatter/>
+                <chatter />
             </form>
         </field>
     </record>
@@ -96,16 +105,16 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="sequence"/>
+                            <field name="name" />
+                            <field name="sequence" />
                         </group>
                         <group>
-                            <field name="color" widget="color_picker"/>
-                            <field name="fold"/>
+                            <field name="color" widget="color_picker" />
+                            <field name="fold" />
                         </group>
                     </group>
                     <group string="Transition Rules">
-                        <field name="can_transition_to_ids" widget="many2many_tags"/>
+                        <field name="can_transition_to_ids" widget="many2many_tags" />
                     </group>
                 </sheet>
             </form>
@@ -118,8 +127,8 @@
         <field name="model">task.category</field>
         <field name="arch" type="xml">
             <list>
-                <field name="name"/>
-                <field name="color" widget="color_picker"/>
+                <field name="name" />
+                <field name="color" widget="color_picker" />
             </list>
         </field>
     </record>
@@ -131,8 +140,8 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="color" widget="color_picker"/>
+                        <field name="name" />
+                        <field name="color" widget="color_picker" />
                     </group>
                 </sheet>
             </form>
@@ -145,8 +154,8 @@
         <field name="model">task.task</field>
         <field name="arch" type="xml">
             <graph string="Task Analysis" type="bar" sample="1">
-                <field name="status_id"/>
-                <field name="priority"/>
+                <field name="status_id" />
+                <field name="priority" />
             </graph>
         </field>
     </record>
@@ -157,10 +166,10 @@
         <field name="model">task.task</field>
         <field name="arch" type="xml">
             <calendar string="Tasks" date_start="date_deadline" color="status_id" mode="month">
-                <field name="name"/>
-                <field name="assignee_id"/>
-                <field name="category_id"/>
-                <field name="priority"/>
+                <field name="name" />
+                <field name="assignee_id" />
+                <field name="category_id" />
+                <field name="priority" />
             </calendar>
         </field>
     </record>
@@ -171,8 +180,8 @@
         <field name="model">task.task</field>
         <field name="arch" type="xml">
             <pivot string="Task Analysis" sample="1">
-                <field name="status_id" type="row"/>
-                <field name="date_deadline" interval="month" type="col"/>
+                <field name="status_id" type="row" />
+                <field name="date_deadline" interval="month" type="col" />
             </pivot>
         </field>
     </record>
@@ -183,17 +192,19 @@
         <field name="model">task.task</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name"/>
-                <field name="assignee_id"/>
-                <field name="category_id"/>
-                <filter name="my_tasks" string="My Tasks" domain="[('user_id', '=', uid)]"/>
-                <separator/>
-                <filter name="filter_date_deadline" date="date_deadline" string="Deadline"/>
-                <separator/>
-                <filter name="overdue" string="Overdue" domain="[('date_deadline', '&lt;', current_date)]"/>
+                <field name="name" />
+                <field name="assignee_id" />
+                <field name="category_id" />
+                <filter name="my_tasks" string="My Tasks" domain="[('user_id', '=', uid)]" />
+                <separator />
+                <filter name="filter_date_deadline" date="date_deadline" string="Deadline" />
+                <separator />
+                <filter name="overdue" string="Overdue"
+                    domain="[('date_deadline', '&lt;', current_date)]" />
                 <group expand="0" string="Group By">
-                    <filter name="group_status" string="Status" context="{'group_by': 'status_id'}"/>
-                    <filter name="group_user" string="Assignee" context="{'group_by': 'assignee_id'}"/>
+                    <filter name="group_status" string="Status" context="{'group_by': 'status_id'}" />
+                    <filter name="group_user" string="Assignee"
+                        context="{'group_by': 'assignee_id'}" />
                 </group>
             </search>
         </field>
@@ -205,9 +216,9 @@
         <field name="model">task.user</field>
         <field name="arch" type="xml">
             <list>
-                <field name="name"/>
-                <field name="email"/>
-                <field name="active"/>
+                <field name="name" />
+                <field name="email" />
+                <field name="active" />
             </list>
         </field>
     </record>
@@ -220,12 +231,12 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="email"/>
+                            <field name="name" />
+                            <field name="email" />
                         </group>
                         <group>
-                            <field name="active"/>
-                            <field name="color" widget="color_picker"/>
+                            <field name="active" />
+                            <field name="color" widget="color_picker" />
                         </group>
                     </group>
                 </sheet>
@@ -244,7 +255,7 @@
         <field name="name">Tasks</field>
         <field name="res_model">task.task</field>
         <field name="view_mode">kanban,list,form,calendar,pivot,graph</field>
-        <field name="search_view_id" ref="view_task_search"/>
+        <field name="search_view_id" ref="view_task_search" />
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">Create your first task!</p>
         </field>
@@ -263,9 +274,12 @@
     </record>
 
     <!-- Menus -->
-    <menuitem id="menu_task_root" name="TaskFlow ERP" action="action_task_all"/>
-    <menuitem id="menu_task_settings" name="Settings" parent="menu_task_root" sequence="100"/>
-    <menuitem id="menu_task_status_settings" name="Statuses" parent="menu_task_settings" action="action_task_status"/>
-    <menuitem id="menu_task_category_settings" name="Categories" parent="menu_task_settings" action="action_task_category" sequence="105"/>
-    <menuitem id="menu_task_user_settings" name="Assignees" parent="menu_task_settings" action="action_task_user" sequence="110"/>
+    <menuitem id="menu_task_root" name="TaskFlow ERP" action="action_task_all" />
+    <menuitem id="menu_task_settings" name="Settings" parent="menu_task_root" sequence="100" />
+    <menuitem id="menu_task_status_settings" name="Statuses" parent="menu_task_settings"
+        action="action_task_status" />
+    <menuitem id="menu_task_category_settings" name="Categories" parent="menu_task_settings"
+        action="action_task_category" sequence="105" />
+    <menuitem id="menu_task_user_settings" name="Assignees" parent="menu_task_settings"
+        action="action_task_user" sequence="110" />
 </odoo>

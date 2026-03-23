@@ -28,7 +28,6 @@
         'data/default_data.xml',
         'views/task_views.xml',
         'views/templates.xml',
-        'static/src/task_manager.xml'
     ],
     'assets': {
         'awesome_owl.assets_playground': [

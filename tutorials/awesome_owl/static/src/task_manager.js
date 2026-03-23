@@ -1,5 +1,26 @@
 /** @odoo-module **/
 
+/**
+ * TaskManager - Main screen controller for Awesome Owl task UI.
+ *
+ * Architecture overview:
+ * 1) Config layer:
+ *    - Load status/category/assignee masters from backend.
+ *    - Build local caches for label/color/transition lookups.
+ * 2) Data layer:
+ *    - Build Odoo domain + order from current filters/sort.
+ *    - Load table data (paged), kanban data (full by domain), and stats.
+ * 3) Interaction layer:
+ *    - Create/update/delete task records.
+ *    - Drag/drop status transitions with client-side pre-check + server validation.
+ * 4) UI layer:
+ *    - Reactive state for modal/panel visibility, loading flags, pagination, and toasts.
+ *
+ * Data source of truth:
+ * - Backend (`task.task`, `task.status`, `task.category`) is authoritative.
+ * - Frontend state is a projection used for rendering and interaction only.
+ */
+
 import { Component, useState, onWillStart } from "@odoo/owl";
 import { useService } from "@web/core/utils/hooks";
 import { TaskCard } from "./components/TaskCard";
@@ -20,7 +41,10 @@ export class TaskManager extends Component {
      * - Đăng ký hook onWillStart để preload dữ liệu trước khi render lần đầu
      */
     setup() {
+        // ORM service to call Odoo methods (searchRead, write, unlink, read_group, ...)
         this.orm = useService("orm");
+
+        // Cached config maps/lists to avoid repeated lookups while rendering.
         this.statusConfig = {};
         this.categories = [];
         this.assignees = [];
@@ -28,6 +52,8 @@ export class TaskManager extends Component {
 
         this._searchDebounce = null;
 
+        // Global reactive state for the entire screen.
+        // Keep all UI + data concerns in one place for predictable rerender behavior.
         this.state = useState({
             kanbanTasks: [],
             table: {
@@ -45,6 +71,7 @@ export class TaskManager extends Component {
             },
             logs: [],
             nextLogId: 1,
+            // Shared filters applied to both table and kanban (single source of filter truth).
             filters: {
                 status: null,
                 priority: null,
@@ -54,14 +81,17 @@ export class TaskManager extends Component {
                 customStart: "",
                 customEnd: "",
             },
+            // Sorting preferences used to build backend `order`.
             sort: {
                 field: "dueDate", // dueDate, priority, status
                 order: "asc", // asc, desc
             },
+            // Table pagination state (kanban is intentionally loaded without pagination).
             pagination: {
                 page: 1,
                 pageSize: 10,
             },
+            // Pure presentation state (modals/panels/current view/loading flags).
             ui: {
                 showForm: false,
                 editingTask: null,
@@ -80,6 +110,7 @@ export class TaskManager extends Component {
                     createCategory: false,
                 },
             },
+            // Local toasts (not Odoo bus notifications).
             notifications: [],
             nextNotifId: 1,
         });
@@ -134,6 +165,7 @@ export class TaskManager extends Component {
         this.categories = await this.orm.searchRead("task.category", [], ["id", "name", "color"]);
 
         // Fetch Assignees
+        // NOTE: expected backend model/field names must match your Python models.
         this.assignees = await this.orm.searchRead(
             "task.user",
             [["active", "=", true]],
@@ -214,6 +246,7 @@ export class TaskManager extends Component {
             status: t.status_id ? t.status_id[0] : (this.statusList[0]?.id || 0),
             priority: this.mapPriority(t.priority),
             category: t.category_id ? t.category_id[0] : null,
+            // many2one in Odoo is usually [id, display_name]
             assigneeId: t.assignee_id ? t.assignee_id[0] : null,
             assignee: t.assignee_id ? t.assignee_id[1] : "", // Display name
             dueDate: t.date_deadline,
@@ -409,7 +442,8 @@ export class TaskManager extends Component {
 
         if (task.status === targetStatusId) return;
 
-        // Check Valid Transition
+        // Client pre-check for allowed transitions.
+        // Server-side constraint is still the final guard.
         const currentStatus = this.statusConfig[task.status];
         if (currentStatus && currentStatus.validTransitions && currentStatus.validTransitions.length > 0) {
             if (!currentStatus.validTransitions.includes(targetStatusId)) {
@@ -491,6 +525,8 @@ export class TaskManager extends Component {
      * Sau khi thành công: refreshAll để đồng bộ table/kanban/stats.
      */
     async onSaveTask(data) {
+        // Build payload in backend field schema.
+        // Keep this mapping centralized so UI shape and DB shape remain decoupled.
         const vals = {
             name: data.title,
             description: data.description,
@@ -573,8 +609,8 @@ export class TaskManager extends Component {
      * theo access rights / constraints phía server.
      */
     async onStatusChange(taskId, newStatusId) {
-        // Optimistic update or wait for server?
-        // Let's do simple wait for server
+        // Use "wait-for-server" strategy (non-optimistic) to avoid stale UI
+        // when backend validation/access rules reject the change.
         await this.withLoading("statusChange", async () => {
             try {
                 await this.orm.write("task.task", [taskId], { status_id: Number(newStatusId) });
@@ -675,6 +711,8 @@ export class TaskManager extends Component {
         if (!omitCategory && f.category) domain.push(["category_id", "=", Number(f.category)]);
 
         if (f.search) {
+            // OR chain in Odoo domain:
+            // (name ilike q) OR (description ilike q) OR (assignee_id ilike q)
             domain.push(
                 "|",
                 "|",
@@ -742,6 +780,7 @@ export class TaskManager extends Component {
             const domain = this.buildDomain();
             const order = this.buildOrder();
 
+            // Load independent slices in parallel for better responsiveness.
             await Promise.all([
                 this.loadStats(domain),
                 this.loadTableTasks(domain, order),
@@ -783,6 +822,7 @@ export class TaskManager extends Component {
             "write_date",
         ];
 
+        // 1) Count total records first to compute valid pagination bounds.
         const total = await this.orm.call("task.task", "search_count", [domain]);
 
         // Clamp invalid page
@@ -791,6 +831,7 @@ export class TaskManager extends Component {
             this.state.pagination.page = lastPage;
         }
 
+        // 2) Fetch current page with offset/limit.
         const actualOffset = (this.state.pagination.page - 1) * limit;
         const records = await this.orm.searchRead("task.task", domain, fields, {
             order,
@@ -832,6 +873,8 @@ export class TaskManager extends Component {
      * - done: sum theo các status có fold=true (quy ước kiểu Odoo: cột gập = done)
      */
     async loadStats(domain) {
+        // Use selective domains (omit one filter dimension) so each chart KPI
+        // remains useful even when user has an active filter in that same dimension.
         const fullDomain = domain || this.buildDomain();
         const statusDomain = this.buildDomain({ omitStatus: true });
         const priorityDomain = this.buildDomain({ omitPriority: true });
@@ -843,6 +886,7 @@ export class TaskManager extends Component {
         const overdueDomain = [...fullDomain, ["date_deadline", "<", today], ["status_id.fold", "=", false]];
         const overdue = await this.orm.call("task.task", "search_count", [overdueDomain]);
 
+        // Aggregate counts in parallel (read_group) for dashboard cards/charts.
         const [byStatusFullGroups, byStatusGroups, byPriorityGroups, byCategoryGroups] = await Promise.all([
             this.orm.call("task.task", "read_group", [fullDomain, ["status_id"], ["status_id"]], { lazy: false }),
             this.orm.call("task.task", "read_group", [statusDomain, ["status_id"], ["status_id"]], { lazy: false }),
