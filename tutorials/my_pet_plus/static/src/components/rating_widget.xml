@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- ================================================
+             QWeb Template for RatingWidget Component
+             
+             ✅ This template is registered with ID: my_pet_plus.RatingWidget
+             ✅ Used by RatingWidget.js component
+             ✅ Loaded from __manifest__.py 'data' section
+        ================================================== -->
+        <template id="my_pet_plus.RatingWidget" name="Rating Widget">
+            <!-- Main widget container -->
+            <div class="o_rating_widget">
+                <!-- Loop through 5 stars -->
+                <t t-foreach="this.stars" t-as="star" t-key="star">
+                    <span
+                        t-on-click="() => this.setRating(star)"
+                        style="cursor: pointer; font-size: 28px; margin-right: 6px; display: inline-block; line-height: 1;"
+                    >
+                        <!-- Render star: active = gold, inactive = gray -->
+                        <t t-if="this.isActive(star)">★</t>
+                        <t t-else=""><span style="color: #cccccc; opacity: 0.5;">★</span></t>
+                    </span>
+                </t>
+                <!-- Display current rating value -->
+                <span style="margin-left: 8px; font-weight: bold; vertical-align: middle; display: inline-block;">
+                    <t t-out="this.getRatingText()" />
+                </span>
+            </div>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mypet_batch_update" model="ir.ui.view">
+        <field name="name">view.mypet.batch.update</field> <!-- tên view -->
+        <field name="model">my.pet.batch.update.wizard</field> <!-- model liên kết --> 
+        <field name="arch" type="xml"> <!-- định nghĩa giao diện -->
+            <form string="Batch Update My Pet">
+                <group>
+                    <group>
+                        <field name="dob"/>
+                        <field name="gender"/>
+                        <field name="owner_id"/>
+                        <field name="basic_price"/>
+                        <field name="age"/>
+                    </group>
+                    <group/>
+                </group>                
+                <p>
+                    Apply updating on the selected record(s)?
+                </p>
+                <footer>
+                    <button string="Confirm" name="action_batch_update" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mypet_batch_update" model="ir.actions.act_window"> <!-- định nghĩa action để mở view trên -->
+        <field name="name">Batch Update My Pet</field> <!-- tên action -->
+        <field name="res_model">my.pet.batch.update.wizard</field> <!-- model liên kết, phải trùng với model của view -->
+        <field name="binding_model_id" ref="model_my_pet"/> <!-- model mà action này sẽ được gọi từ đó -->
+        <field name="view_mode">form</field> <!-- loại view-->
+        <field name="target">new</field>
+        <field name="view_id" ref="view_mypet_batch_update"/>
+    </record>
+
+</odoo>

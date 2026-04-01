@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- ==========================================================
+             CHAPTER 11 - "Inline Views" + "Manual sorting" + "Stat button"
+             Tương tự estate.property.type
+             ========================================================== -->
+
+        <!-- Tree/List view: có widget handle để kéo-thả sequence -->
+        <record id="product_pet_type_list_view" model="ir.ui.view">
+            <field name="name">product.pet.type.list</field>
+            <field name="model">product.pet.type</field>
+            <field name="arch" type="xml">
+                <list string="Pet Types" default_order="sequence, name">
+                    <!-- widget handle yêu cầu sequence là cột đầu tiên -->
+                    <field name="sequence" widget="handle" />
+                    <field name="name" />
+                    <field name="offer_count" />
+                </list>
+            </field>
+        </record>
+
+        <!-- Form view: inline list pet_ids (3 field) + stat button -->
+        <record id="product_pet_type_form_view" model="ir.ui.view">
+            <field name="name">product.pet.type.form</field>
+            <field name="model">product.pet.type</field>
+            <field name="arch" type="xml">
+                <form string="Pet Type">
+                    <sheet>
+                        <!-- Stat buttons thường đặt trong oe_button_box -->
+                        <div class="oe_button_box" name="button_box">
+                            <!-- Stat button: mở offers liên quan tới type hiện tại -->
+                            <!-- type="object" gọi method Python action_open_offers() -->
+                            <button name="action_open_offers" type="object" class="oe_stat_button" icon="fa-tags">
+                                <field name="offer_count" widget="statinfo" string="Offers" />
+                            </button>
+                        </div>
+                        <group>
+                            <field name="name" />
+                            <field name="sequence" />
+                        </group>
+
+                        <notebook>
+                            <page name="pets" string="Pets">
+                                <!-- Inline list view: chỉ hiển thị 3 field như bài gốc -->
+                                <field name="pet_ids">
+                                    <list string="Pets">
+                                        <field name="name" />
+                                        <!-- expected price tương đương: final_price -->
+                                        <field name="final_price" />
+                                        <field name="state" />
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action + menu để vào Pet Types -->
+        <record id="action_product_pet_type" model="ir.actions.act_window">
+            <field name="name">Pet Types</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.pet.type</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="menu_product_pet_type"
+                  name="Pet Types"
+                  parent="menu_product_pet"
+                  action="action_product_pet_type"
+                  sequence="15"
+                  groups="base.group_user" />
+
+    </data>
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_website_stitch_feature_user,website.stitch.feature user,model_website_stitch_feature,base.group_user,1,1,1,1

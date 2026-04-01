@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--
+            Refactor: dùng view inheritance để tránh viết lại toàn bộ form của my.pet.
+            Vì product.pet là delegation `_inherits` từ my.pet, các field (name, age, weight...) đều dùng lại được.
+        -->
+        <record id="product_pet_form_view" model="ir.ui.view">
+            <field name="name">product.pet.form.view</field>
+            <field name="model">product.pet</field>
+            <!-- name = inherit_id là ID của view gốc cần kế thừa, ref là  -->
+            <field name="inherit_id" ref="my_pet.my_pet_form_view" />
+            <field name="arch" type="xml">
+                <!-- product.pet cho phép tạo mới (my.pet đang create="false") -->
+                <xpath expr="//form" position="attributes">
+                    <attribute name="create">true</attribute>
+                </xpath>
+
+                <!-- Thêm header + statusbar state + buttons actions -->
+                <xpath expr="//form/sheet" position="before">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="available,reserved,sold,cancel" />
+                        <button name="action_change_state" string="Reserve" type="object"
+                                context="{'next_state': 'reserved'}"
+                                invisible="state != 'available'" />
+                        <button name="action_change_state" string="Sell" type="object"
+                                context="{'next_state': 'sold'}"
+                                invisible="state != 'reserved'" />
+                        <button name="action_change_state" string="Reset to Available" type="object"
+                                context="{'next_state': 'available'}"
+                                invisible="state not in ('reserved', 'cancel')" />
+                        <button name="action_change_state" string="Cancel" type="object"
+                                context="{'next_state': 'cancel'}"
+                                invisible="state not in ('available', 'reserved')" />
+                    </header>
+                </xpath>
+
+                <!-- Bỏ basic_price ở view gốc để tránh bị lặp (mình sẽ show nó ở block giá bên dưới) -->
+                <xpath expr="//group[@name='images']//field[@name='basic_price']" position="replace" />
+
+                <!-- Chèn nhóm field riêng của product.pet sau phần title -->
+                <xpath expr="//sheet/div[@class='oe_title']" position="after">
+                    <group>
+                        <group>
+                            <field name="my_pet_id" />
+                            <field name="pet_type" />
+                            <!-- CHAPTER 11 - options: chặn tạo/sửa type từ dropdown của Many2one -->
+                            <field name="pet_type_id" options="{'no_create': True, 'no_create_edit': True}" />
+                            <field name="pet_color" />
+                            <field name="pet_rating" />
+                        </group>
+                        <group>
+                            <field name="buyer_id" invisible="not buyer_id" />
+                            <field name="selling_price" invisible="not selling_price" />
+                            <!-- available và reserved được hiển thị chỉnh giá -->
+                            <group invisible="state not in ('available', 'reserved')">
+                                <field name="basic_price" />
+                                <field name="bonus_price" />
+                                <field name="quantity" />
+                                <field name="discount_percent" />
+                                <field name="final_price" />
+                                <field name="total_amount" readonly="1" />
+                            </group>
+                        </group>
+                    </group>
+                </xpath>
+
+                <!-- Thêm trang Offers vào notebook sẵn có của my.pet -->
+                <xpath expr="//notebook" position="inside">
+                    <page name="offers" string="Offers">
+                        <field name="offer_ids" context="{'default_product_pet_id': id}">
+                            <!--
+                                CHAPTER 11 - invisible/readonly/create:
+                                - create chỉ cho phép khi pet available/reserved
+                                - decoration tô màu theo status
+                            -->
+                            <list editable="bottom"
+                                  create="state in ('available', 'reserved')"
+                                  delete="true"
+                                  decoration-info="status == 'pending'"
+                                  decoration-success="status == 'accepted'"
+                                  decoration-danger="status == 'refused'">
+                                <field name="partner_id" />
+                                <field name="price" />
+                                <field name="status" readonly="1" />
+                                <field name="date" readonly="1" optional="hide" />
+                                <button name="action_accept" type="object" string="Accept" icon="fa-check"
+                                        invisible="status != 'pending'" />
+                                <button name="action_refuse" type="object" string="Refuse" icon="fa-times"
+                                        invisible="status != 'pending'" />
+                            </list>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_pet_list_view" model="ir.ui.view">
+            <field name="name">product.pet.list.view</field>
+            <field name="model">product.pet</field>
+            <field name="inherit_id" ref="my_pet.my_pet_tree_view" />
+            <field name="arch" type="xml">
+                <!-- CHAPTER 11 - decorations: tô màu theo state -->
+                <xpath expr="//list" position="attributes"> 
+                    <!-- <attribute name="decoration-success">state == 'reserved'</attribute>
+                    <attribute name="decoration-muted">state == 'sold'</attribute>
+                    <attribute name="decoration-danger">state == 'cancel'</attribute> -->
+                </xpath>
+
+                <!-- product.pet list: bỏ các cột không dùng -->
+                <xpath expr="//list/field[@name='dob']" position="replace" />
+                <xpath expr="//list/field[@name='owner_id']" position="replace" />
+
+                <!-- product.pet list: thêm các cột riêng -->
+                <xpath expr="//list/field[@name='gender']" position="after">
+                    <field name="pet_type" />
+                    <field name="pet_type_id" optional="hide" />
+                    <field name="pet_color" />
+                    <field name="final_price" />
+                    <field name="pet_rating" />
+                </xpath>
+            </field>
+        </record>
+
+        <!-- CHAPTER 11 - Search view: filter Available + filter_domain ví dụ (weight >= input) -->
+        <record id="product_pet_search_view" model="ir.ui.view">
+            <field name="name">product.pet.search</field>
+            <field name="model">product.pet</field>
+            <field name="inherit_id" ref="my_pet.my_pet_search_view" />
+            <field name="arch" type="xml">
+                <!-- Thêm field filter cho product.pet -->
+                <xpath expr="//search" position="inside">
+                    <field name="owner_id" />
+                    <field name="pet_type_id" />
+
+                    <!-- Filter: Available -->
+                    <filter string="Available" name="available" domain="[('state', '=', 'available')]" />
+
+                    <!-- filter_domain: nhập weight -> tìm pets có weight >= giá trị nhập -->
+                    <field name="weight" filter_domain="[('weight', '>=', self)]" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_product_pet" model="ir.actions.act_window">
+            <field name="name">Product Pet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.pet</field>
+            <!-- CHAPTER 11 - default filter: mở list tự tick sẵn filter Available -->
+            <field name="context">{'search_default_available': 1}</field>
+            <field name="search_view_id" ref="product_pet_search_view" />
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids"
+                eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'list', 'view_id': ref('product_pet_list_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('product_pet_form_view')})]" />
+        </record>
+
+        <menuitem id="menu_product_pet"
+            name="Product Pet"
+            action="action_product_pet"
+            sequence="10"
+            groups="base.group_user" />
+    </data>
+</odoo>

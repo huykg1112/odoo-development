@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Search,Filter View -->
+        <record id="my_pet_search_view" model="ir.ui.view">
+            <field name="name">my.pet.search</field>
+            <field name="model">my.pet</field>
+            <field name="arch" type="xml">
+                <search string="Search My Pets">
+                    <field name="name" placeholder="Pet Name"/>
+                    <field name="nickname" placeholder="Nickname"/>
+                    <filter name="age_filter" string="Age > 5" domain="[('age', '>', 5)]"/>
+                    <filter name="weight_filter" string="Weight > 10kg" domain="[('weight', '>', 10)]"/>
+                    <filter name="gender_filter" string="Male" domain="[('gender', '=', 'male')]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="my_pet_form_view" model="ir.ui.view">
+            <field name="name">my.pet.form</field>
+            <field name="model">my.pet</field>
+            <field name="arch" type="xml">
+                <form string="My Pet" create="false" edit="true" delete="true">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" string="Pet Name" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" placeholder="Pet Name" class="text-danger fw-bold" />
+                            </h1>
+                            <label for="owner_id" />
+                            <h3>
+                                <field name="owner_id" />
+                            </h3>
+                        </div>
+                        <group name="images">
+                            <group>
+                                <field name="basic_price"/>
+                                <field name="age" />
+                                <field name="weight" />
+                            </group>
+                            <group>
+                                <field name="dob" />
+                                <field name="gender" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="general_information" string="General Information">
+                                <group>
+                                    <group>
+                                        <field name="nickname" class="text-danger fw-bold" />
+                                    </group>
+                                    <group>
+                                        <label for="description" colspan="2" />
+                                        <field name="description" colspan="2" nolabel="1" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="additional_information" string="Additional Information">
+                                <group>
+                                    <group string="Images">
+                                        <field name="pet_image" string="Pet's Image" widget="image" />
+                                    </group>
+                                    <group string="Products">
+                                        <field name="product_ids" widget="many2many_tags" />
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- list view -->
+        <record id="my_pet_tree_view" model="ir.ui.view">
+            <field name="name">my.pet.tree</field>
+            <field name="model">my.pet</field>
+            <field name="arch" type="xml">
+                <list string="My Pets" default_order="create_date desc">
+                    <field name="name" />
+                    <field name="nickname" />
+                    <field name="age" />
+                    <field name="weight" />
+                    <field name="dob" />
+                    <field name="gender" />
+                    <field name="owner_id" />
+                </list>
+            </field>
+        </record>
+        <!-- kanban view -->
+        <record id="my_pet_kanban_view" model="ir.ui.view">
+            <field name="name">my.pet.kanban</field>
+            <field name="model">my.pet</field>
+            <field name="arch" type="xml">
+                <kanban string="My Pets" default_order="create_date desc">
+                    <field name="name" />
+                    <field name="nickname" />
+                    <field name="age" />
+                    <field name="weight" />
+                    <field name="dob" />
+                    <field name="gender" />
+                    <field name="owner_id" />
+                    <templates>
+                        <t t-name="card">
+                            <div class="oe_kanban_card">
+                                <div class="oe_kanban_content">
+                                    <strong>
+                                        <t t-out="record.name.value" />
+                                    </strong>
+                                    <div>
+                                        <span class="badge badge-info" t-if="record.nickname.value">
+                                            <t t-out="record.nickname.value" />
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <small>Age: <t t-out="record.age.value" /> years</small>
+                                    </div>
+                                    <div>
+                                        <small>Weight: <t t-out="record.weight.value" /> kg</small>
+                                    </div>
+                                    <div>
+                                        <small>Owner: <t t-out="record.owner_id.value" /></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- action -->
+        <record id="action_my_pet" model="ir.actions.act_window">
+            <field name="name">My Pet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">my.pet</field>
+            <field name="view_ids"
+                eval="[(5, 0, 0), 
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('my_pet_kanban_view')}),
+                (0, 0, {'view_mode': 'list', 'view_id': ref('my_pet_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('my_pet_form_view')})]" />
+        </record>
+        <menuitem id="menu_my_pet"
+            name="My Pet"
+            action="action_my_pet"
+            sequence="10"
+            groups="base.group_user"
+            web_icon="my_pet,static/description/icon.jpg"
+        />
+    </data>
+</odoo>

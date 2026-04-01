@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- main menu -->
+    <menuitem id="menu_college_erp_root" name="College ERP" sequence="1" web_icon="college_ERP,static/description/icon.png"/>
+    <!-- <menuitem id="menu_college_erp_students" name="Students" parent="menu_college_erp_root" action="action_college_student"/> -->
+    <!-- sub menus -->
+    <menuitem id="menu_college_erp_students" name="Students" parent="menu_college_erp_root" sequence="1"/>
+    <!-- actions   -->
+    <menuitem id="menu_college_erp_students_action" name="Students List" parent="menu_college_erp_students" action="action_college_erp" sequence="2"/>
+    <menuitem id="menu_college_erp_students_action_2" name="Students List 2" parent="menu_college_erp_students" action="action_college_erp" sequence="3"/>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_super_pet,access_super_pet,model_super_pet,base.group_user,1,1,1,1
+access_product_pet,access_product_pet,model_product_pet,base.group_user,1,1,1,1
+access_product_pet_offer,access_product_pet_offer,model_product_pet_offer,base.group_user,1,1,1,1
+access_product_pet_type,access_product_pet_type,model_product_pet_type,base.group_user,1,1,1,1
