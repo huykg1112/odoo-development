@@ -1,0 +1,53 @@
+// button
+.mcp-btn {
+  border-radius: 0.85rem;
+  padding: 0.8rem 1.3rem;
+  font-weight: 700;
+}
+
+.mcp-btn-primary {
+  background: $primary;
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(0, 90, 182, 0.22);
+
+  &:hover {
+    background: $mcp-color-primary-container;
+  }
+}
+
+.btn-primary {
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+
+//header
+.header {
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.8);
+}
+
+//footer
+.footer-link {
+  color: #94a3b8;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: #60a5fa;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #60a5fa;
+}
+
+.social-icon:hover {
+  background: $primary;
+  color: #fff;
+}

@@ -15,13 +15,10 @@
     'data': [
         'security/ir.model.access.csv',
         'views/header.xml',
+        'views/footer.xml',
     ],
     'assets': {
-        # Theme mau/font cho toan website module
-        'web.assets_frontend': [
-            # 'website_odoo/static/src/scss/theme.scss',
-        ],
-        'web.assets_backend': [],
+        'web.assets_frontend': [],
     },
     'license': 'LGPL-3',
     'installable': True,

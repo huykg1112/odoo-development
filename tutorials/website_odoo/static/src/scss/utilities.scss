@@ -1,0 +1,25 @@
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glass-nav {
+  backdrop-filter: blur(20px);
+}
+
+.hover-primary:hover {
+  color: $primary !important;
+}
+
+/* gap giống tailwind */
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 1rem; }
+.gap-4 { gap: 1.5rem; }
+
+.bg-opacity-75 {
+  background-color: rgba(255,255,255,0.75) !important;
+}
