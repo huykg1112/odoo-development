@@ -1,0 +1,20 @@
+<odoo>
+    <template id="snippet_three_part_text" name="Three Part Text">
+        <section class="o_snippet_three_text">
+            <span class="part part-1" contenteditable="true">Hello</span>
+            <span class="part part-2" contenteditable="true">World</span>
+            <span class="part part-3" contenteditable="true">!!!</span>
+        </section>
+    </template>
+
+    <!-- Assets for Three Part Text -->
+    <asset id="snippets_development.s_three_part_text_scss" name="Three Part Text SCSS">
+        <bundle>web.assets_frontend</bundle>
+        <path>snippets_development/static/src/scss/three_part_text.scss</path>
+    </asset>
+
+    <asset id="snippets_development.s_three_part_text_js" name="Three Part Text JS">
+        <bundle>web.assets_frontend</bundle>
+        <path>snippets_development/static/src/js/three_part_text.js</path>
+    </asset>
+</odoo>

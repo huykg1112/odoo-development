@@ -18,7 +18,14 @@
         'views/footer.xml',
     ],
     'assets': {
-        'web.assets_frontend': [],
+        # LOAD TRƯỚC BOOTSTRAP
+        'web._assets_primary_variables': [
+            'website_odoo/static/src/scss/_variables.scss',
+        ],
+        # STYLE CHÍNH
+        'website.assets_frontend': [
+            'website_odoo/static/src/scss/theme.scss',
+        ],
     },
     'license': 'LGPL-3',
     'installable': True,

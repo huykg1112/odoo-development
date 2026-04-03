@@ -1,0 +1,12 @@
+<odoo>
+    <template id="snippet_registry" inherit_id="website.snippets">
+        <xpath expr="//snippets[@id='snippet_content']" position="inside">
+
+            <t t-snippet="snippets_development.snippet_three_part_text"
+               t-thumbnail="/snippets_development/static/src/description/icon.png"/>
+
+            <t t-snippet="snippets_development.snippet_text_gradient"
+               t-thumbnail="/snippets_development/static/src/description/icon.png"/>
+        </xpath>
+    </template>
+</odoo> 

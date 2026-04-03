@@ -34,6 +34,8 @@ class MyPetController(http.Controller):
         else:
             response = {'error': 'Pet not found'}
         return http.Response(json.dumps(response), content_type='application/json')
+
+    # ví dụ call API: http://localhost:8069/api/pet/1
         
     @odoo.http.route(['/pet/<dbname>/<id>'], type='http', auth="none", sitemap=False, cors='*', csrf=False)
     def pet_page(self, dbname, id, **kwargs):
@@ -72,3 +74,6 @@ class MyPetController(http.Controller):
                 "content": f"Error: {str(e)}"
             }
         return json.dumps(response)
+
+# ví dụ call API: http://localhost:8069/pet/my_db/1
+    

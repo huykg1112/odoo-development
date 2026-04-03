@@ -1,0 +1,34 @@
+.o_snippet_three_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  .part {
+    display: inline-block;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .part-1 { color: $text; }
+  .part-2 { color: $primary; }
+  .part-3 { color: $secondary; }
+}
+
+/* ================= FONT FAMILY ================= */
+.font-montserrat { font-family: 'Montserrat', sans-serif; }
+.font-poppins { font-family: 'Poppins', sans-serif; }
+.font-roboto { font-family: 'Roboto', sans-serif; }
+.font-georgia { font-family: Georgia, serif; }
+
+/* ================= FONT WEIGHT ================= */
+.fw-bold { font-weight: 700; }
+.fw-normal { font-weight: 400; }
+.fw-light { font-weight: 300; }
+
+/* ================= FONT STYLE ================= */
+.fst-normal { font-style: normal; }
+.fst-italic { font-style: italic; }

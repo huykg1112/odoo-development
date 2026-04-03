@@ -1,0 +1,10 @@
+<odoo>
+    <template id="snippet_text_gradient" name="Gradient Text">
+        <section class="o_snippet_gradient">
+            <h2 class="gradient-text" contenteditable="true">
+                Gradient Text
+            </h2>
+        </section>
+    </template>
+
+</odoo>

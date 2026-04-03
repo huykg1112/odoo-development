@@ -1,0 +1,120 @@
+<odoo>
+  <template id="three_text_options" inherit_id="website.snippet_options">
+
+    <xpath expr="." position="inside">
+
+      <!-- ===================== PART 1 ===================== -->
+      <div data-selector=".o_snippet_three_text">
+        <we-title string="Part 1 - Starting Text"/>
+
+        <!-- COLOR -->
+        <we-colorpicker string="Text Color"
+                        data-apply-to=".part-1"
+                        data-css-property="color"
+                        data-select-style="true"/>
+
+        <!-- FONT SIZE -->
+        <we-select string="Font Size" data-apply-to=".part-1">
+          <we-button data-select-style="14px" data-css-property="font-size">S</we-button>
+          <we-button data-select-style="16px" data-css-property="font-size">M</we-button>
+          <we-button data-select-style="20px" data-css-property="font-size">L</we-button>
+          <we-button data-select-style="32px" data-css-property="font-size">XL</we-button>
+        </we-select>
+
+        <!-- FONT FAMILY (DÙNG CLASS) -->
+        <we-select string="Font Family" data-apply-to=".part-1">
+          <we-button data-select-class="font-montserrat">Montserrat</we-button>
+          <we-button data-select-class="font-poppins">Poppins</we-button>
+          <we-button data-select-class="font-roboto">Roboto</we-button>
+          <we-button data-select-class="font-georgia">Georgia</we-button>
+        </we-select>
+
+        <!-- FONT WEIGHT -->
+        <we-button-group string="Font Weight" data-apply-to=".part-1">
+          <we-button data-select-class="fw-bold">B</we-button>
+          <we-button data-select-class="fw-normal">N</we-button>
+          <we-button data-select-class="fw-light">L</we-button>
+        </we-button-group>
+
+        <!-- FONT STYLE -->
+        <we-button-group string="Font Style" data-apply-to=".part-1">
+          <we-button data-select-class="fst-normal">N</we-button>
+          <we-button data-select-class="fst-italic">I</we-button>
+        </we-button-group>
+
+        <!-- TEXT DECORATION -->
+        <we-button-group string="Decoration" data-apply-to=".part-1">
+          <we-button data-select-style="none" data-css-property="text-decoration">None</we-button>
+          <we-button data-select-style="underline" data-css-property="text-decoration">U</we-button>
+          <we-button data-select-style="line-through" data-css-property="text-decoration">S</we-button>
+        </we-button-group>
+
+      </div>
+
+      <!-- ===================== PART 2 ===================== -->
+      <div data-selector=".o_snippet_three_text">
+        <we-title string="Part 2 - Middle Text"/>
+
+        <we-colorpicker string="Text Color"
+                        data-apply-to=".part-2"
+                        data-css-property="color"
+                        data-select-style="true"/>
+
+        <we-select string="Font Size" data-apply-to=".part-2">
+          <we-button data-select-style="14px" data-css-property="font-size">S</we-button>
+          <we-button data-select-style="18px" data-css-property="font-size">M</we-button>
+          <we-button data-select-style="24px" data-css-property="font-size">L</we-button>
+        </we-select>
+
+        <we-select string="Font Family" data-apply-to=".part-2">
+          <we-button data-select-class="font-montserrat">Montserrat</we-button>
+          <we-button data-select-class="font-poppins">Poppins</we-button>
+          <we-button data-select-class="font-roboto">Roboto</we-button>
+          <we-button data-select-class="font-georgia">Georgia</we-button>
+        </we-select>
+
+        <we-button-group string="Font Weight" data-apply-to=".part-2">
+          <we-button data-select-class="fw-bold">B</we-button>
+          <we-button data-select-class="fw-normal">N</we-button>
+          <we-button data-select-class="fw-light">L</we-button>
+        </we-button-group>
+
+        <we-button-group string="Font Style" data-apply-to=".part-2">
+          <we-button data-select-class="fst-normal">N</we-button>
+          <we-button data-select-class="fst-italic">I</we-button>
+        </we-button-group>
+
+      </div>
+
+      <!-- ===================== PART 3 ===================== -->
+      <div data-selector=".o_snippet_three_text">
+        <we-title string="Part 3 - Ending Text"/>
+
+        <we-colorpicker string="Text Color"
+                        data-apply-to=".part-3"
+                        data-css-property="color"
+                        data-select-style="true"/>
+
+        <we-button-group string="Font Weight" data-apply-to=".part-3">
+          <we-button data-select-class="fw-bold">B</we-button>
+          <we-button data-select-class="fw-normal">N</we-button>
+          <we-button data-select-class="fw-light">L</we-button>
+        </we-button-group>
+
+      </div>
+
+      <!-- ===================== CONTAINER ===================== -->
+      <div data-selector=".o_snippet_three_text">
+        <we-title string="Container"/>
+
+        <we-button-group string="Align">
+          <we-button data-select-class="text-start">Left</we-button>
+          <we-button data-select-class="text-center">Center</we-button>
+          <we-button data-select-class="text-end">Right</we-button>
+        </we-button-group>
+
+      </div>
+
+    </xpath>
+  </template>
+</odoo>
