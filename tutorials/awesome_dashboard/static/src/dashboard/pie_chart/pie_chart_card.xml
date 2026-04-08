@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+    <t t-name="awesome_dashboard.PieChartCard">
+        <div >
+            <h1>T-Shirts by size</h1>
+            <PieChart t-if="props.data" data="props.data"/>
+        </div>
+    </t>
+</template>

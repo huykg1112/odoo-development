@@ -6,7 +6,7 @@
     <!-- default: xử lý khoảng trắng theo mặc định -->
 
     <t t-name="awesome_dashboard.AwesomeDashboard">
-        <Layout display="{ controlPanel: {} }" className="'o-dashboard container'"> <!-- Sử dụng component Layout để tạo bố cục cho
+        <Layout display="{ controlPanel: {} }" className="'o-dashboard h-100 overflow-auto '"> <!-- Sử dụng component Layout để tạo bố cục cho
             dashboard, với controlPanel trống vì chúng ta sẽ không sử dụng thanh công cụ mặc định
             của Odoo -->   
             <t t-set-slot="layout-buttons" > <!-- Sử dụng slot layout-buttons để chèn các
@@ -17,45 +17,20 @@
                 <button class="btn btn-secondary ms-2" t-on-click="openLeads">
                     Leads
                 </button>
+                <button class="btn btn-light ms-2" t-on-click="openSettings" title="Settings">
+                    <i class="fa fa-cog"/>
+                </button>
             </t>
             <div class="o_dashboard_content d-flex flex-wrap gap-3 p-3">
-                <DashboardItem width="'200px'">
-                    <h5 class="card-title">New Orders</h5>
-                    <p class="display-6" t-esc="statistics.nb_new_orders"/>
-                </DashboardItem>
-                <DashboardItem width="'200px'">
-                    <h5 class="card-title">Total Amount</h5>
-                    <p class="display-6" t-esc="statistics.total_amount"/>
-                </DashboardItem>
-                <DashboardItem width="'200px'">
-                    <h5 class="card-title">Avg T-Shirt per Order</h5>
-                    <p class="display-6" t-esc="statistics.average_quantity"/>
-                </DashboardItem>
-                <DashboardItem width="'200px'">
-                    <h5 class="card-title">Cancelled Orders</h5>
-                    <p class="display-6" t-esc="statistics.nb_cancelled_orders"/>
-                </DashboardItem>
-                <DashboardItem width="'calc(100% - )'">
-                    <h5 class="card-title">Avg Processing Time</h5>
-                    <p class="display-6" t-esc="statistics.average_time"/>
-                </DashboardItem>
-                <DashboardItem width="'100%'">
-                    <h5 class="card-title">Order by size</h5>
-                    <t t-if="statistics.orders_by_size">
-                        <div class="d-flex justify-content-around">
-                            <t t-foreach="statistics.orders_by_size" t-as="size" t-key="size">
-                                <div class="d-flex">
-                                    <h1 class="display-6" t-esc="size"/>
-                                    <h1 class="display-6">: </h1>
-                                    <p class="display-6" t-esc="size_value"/>
-                                </div>
-                            </t>
-                        </div>
-                    </t>
-                </DashboardItem>
+                <t t-foreach="items" t-as="item" t-key="item.id">
+                    <DashboardItem size="item.size || 1">
+                        <t t-set="itemProp" t-value="item.props ? item.props(statistics) : {'data': statistics}"/>
+                        <t t-component="item.Component" t-props="itemProp"/>
+                    </DashboardItem>
+                </t>
             </div>
-            <div class="d-flex justify-content-around gap-3 p-3">
-                <DashboardItem width="'300px'">
+            <div class="d-flex justify-content-around gap-3 p-3 mb-5">
+                <DashboardItem width="'600px'">
                     <h5 class="card-title">T-Shirts by Size</h5>
                     <t t-if="statistics.orders_by_size">
                         <PieChart data="statistics.orders_by_size"/>

@@ -1,3 +1,4 @@
+/** @odoo-module **/
 import { Component, onMounted, onWillStart, useRef, onPatched } from "@odoo/owl";
 import { loadJS } from "@web/core/assets";
 
