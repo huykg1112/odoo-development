@@ -1,0 +1,23 @@
+.o-dashboard {
+    background-color: #f0f0f0; // hoặc màu bạn thích
+}
+
+/* Định nghĩa kích thước dựa vào class được tính toán từ sizeClass */
+.o-dashboard-item-size-1 {
+    width: 200px;
+    flex-grow: 1;
+}
+
+.o-dashboard-item-size-2 {
+    width: 400px;
+    flex-grow: 2;
+}
+
+.o-dashboard-item-size-3 {
+    width: 600px;
+    flex-grow: 3;
+}
+
+.o-dashboard-item-size-10 {
+    width: 100%; /* Chiếm trọn bề ngang */
+}

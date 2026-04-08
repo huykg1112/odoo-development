@@ -1,9 +1,9 @@
 <odoo>
     <template id="snippet_three_part_text" name="Three Part Text">
         <section class="o_snippet_three_text">
-            <span class="part part-1" contenteditable="true">Hello</span>
-            <span class="part part-2" contenteditable="true">World</span>
-            <span class="part part-3" contenteditable="true">!!!</span>
+            <span class="part part-1">Hello</span>
+            <span class="part part-2">World</span>
+            <span class="part part-3">!!!</span>
         </section>
     </template>
 

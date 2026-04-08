@@ -1,42 +1,30 @@
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
 .o_snippet_gradient {
   text-align: center;
 
   .gradient-text {
-    /* Default values */
-    --g-color-1: #ff7e5f;
-    --g-color-2: #feb47b;
-    --g-color-3: var(--g-color-1);
-    --g-direction: to right;
+    --g-color-1: #00ff00;
+    --g-color-2: #ff0000;
+    --g-direction: 45deg;
 
     font-size: 48px;
     font-weight: 700;
+    display: inline-block;
+    width: fit-content;
+    margin: 0;
+    padding: 0;
 
-    background: linear-gradient(
+    background-image: linear-gradient(
       var(--g-direction),
       var(--g-color-1),
-      var(--g-color-2),
-      var(--g-color-3)
+      var(--g-color-2)
     );
 
-    background-size: 200% 200%;
-    animation: gradientMove 4s linear infinite;
-
-    /* 🔥 important */
-    background-clip: text;
     -webkit-background-clip: text;
 
-    color: transparent !important;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
 
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.05);
-    }
+    color: transparent;
   }
 }

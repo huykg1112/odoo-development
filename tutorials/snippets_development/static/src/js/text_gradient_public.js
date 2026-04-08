@@ -1,35 +1,31 @@
 /** @odoo-module **/
 
-import options from "@web_editor/js/editor/snippets.options";
+import publicWidget from "@web/legacy/js/public/public_widget";
 
-options.registry.TextGradient = options.Class.extend({
-    /**
-     * @override
-     */
+publicWidget.registry.TextGradient = publicWidget.Widget.extend({
+    selector: '.o_snippet_gradient',
+    disabledInEditMode: false,
+
     start() {
-        const result = this._super(...arguments);
-        this._ensureGradientStyle();
+        const result = this._super.apply(this, arguments);
+        this._applyGradientStyle();
         return result;
     },
 
-    /**
-     * Enforce critical gradient styles in editor as a fallback when CSS assets
-     * are not yet applied in the iframe.
-     */
-    async _ensureGradientStyle() {
-        const el = this.$target[0].querySelector('.gradient-text');
+    async _applyGradientStyle() {
+        const el = this.el.querySelector('.gradient-text');
         if (!el) {
             return;
         }
 
         if (!el.style.getPropertyValue('--g-color-1')) {
-            el.style.setProperty('--g-color-1', '#ff7e5f');
+            el.style.setProperty('--g-color-1', '#00ff00');
         }
         if (!el.style.getPropertyValue('--g-color-2')) {
-            el.style.setProperty('--g-color-2', '#feb47b');
+            el.style.setProperty('--g-color-2', '#ff0000');
         }
         if (!el.style.getPropertyValue('--g-direction')) {
-            el.style.setProperty('--g-direction', 'to right');
+            el.style.setProperty('--g-direction', '45deg');
         }
 
         el.style.setProperty('display', 'inline-block');
@@ -44,6 +40,4 @@ options.registry.TextGradient = options.Class.extend({
     },
 });
 
-export default {
-    TextGradient: options.registry.TextGradient,
-};
+export default publicWidget.registry.TextGradient;

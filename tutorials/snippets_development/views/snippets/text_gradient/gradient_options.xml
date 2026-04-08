@@ -3,7 +3,7 @@
 
         <xpath expr="." position="inside">
 
-            <div data-selector=".o_snippet_gradient">
+            <div data-selector=".o_snippet_gradient" data-js="TextGradient">
 
                 <we-title string="Gradient Text"/>
 
@@ -23,23 +23,15 @@
                     data-css-compatible="true"
                     data-no-transparency="true"/>
 
-                <!-- Color 3 -->
-                <we-colorpicker string="Color 3"
-                    data-apply-to=".gradient-text"
-                    data-css-property="--g-color-3"
-                    data-select-style="true"
-                    data-css-compatible="true"
-                    data-no-transparency="true"/>
-
                 <!-- Direction -->
                 <we-select string="Direction" data-apply-to=".gradient-text">
-                    <we-button data-select-style="to right"
+                    <we-button data-select-style="0deg"
                                data-css-property="--g-direction">→</we-button>
 
-                    <we-button data-select-style="to left"
+                    <we-button data-select-style="180deg"
                                data-css-property="--g-direction">←</we-button>
 
-                    <we-button data-select-style="to bottom"
+                    <we-button data-select-style="90deg"
                                data-css-property="--g-direction">↓</we-button>
 
                     <we-button data-select-style="45deg"
