@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates xml:space="preserve">
     <t t-name="awesome_clicker.ClickerSystrayItem">
-        <div class="d-flex align-items-center gap-2 px-2" t-ref="container">
-            <span>Clicks: <t t-esc="state.count"/></span>
-            <button class="btn btn-sm btn-primary" t-on-click="onClick">
-                +10
+        <Dropdown>
+            <button class="btn">
+                <span>🎮 <ClickValue value="state.count"/></span>
+                <span t-if="state.level gte 3" class="ms-2">
+                    🌳 <t t-esc="clicker.totalTrees"/>
+                </span>
             </button>
-            <button class="btn btn-sm btn-secondary" t-on-click="openClientAction">
-                Open
-            </button>
-        </div>
-    </t>
+
+            <t t-set-slot="content">
+                <DropdownItem class="'text-muted'" closingMode="'none'">
+                    <strong>Clicks:</strong> <ClickValue value="state.count"/>
+                </DropdownItem>
+                <DropdownItem t-if="state.level gte 1" class="'text-muted'" closingMode="'none'">
+                    🤖 ClickBots: <t t-esc="state.clickBots"/>
+                </DropdownItem>
+                <DropdownItem t-if="state.level gte 2" class="'text-muted'" closingMode="'none'">
+                    🦾 BigBots: <t t-esc="state.bigBots"/>
+                </DropdownItem>
+                <div t-if="state.level gte 3" class="dropdown-divider"/>
+                <DropdownItem t-if="state.level gte 3" class="'text-muted'" closingMode="'none'">
+                    🍐 Pear Trees: <t t-esc="state.trees.piear"/> (Fruits: <t t-esc="state.fruits.pear"/>)
+                </DropdownItem>
+                <DropdownItem t-if="state.level gte 3" class="'text-muted'" closingMode="'none'">
+                    🍒 Cherry Trees: <t t-esc="state.trees.cherry"/> (Fruits: <t t-esc="state.fruits.cherry"/>)
+                </DropdownItem>
+                <div class="dropdown-divider"/>
+                <DropdownItem onSelected.bind="openClientAction">
+                    Open Clicker Game
+                </DropdownItem>
+                <DropdownItem t-if="state.level gte 4" 
+                          class="'text-muted'"
+                          onSelected.bind="() => this.clicker.buyClickBot()">
+                    Buy ClickBot (1,000)
+                </DropdownItem>
+            </t>
+    </Dropdown>
+</t>
 </templates>

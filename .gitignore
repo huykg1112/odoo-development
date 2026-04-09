@@ -53,6 +53,7 @@ package.json
 /odoo-venv/
 
 # agent skill
+skills/
 .agent/
 .agents/
 .claude/

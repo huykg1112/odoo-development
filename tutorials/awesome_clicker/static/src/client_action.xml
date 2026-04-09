@@ -1,13 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template xml:space="preserve">
-    <t t-name="awesome_clicker.ClickerClientAction">
-        <div class="p-4">
-            <h1>🎮 Clicker Game</h1>
-            <h2>Clicks: <t t-esc="state.count"/></h2>
-            <button class="btn btn-lg btn-primary" t-on-click="(ev) => {ev.stopPropagation(); this.clicker.onclick(10)}">
-                +10 Clicks!
-            </button>
-        </div>
-    </t>
-    
+	<t t-name="awesome_clicker.ClickerClientAction">
+		<div class="p-4">
+			<h1>🎮 Clicker Game</h1>
+			<!-- <Notebook> -->
+				<t t-set-slot="Clicks" title="'Clicks'">
+					<div class="p-3">
+						<h2>Clicks: <ClickValue value="state.count"/></h2>
+						<button class="btn btn-primary" t-on-click="() => this.clicker.onclick(1000)">
+							+1000 Clicks
+						</button>
+						
+						<div t-if="state.level gte 1" class="mt-3">
+							<h4>🤖 ClickBots: <t t-esc="state.clickBots"/></h4>
+							<button class="btn btn-warning" t-att-disabled="state.count lt 1000" t-on-click="() => this.clicker.buyClickBot()">
+								Buy ClickBot (1,000)
+							</button>
+						</div>
+						
+						<div t-if="state.level gte 2" class="mt-3">
+							<h4>🦾 BigBots: <t t-esc="state.bigBots"/></h4>
+							<button class="btn btn-danger" t-att-disabled="state.count lt 5000" t-on-click="() => this.clicker.buyBigBot()">
+								Buy BigBot (5,000)
+							</button>
+						</div>
+						
+						<div t-if="state.level gte 3" class="mt-3">
+							<h4>⚡ Power: x<t t-esc="state.power"/></h4>
+							<button class="btn btn-info" t-att-disabled="state.count lt 50000" t-on-click="() => this.clicker.buyPower()">
+								Buy Power (50,000)
+							</button>
+						</div>
+					</div>
+				</t>
+				
+				<t t-set-slot="Trees" title="'Trees'" t-if="state.level gte 4">
+					<div class="p-3">
+						<h3>🌳 Trees: <t t-esc="clicker.totalTrees"/></h3>
+						<h3>🍎 Fruits: <t t-esc="clicker.totalFruits"/></h3>
+						
+						<div class="mt-3">
+							<h4>🍐 Pear Trees: <t t-esc="state.trees.pear"/> (Fruits: <t t-esc="state.fruits.pear"/>)</h4>
+							<button class="btn btn-success" t-att-disabled="state.count lt 1000000" t-on-click="() => this.clicker.buyTree('pear')">
+								Buy Pear Tree (1M)
+							</button>
+						</div>
+						
+						<div class="mt-3">
+							<h4>🍒 Cherry Trees: <t t-esc="state.trees.cherry"/> (Fruits: <t t-esc="state.fruits.cherry"/>)</h4>
+							<button class="btn btn-success" t-att-disabled="state.count lt 1000000" t-on-click="() => this.clicker.buyTree('cherry')">
+								Buy Cherry Tree (1M)
+							</button>
+						</div>
+					</div>
+				</t>
+			<!-- </Notebook> -->
+		</div>
+	</t>
 </template>

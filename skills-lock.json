@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "14dd05775e04659845f67455ff741aa8203c337390971f6bce6b8c8083209222"
     },
+    "odoo-oca-developer": {
+      "source": "miquelalzanillas/odoo-oca-convention-skill",
+      "sourceType": "github",
+      "computedHash": "1e2df22cf7b12980558e5fc3175b036028e377d51dfa8696ec821cbb8fce29bd"
+    },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",
