@@ -18,7 +18,9 @@
     'installable': True,
     'depends': ['base', 'web'],
 
-    'data': [],
+    'data': [
+        
+    ],
     'assets': {
         'web.assets_backend': [
             'awesome_clicker/static/src/**/*',

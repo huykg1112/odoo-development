@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="awesome_clicker.ClickerSystrayItem">
+        <div class="d-flex align-items-center gap-2 px-2">
+            <span>Clicks: <t t-esc="state.count"/></span>
+            <button class="btn btn-sm btn-primary" t-on-click="onClick">
+                +10
+            </button>
+            <button class="btn btn-sm btn-secondary" t-on-click="openClientAction">
+                Open
+            </button>
+        </div>
+    </t>
+</templates>

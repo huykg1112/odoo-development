@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+    <t t-name="awesome_clicker.ClickerClientAction">
+        <div class="p-4">
+            <h1>🎮 Clicker Game</h1>
+            <h2>Clicks: <t t-esc="state.count"/></h2>
+            <button class="btn btn-lg btn-primary" t-on-click="() => this.clicker.onclick(10)">
+                +10 Clicks!
+            </button>
+        </div>
+    </t>
+    
+</template>
