@@ -2,20 +2,22 @@
 
 New-Item -ItemType Directory -Force -Path controllers, data, models, reports, security, static\description, static\fonts, static\shapes, static\src\css, static\src\img, static\src\js, static\src\scss, static\src\snippets, tests, views, wizards
 
-New-Item -ItemType File -Force -Path __init__.py, __manifest__.py, controllers\__init__.py, models\__init__.py, security\ir.model.access.csv, tests\__init__.py, wizards\__init__.py
+New-Item -ItemType File -Force -Path **init**.py, **manifest**.py, controllers\_\_init**.py, models\_\_init**.py, security\ir.model.access.csv, tests\_\_init**.py, wizards\_\_init**.py
 
 # Windows Command Prompt (CMD)
 
-mkdir controllers data models reports security static\description static\fonts static\shapes static\src\css static\src\img static\src\js static\src\scss static\src\snippets tests views wizards
+mkdir controllers,data,models,reports,security,
+static\description,static\fonts,static\shapes,
+static\src\css,static\src\img,static\src\js,static\src\scss,static\src\snippets,
+tests,views,wizards
 
-type nul > __init__.py
-type nul > __manifest__.py
-type nul > controllers\__init__.py
-type nul > models\__init__.py
+type nul > **init**.py
+type nul > **manifest**.py
+type nul > controllers\_\_init**.py
+type nul > models\_\_init**.py
 type nul > security\ir.model.access.csv
-type nul > tests\__init__.py
-type nul > wizards\__init__.py
-
+type nul > tests\_\_init**.py
+type nul > wizards\_\_init**.py
 
 Phân tích câu lệnh của bạn: python odoo\odoo-bin -c odoo\odoo.conf --dev=all
 python odoo\odoo-bin: Đây là lệnh cốt lõi để khởi chạy máy chủ Odoo.
@@ -36,7 +38,7 @@ Danh sách các lệnh và tham số Terminal phổ biến khác trong Odoo
 Dưới đây là các nhóm lệnh Odoo CLI thường dùng nhất để quản lý module và cơ sở dữ liệu:
 
 1. Nhóm lệnh Quản lý Module và Cơ sở dữ liệu
--d <tên_database> (hoặc --database):
+   -d <tên_database> (hoặc --database):
 
 Ý nghĩa: Chỉ định cơ sở dữ liệu (database) cụ thể mà Odoo sẽ làm việc.
 
@@ -61,20 +63,20 @@ Khi nào dùng: Khi bạn vừa viết xong một module mới và muốn cài n
 Khi nào dùng: Khi bạn có các custom addons lưu ở một thư mục riêng bên ngoài mã nguồn mặc định của Odoo.
 
 2. Nhóm lệnh Mạng và Máy chủ
--p <cổng> (hoặc --http-port):
+   -p <cổng> (hoặc --http-port):
 
 Ý nghĩa: Đổi cổng HTTP mà Odoo sẽ lắng nghe (Mặc định là 8069).
 
 Khi nào dùng: Khi bạn muốn chạy song song 2 phiên bản Odoo trên cùng một máy tính, bạn cần đổi cổng (ví dụ: -p 8070) để tránh xung đột.
 
 3. Nhóm công cụ hỗ trợ Lập trình (Sub-commands)
-Bên cạnh việc khởi chạy server thông thường, odoo-bin có tích hợp sẵn một số lệnh công cụ:
+   Bên cạnh việc khởi chạy server thông thường, odoo-bin có tích hợp sẵn một số lệnh công cụ:
 
-scaffold <tên_module> <thư_mục_đích>:
+scaffold <tên*module> <thư_mục*đích>:
 
 Ý nghĩa: Tự động sinh ra cấu trúc thư mục tiêu chuẩn (boilerplate/skeleton) cho một module Odoo mới.
 
-Khi nào dùng: Khi bạn cần tạo nhanh một ứng dụng mới, lệnh này sẽ tạo sẵn các thư mục models, views, controllers cùng các tệp __manifest__.py cơ bản, giúp tiết kiệm thời gian thay vì tạo thủ công. Ví dụ: python odoo-bin scaffold my_custom_theme custom_addons/.
+Khi nào dùng: Khi bạn cần tạo nhanh một ứng dụng mới, lệnh này sẽ tạo sẵn các thư mục models, views, controllers cùng các tệp **manifest**.py cơ bản, giúp tiết kiệm thời gian thay vì tạo thủ công. Ví dụ: python odoo-bin scaffold my_custom_theme custom_addons/.
 
 shell:
 

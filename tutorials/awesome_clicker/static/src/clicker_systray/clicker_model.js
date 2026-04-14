@@ -37,6 +37,11 @@ export class ClickerModel extends Reactive {
         this.checkLevelUp();
     }
 
+    increment(amount) {
+        // Alias cho rewards/logic theo tutorial
+        this.onclick(amount);
+    }
+
     buyClickBot() {
         if (this.count >= 1000) {
             this.count -= 1000;
