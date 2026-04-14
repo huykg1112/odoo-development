@@ -1,5 +1,6 @@
-$o-website-values-palettes: (
-   (
+$o-website-values-palettes: append(
+    if(type-of($o-website-values-palettes) == 'list', $o-website-values-palettes, ()),
+    (
         // Templates
         'header-template': 'odoo_website_theme',
         'footer-template': 'odoo_website_theme',
@@ -21,7 +22,7 @@ $o-website-values-palettes: (
         'btn-font-size-lg': 1.125rem,
         'btn-secondary-outline': true,
         // ...
-   ),
+    )
 );
 // Fonts
 $o-theme-font-configs: (
@@ -44,7 +45,8 @@ $o-theme-font-configs: (
     ),
 );
 // Colors
-$o-color-palettes: map-merge($o-color-palettes,
+$o-color-palettes: map-merge(
+    if(type-of($o-color-palettes) == 'map', $o-color-palettes, ()),
     (
         'odoo_website_theme': (
             'o-color-1': #CEF8A1,
@@ -63,13 +65,20 @@ $o-color-palettes: map-merge($o-color-palettes,
         ),
     )
 );
-$o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'airproof');
+$o-selected-color-palettes-names: append(
+    $o-selected-color-palettes-names,
+    'odoo_website_theme'
+);
 
 // Shapes
-$o-bg-shapes: map-merge($o-bg-shapes,
+$o-bg-shapes: map-merge(
+    if(type-of($o-bg-shapes) == 'map', $o-bg-shapes, ()),
     (
         'illustration': map-merge(
-            map-get($o-bg-shapes, 'illustration') or (),
+            map-get(
+                if(type-of($o-bg-shapes) == 'map', $o-bg-shapes, ()),
+                'illustration'
+            ) or (),
             (
                 'airproof/waves': ('position': left bottom, 'size': 100% auto, 'colors': (1), 'repeat-y': false),
             ),

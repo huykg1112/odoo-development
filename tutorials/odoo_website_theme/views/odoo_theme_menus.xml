@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_odoo_website_theme_home" model="ir.actions.act_url">
+        <field name="name">Website Theme</field>
+        <field name="target">self</field>
+        <field name="url">/website_theme</field>
+    </record>
+
+    <!-- main menu -->
+    <menuitem
+        id="menu_odoo_website_theme_root"
+        name="Odoo Website Theme"
+        sequence="1"
+        action="action_odoo_website_theme_home"
+        web_icon="odoo_website_theme,static/description/icon.png"/>
+</odoo>
