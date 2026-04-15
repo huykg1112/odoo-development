@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ============================================================ -->
+    <!-- PRESETS - Phòng Khám Hoàn Hảo                                -->
+    <!-- ============================================================ -->
+    <!-- Chỉ bật/tắt các optional views CHẮC CHẮN tồn tại.           -->
+    <!-- KHÔNG tắt template_header_default vì Airproof cũng cần nó,  -->
+    <!-- việc tắt ở đây gây xung đột khi 2 theme cùng cài.           -->
+    <!-- ============================================================ -->
+
+    <!-- Tắt nút CTA mặc định (ta tự tạo nút "Đặt lịch khám" riêng) -->
+    <record id="website.header_call_to_action" model="ir.ui.view">
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

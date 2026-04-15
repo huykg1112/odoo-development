@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ============================================================ -->
+    <!-- HEADER - Phòng Khám Hoàn Hảo                                -->
+    <!-- ============================================================ -->
+    <!-- Cấu trúc header 2 tầng:                                     -->
+    <!--   Tầng 1 (Top bar): Nền xanh đậm #005959, chứa thông tin   -->
+    <!--     liên hệ: email, giờ làm việc, số điện thoại             -->
+    <!--   Tầng 2 (Main nav): Nền trắng, chứa logo, menu chính,     -->
+    <!--     icon tìm kiếm, tài khoản, nút CTA "Đặt lịch khám"     -->
+    <!-- ============================================================ -->
+
+    <!-- Thêm option header vào Website Builder -->
+    <!-- Khi vào Website Builder > Customize > Header, sẽ thấy tuỳ chọn "Hoàn Hảo" -->
+    <template id="template_header_opt" inherit_id="website.snippet_options"
+        name="Hoàn Hảo Header Template - Option">
+        <xpath expr="//we-select[@data-variable='header-template']" position="inside">
+            <we-button title="Hoàn Hảo"
+                data-customize-website-views="odoo_website_theme.header"
+                data-customize-website-variable="'odoo_website_theme'"
+                data-img="/odoo_website_theme/static/description/icon.png" />
+        </xpath>
+    </template>
+
+    <!-- Custom Header View -->
+    <!-- inherit_id="website.layout" → Kế thừa layout chính của Odoo -->
+    <!-- mode="extension" → Mở rộng thêm (không thay thế hoàn toàn) -->
+    <record id="header" model="ir.ui.view">
+        <field name="name">Hoàn Hảo header</field>
+        <field name="type">qweb</field>
+        <field name="active" eval="False" />
+        <field name="key">odoo_website_theme.header</field>
+        <field name="inherit_id" ref="website.layout" />
+        <field name="mode">extension</field>
+        <field name="arch" type="xml">
+            <!-- Thay thế toàn bộ thẻ <nav> mặc định trong <header> -->
+            <xpath expr="//header//nav" position="replace">
+                <!-- t-call="website.navbar" gọi khung navbar chuẩn của Odoo -->
+                <!-- Khung này đã có sẵn cơ chế responsive, sticky, edit mode -->
+                <t t-call="website.navbar">
+                    <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0" />
+                    <div id="o_main_nav" class="o_main_nav flex-wrap">
+
+                        <!-- ========================================= -->
+                        <!-- TẦNG 1: TOP BAR (Xanh đậm)               -->
+                        <!-- ========================================= -->
+                        <!-- Class o_header_hide_on_scroll: Odoo tự ẩn phần này -->
+                        <!-- khi người dùng cuộn trang xuống để tiết kiệm không gian -->
+                        <div aria-label="Top" class="o_header_hide_on_scroll">
+                            <div class="o_top_bar_hoanhao">
+                                <div
+                                    class="container d-flex justify-content-between align-items-center">
+                                    <!-- Bên trái: Email -->
+                                    <div class="d-flex align-items-center">
+                                        <span>
+                                            <i class="fa fa-envelope"></i>
+                                            <a href="mailto:hoanhao@health.com">hoanhao@health.com</a>
+                                        </span>
+                                        <!-- Divider dọc phân cách -->
+                                        <span class="top-bar-divider d-none d-md-inline-block"></span>
+                                        <!-- Giữa: Giờ làm việc -->
+                                        <span class="d-none d-md-inline">
+                                            <i class="fa fa-clock-o"></i> Thứ 2 - Thứ 7: 7:00 –
+                                            12:00 | 13:30 – 17:00 </span>
+                                    </div>
+                                    <!-- Bên phải: Số điện thoại -->
+                                    <div class="d-flex align-items-center">
+                                        <span>
+                                            <i class="fa fa-phone"></i>
+                                            <a href="tel:19002115">19002115</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ========================================= -->
+                        <!-- TẦNG 2: MAIN NAV (Nền trắng)             -->
+                        <!-- ========================================= -->
+                        <div aria-label="Bottom" class="o_main_nav_hoanhao">
+                            <div
+                                class="container d-flex align-items-center justify-content-between w-100">
+
+                                <!-- Logo (bên trái) -->
+                                <!-- t-call="website.placeholder_header_brand" gọi component logo -->
+                                <!-- Odoo quản lý logo qua Settings > Website > Logo -->
+                                <t t-call="website.placeholder_header_brand">
+                                    <t t-set="_link_class" t-valuef="navbar-brand me-3" />
+                                </t>
+
+                                <!-- Menu chính (giữa) -->
+                                <!-- t-call="website.navbar_nav" gọi component render menu -->
+                                <!-- t-foreach duyệt qua các menu con (child_id) của menu gốc -->
+                                <t t-call="website.navbar_nav">
+                                    <t t-set="_nav_class" t-valuef="mx-auto" />
+                                    <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                        <t t-call="website.submenu">
+                                            <t t-set="item_class" t-valuef="nav-item" />
+                                            <t t-set="link_class" t-valuef="nav-link" />
+                                        </t>
+                                    </t>
+                                </t>
+
+                                <!-- Bên phải: Search, Account, CTA -->
+                                <ul class="navbar-nav align-items-center gap-2 ms-auto">
+                                    <!-- Icon Tìm kiếm -->
+                                    <li class="nav-item">
+                                        <t t-call="website.placeholder_header_search_box"
+                                            t-nocache="The searchbox should not cache previous searches.">
+                                            <t t-set="_input_classes"
+                                                t-valuef="ps-3 pb-0 o_small bg-white border-bottom rounded-0" />
+                                            <t t-set="_submit_classes" t-valuef="pe-2" />
+                                        </t>
+                                    </li>
+
+                                    <!-- Tài khoản (Icon user + text) -->
+                                    <!-- t-call="portal.placeholder_user_sign_in": Hiện nút Sign In
+                                    khi chưa login -->
+                                    <!-- t-call="portal.user_dropdown": Hiện dropdown khi đã login -->
+                                    <t t-call="portal.placeholder_user_sign_in">
+                                        <t t-set="_link_class" t-valuef="header-account-link" />
+                                    </t>
+                                    <t t-call="portal.user_dropdown">
+                                        <t t-set="_user_name" t-value="true" />
+                                        <t t-set="_icon" t-value="true" />
+                                        <t t-set="_item_class" t-valuef="dropdown" />
+                                        <t t-set="_link_class" t-valuef="header-account-link" />
+                                        <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end" />
+                                    </t>
+
+                                    <!-- Nút CTA: Đặt lịch khám -->
+                                    <li class="nav-item ms-2">
+                                        <a href="/dat-lich-kham" class="btn btn-hoanhao-cta">
+                                            Đặt lịch khám
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </t>
+                <!-- Gọi header mobile mặc định của Odoo cho thiết bị di động -->
+                <t t-call="website.template_header_mobile" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,40 +1,41 @@
-// Typography
-$h1-font-size: 3.125rem !default;
-$h2-font-size: 2.5rem !default;
-$h3-font-size: 2rem !default;
-$h4-font-size: 1.75rem !default;
-$h5-font-size: 1.5rem !default;
-$h6-font-size: 1.25rem !default;
-$display-font-sizes: (
-  1: 6.25rem,
-  2: 4.5rem,
-  3: 4rem,
-  4: 3.5rem,
-  5: 3rem,
-  6: 2.5rem
-);
+// ============================================================
+// BOOTSTRAP OVERRIDES - Phòng Khám Hoàn Hảo
+// ============================================================
+// File được load với 'prepend' vào bundle `web._assets_frontend_helpers`.
+// Các biến ở đây đè lên mặc định Bootstrap.
+// QUAN TRỌNG: Dùng màu hex trực tiếp, KHÔNG dùng o-color() ở đây
+// vì palette có thể chưa được resolve tại thời điểm compile.
+// ============================================================
 
-$headings-font-weight: 700 !default;
-$font-weight-normal: 400 !default;
+// Typography
+$h1-font-size:             2.75rem   !default;
+$h2-font-size:             2.25rem   !default;
+$h3-font-size:             1.875rem  !default;
+$h4-font-size:             1.5rem    !default;
+$h5-font-size:             1.25rem   !default;
+$h6-font-size:             1.125rem  !default;
+
+$headings-font-weight:     700       !default;
+$font-weight-normal:       400       !default;
 
 // Buttons + Forms
-$input-border-radius: 10px !default;
-$input-border-color: o-color('black') !default;
-$input-border-width: 1px !default;
-$form-check-input-checked-color: o-color('black') !default;
-$form-check-radio-checked-bg-image: url("data:image/svg+xml,%3csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3e%3cpath  fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") !default;
+$input-border-radius:      8px       !default;
+$input-border-width:       1px       !default;
 
-// Borders
-$btn-border-radius-lg: 0 10px 10px 10px !default;
-$border-radius: 20px !default;
+// Borders - Bo tròn kiểu y tế mềm mại
+$btn-border-radius:        20px      !default;
+$btn-border-radius-lg:     24px      !default;
+$btn-border-radius-sm:     16px      !default;
+$border-radius:            12px      !default;
 
 // Navigation
-$navbar-light-color: o-color('o-color-5') !default;
-$navbar-light-active-color: o-color('o-color-5') !default;
-$navbar-light-hover-color: o-color('o-color-5') !default;
-$navbar-light-disabled-color: rgba(o-color('o-color-5'), .5) !default;
-$navbar-padding-y: 1.4rem !default;
-$navbar-nav-link-padding-x: 1rem !default;
+// Dùng hex trực tiếp thay vì o-color() để tránh lỗi compile
+$navbar-light-color:             #005959 !default;  // Dark Teal
+$navbar-light-active-color:      #005959 !default;  // Dark Teal
+$navbar-light-hover-color:       #60C3AC !default;  // Mint Green
+$navbar-light-disabled-color:    rgba(0, 89, 89, 0.5) !default;
+$navbar-padding-y:               0       !default;
+$navbar-nav-link-padding-x:      1rem    !default;
 
 // Breadcrumb
 $breadcrumb-divider: quote("\f105") !default;

@@ -1,13 +1,5 @@
-@font-face {
-    font-family: "Roboto-Bold", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    src: url('/fonts/Roboto-Bold.woff') format('woff'),
-}
-
-@font-face {
-    font-family: "Roboto-Regular", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    src: url('/fonts/Roboto-Regular.woff') format('woff'),
-}
+// ============================================================
+// FONTS - Phòng Khám Hoàn Hảo
+// ============================================================
+// Google Fonts: Roboto
+// Note: Do not use @import url(...) with '&' character here as it breaks Odoo's SCSS compiler.

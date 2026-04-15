@@ -1,0 +1,186 @@
+# Giải thích file data/images.xml (line-by-line)
+
+Nguồn: data/images.xml
+
+## Giải thích theo dòng
+- L1: Khai báo XML và encoding UTF-8.
+- L2: Mở thẻ gốc `odoo`.
+- L3: Comment nhóm Branding.
+- L4: Comment mô tả logo.
+- L5: Record `logo` tạo attachment cho logo.
+- L6: Tên hiển thị của logo.
+- L7: `datas` đọc file logo SVG.
+- L8: `res_model` gắn với `ir.ui.view` để dùng trong web.
+- L9: `public=True` cho phép truy cập public.
+- L10: Kết thúc record logo.
+- L11: Comment nhóm ICONS.
+- L12: Record icon mũi tên trắng.
+- L13: Tên icon.
+- L14: File nguồn arrow-white.svg.
+- L15: `res_model=ir.ui.view`.
+- L16: `public=True`.
+- L17: Kết thúc record.
+- L18: Record icon glasses.
+- L19: Tên icon.
+- L20: File glasses.svg.
+- L21: `res_model=ir.ui.view`.
+- L22: `public=True`.
+- L23: Kết thúc record.
+- L24: Record icon 4K.
+- L25: Tên icon.
+- L26: File 4k.svg.
+- L27: `res_model=ir.ui.view`.
+- L28: `public=True`.
+- L29: Kết thúc record.
+- L30: Record icon hand-drone.
+- L31: Tên icon.
+- L32: File hand-drone.svg.
+- L33: `res_model=ir.ui.view`.
+- L34: `public=True`.
+- L35: Kết thúc record.
+- L36: Record icon control.
+- L37: Tên icon.
+- L38: File control.svg.
+- L39: `res_model=ir.ui.view`.
+- L40: `public=True`.
+- L41: Kết thúc record.
+- L42: Record icon shopping.
+- L43: Tên icon.
+- L44: File shopping.svg.
+- L45: `res_model=ir.ui.view`.
+- L46: `public=True`.
+- L47: Kết thúc record.
+- L48: Record icon phone.
+- L49: Tên icon.
+- L50: File phone.svg.
+- L51: `res_model=ir.ui.view`.
+- L52: `public=True`.
+- L53: Kết thúc record.
+- L54: Record icon envelop.
+- L55: Tên icon.
+- L56: File envelop.svg.
+- L57: `res_model=ir.ui.view`.
+- L58: `public=True`.
+- L59: Kết thúc record.
+- L60: Record icon arrow.
+- L61: Tên icon.
+- L62: File arrow.svg.
+- L63: `res_model=ir.ui.view`.
+- L64: `public=True`.
+- L65: Kết thúc record.
+- L66: Record icon arrow-small.
+- L67: Tên icon.
+- L68: File arrow-small.svg.
+- L69: `res_model=ir.ui.view`.
+- L70: `public=True`.
+- L71: Kết thúc record.
+- L72: Record icon check.
+- L73: Tên icon.
+- L74: File check.svg.
+- L75: `res_model=ir.ui.view`.
+- L76: `public=True`.
+- L77: Kết thúc record.
+- L78: Record icon phone-black.
+- L79: Tên icon.
+- L80: File phone-black.svg.
+- L81: `res_model=ir.ui.view`.
+- L82: `public=True`.
+- L83: Kết thúc record.
+- L84: Record icon envelop-black.
+- L85: Tên icon.
+- L86: File envelop-black.svg.
+- L87: `res_model=ir.ui.view`.
+- L88: `public=True`.
+- L89: Kết thúc record.
+- L90: Comment nhóm MEGA-MENU.
+- L91: Record ảnh Airproof Mini.
+- L92: Tên ảnh.
+- L93: File airproof-mini.webp.
+- L94: `res_model=ir.ui.view`.
+- L95: `public=True`.
+- L96: Kết thúc record.
+- L97: Record ảnh Airproof Pro.
+- L98: Tên ảnh.
+- L99: File airproof-pro.webp.
+- L100: `res_model=ir.ui.view`.
+- L101: `public=True`.
+- L102: Kết thúc record.
+- L103: Record ảnh Airproof Robin.
+- L104: Tên ảnh.
+- L105: File airproof-robin.webp.
+- L106: `res_model=ir.ui.view`.
+- L107: `public=True`.
+- L108: Kết thúc record.
+- L109: Record ảnh Airproof Falcon.
+- L110: Tên ảnh.
+- L111: File airproof-falcon.webp.
+- L112: `res_model=ir.ui.view`.
+- L113: `public=True`.
+- L114: Kết thúc record.
+- L115: Record ảnh Airproof Eagle.
+- L116: Tên ảnh.
+- L117: File airproof-eagle.webp.
+- L118: `res_model=ir.ui.view`.
+- L119: `public=True`.
+- L120: Kết thúc record.
+- L121: Comment nhóm HOMEPAGE.
+- L122: Comment thêm ảnh cho homepage.
+- L123: Record ảnh accessories.
+- L124: Tên ảnh.
+- L125: File accessories.webp.
+- L126: `res_model=ir.ui.view`.
+- L127: `public=True`.
+- L128: Kết thúc record.
+- L129: Record ảnh drone-robin.
+- L130: Tên ảnh.
+- L131: File drone-robin.webp.
+- L132: `res_model=ir.ui.view`.
+- L133: `public=True`.
+- L134: Kết thúc record.
+- L135: Record ảnh school.
+- L136: Tên ảnh.
+- L137: File school.webp.
+- L138: `res_model=ir.ui.view`.
+- L139: `public=True`.
+- L140: Kết thúc record.
+- L141: Record ảnh drone-flying.
+- L142: Tên ảnh.
+- L143: File drone-flying.webp.
+- L144: `res_model=ir.ui.view`.
+- L145: `public=True`.
+- L146: Kết thúc record.
+- L147: Comment nhóm CONTACT PAGE.
+- L148: Record ảnh topview.
+- L149: Tên ảnh.
+- L150: File topview.webp.
+- L151: `res_model=ir.ui.view`.
+- L152: `public=True`.
+- L153: Kết thúc record.
+- L154: Comment nhóm SHOP PAGE.
+- L155: Record ảnh topview3.
+- L156: Tên ảnh.
+- L157: File topview3.webp.
+- L158: `res_model=ir.ui.view`.
+- L159: `public=True`.
+- L160: Kết thúc record.
+- L161: Comment nhóm PRODUCT PAGE.
+- L162: Record ảnh drone-bluebg.
+- L163: Tên ảnh.
+- L164: File drone-bluebg.webp.
+- L165: `res_model=ir.ui.view`.
+- L166: `public=True`.
+- L167: Kết thúc record.
+- L168: Comment nhóm SNIPPET CAROUSSEL.
+- L169: Record ảnh sticker.
+- L170: Tên ảnh.
+- L171: File sticker.webp.
+- L172: `res_model=ir.ui.view`.
+- L173: `public=True`.
+- L174: Kết thúc record.
+- L175: Record ảnh drone snippet.
+- L176: Tên ảnh.
+- L177: File drone.webp.
+- L178: `res_model=ir.ui.view`.
+- L179: `public=True`.
+- L180: Kết thúc record.
+- L181: Đóng thẻ `odoo`.

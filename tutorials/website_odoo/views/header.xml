@@ -2,7 +2,7 @@
 <odoo>
     
     <template id="custom_header" inherit_id="website.layout" name="Website Odoo Training Ribbon">
-        <xpath expr="//header//nav" position="replace">
+        <xpath expr="//header" position="replace">
             <header class="fixed-top w-100 bg-white bg-opacity-75 shadow-sm"
                 style="backdrop-filter: blur(10px); z-index: 1050;">
                 <div class="container d-flex align-items-center justify-content-between"

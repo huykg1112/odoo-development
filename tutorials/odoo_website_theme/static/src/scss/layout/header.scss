@@ -1,0 +1,157 @@
+// ============================================================
+// HEADER STYLES - Phòng Khám Hoàn Hảo
+// ============================================================
+// Header gồm 2 phần:
+//   1. Top bar (xanh đậm #005959): Email, giờ làm việc, SĐT
+//   2. Main nav (trắng): Logo, menu, tìm kiếm, tài khoản, CTA
+
+#wrapwrap {
+
+    // === TOP BAR (Thanh thông tin phía trên) ===
+    .o_top_bar_hoanhao {
+        background-color: #005959;
+        color: #FFFFFF;
+        font-size: 0.8125rem;      // 13px - nhỏ gọn
+        padding: 6px 0;
+        border-bottom: 2px solid #FEBE10;  // Viền vàng phân cách
+
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+            &:hover {
+                color: #FEBE10;   // Hover chuyển vàng
+            }
+        }
+
+        .fa {
+            margin-right: 6px;
+            color: #FEBE10;        // Icon vàng nổi bật
+        }
+
+        .top-bar-divider {
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            height: 20px;
+            margin: 0 16px;
+        }
+    }
+
+    // === MAIN NAV (Thanh điều hướng chính) ===
+    .o_main_nav_hoanhao {
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 0;
+
+        // Logo container
+        .navbar-brand {
+            padding: 8px 0;
+            margin-right: 2rem;
+
+            img {
+                max-height: 50px;
+                width: auto;
+            }
+        }
+
+        // Menu items
+        .navbar-nav .nav-link {
+            color: #333333;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 16px 14px;
+            position: relative;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: #005959;
+            }
+
+            &.active {
+                color: #005959;
+                font-weight: 700;
+
+                // Gạch chân xanh đậm khi active
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 14px;
+                    right: 14px;
+                    height: 3px;
+                    background-color: #005959;
+                    border-radius: 2px 2px 0 0;
+                }
+            }
+        }
+
+        // Dropdown arrow
+        .dropdown-toggle::after {
+            vertical-align: middle;
+            margin-left: 4px;
+            border-top-color: #333333;
+        }
+    }
+
+    // === CTA BUTTON (Nút "Đặt lịch khám") ===
+    .btn-hoanhao-cta {
+        background-color: #005959;
+        color: #FFFFFF;
+        border: 2px solid #005959;
+        border-radius: 20px;
+        padding: 8px 20px;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: #60C3AC;
+            border-color: #60C3AC;
+            color: #FFFFFF;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 89, 89, 0.3);
+        }
+    }
+
+    // === SEARCH ICON ===
+    .header-search-icon {
+        color: #333333;
+        font-size: 1rem;
+        padding: 8px;
+        cursor: pointer;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: #005959;
+        }
+    }
+
+    // === ACCOUNT LINK ===
+    .header-account-link {
+        color: #333333;
+        font-size: 0.8125rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 8px;
+        transition: color 0.2s ease;
+
+        .fa {
+            font-size: 1rem;
+        }
+
+        &:hover {
+            color: #005959;
+        }
+    }
+
+    // === STICKY header behavior ===
+    header.o_header_standard {
+        &.o_header_is_scrolled {
+            .o_top_bar_hoanhao {
+                // Khi cuộn trang xuống, ẩn top bar cho gọn
+                display: none !important;
+            }
+        }
+    }
+}

@@ -3,7 +3,7 @@
     <record id="action_odoo_website_theme_home" model="ir.actions.act_url">
         <field name="name">Website Theme</field>
         <field name="target">self</field>
-        <field name="url">/website_theme</field>
+        <!-- <field name="url">/website_theme</field> -->
     </record>
 
     <!-- main menu -->

@@ -1,0 +1,117 @@
+# Giải thích file data/menu.xml (line-by-line)
+
+Nguồn: data/menu.xml
+
+## Giải thích theo dòng
+- L1: Khai báo XML và encoding UTF-8.
+- L2: Mở thẻ `odoo`, `noupdate=1`.
+- L3: Comment xóa menu Home mặc định.
+- L4: Lệnh `delete` xóa menu có url `/` cho website id 1.
+- L5: Comment xóa menu Blog mặc định.
+- L6: Xóa menu có url `/blog`.
+- L7: Comment xóa menu Shop mặc định.
+- L8: Xóa menu có url `/shop`.
+- L9: Comment xóa menu Contact us mặc định.
+- L10: Xóa menu có url `/contactus`.
+- L11: Comment menu Mega Menu cho drones.
+- L12: Bắt đầu record `menu_drones`.
+- L13: `is_mega_menu=True` để menu hiển thị mega-menu.
+- L14: Tên menu.
+- L15: `parent_id` tìm menu gốc `/default-main-menu` của website 1.
+- L16: Dòng điều kiện tìm parent.
+- L17: Dòng kết thúc domain search.
+- L18: Gán `website_id=1`.
+- L19: `sequence=10` thứ tự menu.
+- L20: Bắt đầu field `mega_menu_content` dạng HTML.
+- L21: Section mega-menu và màu nền.
+- L22: Container Bootstrap.
+- L23: Row chứa các item.
+- L24: Cột item 1 (Airproof Mini) bắt đầu.
+- L25: Link tới sản phẩm và class nav-link.
+- L26: Ảnh sản phẩm từ `ir.attachment`.
+- L27: Khối nội dung text.
+- L28: Tên sản phẩm dạng đậm.
+- L29: Kết thúc div text.
+- L30: Kết thúc link.
+- L31: Kết thúc cột item 1.
+- L32: Cột item 2 (Airproof Pro) bắt đầu.
+- L33: Link tới sản phẩm Pro.
+- L34: Ảnh sản phẩm Pro.
+- L35: Khối text.
+- L36: Tên sản phẩm.
+- L37: Kết thúc div text.
+- L38: Kết thúc link.
+- L39: Kết thúc cột item 2.
+- L40: Cột item 3 (Airproof Robin) bắt đầu.
+- L41: Link tới sản phẩm Robin.
+- L42: Ảnh sản phẩm Robin.
+- L43: Khối text.
+- L44: Tên sản phẩm.
+- L45: Kết thúc div text.
+- L46: Kết thúc link.
+- L47: Kết thúc cột item 3.
+- L48: Cột item 4 (Airproof Falcon) bắt đầu.
+- L49: Link tới sản phẩm Falcon.
+- L50: Ảnh sản phẩm Falcon.
+- L51: Khối text.
+- L52: Tên sản phẩm.
+- L53: Kết thúc div text.
+- L54: Kết thúc link.
+- L55: Kết thúc cột item 4.
+- L56: Cột item 5 (Airproof Eagle) bắt đầu.
+- L57: Link tới sản phẩm Eagle.
+- L58: Ảnh sản phẩm Eagle.
+- L59: Khối text.
+- L60: Tên sản phẩm.
+- L61: Kết thúc div text.
+- L62: Kết thúc link.
+- L63: Kết thúc cột item 5.
+- L64: Kết thúc row.
+- L65: Kết thúc container.
+- L66: Kết thúc section mega-menu.
+- L67: Kết thúc field `mega_menu_content`.
+- L68: Kết thúc record `menu_drones`.
+- L69: Comment menu About us.
+- L70: Bắt đầu record `menu_about`.
+- L71: Tên menu.
+- L72: URL trang About us.
+- L73: `website_id=1`.
+- L74: `parent_id` tìm menu gốc.
+- L75: Dòng điều kiện tìm parent.
+- L76: Kết thúc domain.
+- L77: `sequence=20`.
+- L78: Kết thúc record.
+- L79: Comment menu Blog dạng dropdown.
+- L80: Bắt đầu record `menu_blog`.
+- L81: Tên menu.
+- L82: `parent_id` tìm menu gốc.
+- L83: Dòng điều kiện.
+- L84: Kết thúc domain.
+- L85: `website_id=1`.
+- L86: `sequence=30`.
+- L87: Kết thúc record `menu_blog`.
+- L88: Bắt đầu submenu `menu_blog_item_1`.
+- L89: Tên submenu.
+- L90: URL blog cụ thể.
+- L91: `website_id=1`.
+- L92: `parent_id` ref tới `menu_blog`.
+- L93: `sequence=31`.
+- L94: Kết thúc record.
+- L95: Bắt đầu submenu `menu_blog_item_2`.
+- L96: Tên submenu.
+- L97: URL blog Tutorials.
+- L98: `website_id=1`.
+- L99: `parent_id` ref tới `menu_blog`.
+- L100: `sequence=32`.
+- L101: Kết thúc record.
+- L102: Comment menu Contact us.
+- L103: Bắt đầu record `menu_contact`.
+- L104: Tên menu.
+- L105: URL contact.
+- L106: `website_id=1`.
+- L107: `parent_id` tìm menu gốc.
+- L108: Dòng điều kiện.
+- L109: Kết thúc domain.
+- L110: `sequence=40`.
+- L111: Kết thúc record.
+- L112: Đóng thẻ `odoo`.

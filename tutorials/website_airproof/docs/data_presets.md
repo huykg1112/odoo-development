@@ -1,0 +1,104 @@
+# Giải thích file data/presets.xml (line-by-line)
+
+Nguồn: data/presets.xml
+
+## Giải thích theo dòng
+- L1: Khai báo XML và encoding UTF-8.
+- L2: Mở thẻ gốc `odoo` cho dữ liệu XML.
+- L3: Comment phân vùng cấu hình HEADER.
+- L4: Comment mô tả việc tắt nút CTA trong header.
+- L5: Bắt đầu record cập nhật view `website.header_call_to_action`.
+- L6: Đặt `active=False` để tắt view.
+- L7: Kết thúc record CTA.
+- L8: Comment tắt header mặc định.
+- L9: Record cho `website.template_header_default`.
+- L10: Đặt `active=False`.
+- L11: Kết thúc record.
+- L12: Comment tắt text element trong header.
+- L13: Record cho `website.header_text_element`.
+- L14: Đặt `active=False`.
+- L15: Kết thúc record.
+- L16: Comment tắt thanh search header.
+- L17: Record `website.header_search_box`.
+- L18: Đặt `active=False`.
+- L19: Kết thúc record.
+- L20: Comment tắt social links header.
+- L21: Record `website.header_social_links`.
+- L22: Đặt `active=False`.
+- L23: Kết thúc record.
+- L24: Comment bật bộ chọn ngôn ngữ.
+- L25: Record `website.header_language_selector`.
+- L26: Đặt `active=True` để bật.
+- L27: Kết thúc record.
+- L28: Comment chỉ hiển thị dạng text cho language selector.
+- L29: Record `website.header_language_selector_flag`.
+- L30: Đặt `active=False` để không hiển thị cờ.
+- L31: Kết thúc record.
+- L32: Comment phân vùng FOOTER.
+- L33: Comment tắt footer mặc định.
+- L34: Record `website.footer_custom`.
+- L35: Đặt `active=False`.
+- L36: Kết thúc record.
+- L37: Comment bật copyright.
+- L38: Record `website.footer_no_copyright`.
+- L39: Đặt `active=False` (không ẩn copyright).
+- L40: Kết thúc record.
+- L41: Comment tắt language selector ở footer.
+- L42: Record `portal.footer_language_selector`.
+- L43: Đặt `active=False`.
+- L44: Kết thúc record.
+- L45: Comment phân vùng SHOP PAGE.
+- L46: Comment tắt wishlist ở trang shop.
+- L47: Record `website_sale_wishlist.add_to_wishlist`.
+- L48: Đặt `active=False`.
+- L49: Kết thúc record.
+- L50: Comment bật danh mục bên trái.
+- L51: Record `website_sale.products_categories`.
+- L52: Đặt `active=True`.
+- L53: Kết thúc record.
+- L54: Comment tắt danh mục phía trên.
+- L55: Record `website_sale.products_categories_top`.
+- L56: Đặt `active=False`.
+- L57: Kết thúc record.
+- L58: Comment bật collapse danh mục.
+- L59: Record `website_sale.option_collapse_products_categories`.
+- L60: Đặt `active=True`.
+- L61: Kết thúc record.
+- L62: Comment tắt collapse recursive (dòng này bị lặp id).
+- L63: Record `website_sale.option_collapse_products_categories` (trùng id).
+- L64: Đặt `active=False` ghi đè lại record trên.
+- L65: Kết thúc record.
+- L66: Comment bật lọc thuộc tính sản phẩm.
+- L67: Record `website_sale.products_attributes`.
+- L68: Đặt `active=True`.
+- L69: Kết thúc record.
+- L70: Comment tắt tuỳ chọn grid/list.
+- L71: Record `website_sale.add_grid_or_list_option`.
+- L72: Đặt `active=False`.
+- L73: Kết thúc record.
+- L74: Comment bật kiểu card cho sản phẩm.
+- L75: Record `website_sale.products_design_card`.
+- L76: Đặt `active=True`.
+- L77: Kết thúc record.
+- L78: Comment phân vùng PRODUCT PAGE.
+- L79: Comment bật wishlist ở trang sản phẩm.
+- L80: Record `website_sale_wishlist.product_add_to_wishlist`.
+- L81: Đặt `active=True`.
+- L82: Kết thúc record.
+- L83: Comment tắt số lượng.
+- L84: Record `website_sale.product_quantity`.
+- L85: Đặt `active=False`.
+- L86: Kết thúc record.
+- L87: Comment tắt Terms and conditions.
+- L88: Record `website_sale.product_custom_text`.
+- L89: Đặt `active=False`.
+- L90: Kết thúc record.
+- L91: Comment tắt share buttons.
+- L92: Record `website_sale.product_share_buttons`.
+- L93: Đặt `active=False`.
+- L94: Kết thúc record.
+- L95: Comment bật more information dạng accordion.
+- L96: Record `website_sale.accordion_more_information`.
+- L97: Đặt `active=True`.
+- L98: Kết thúc record.
+- L99: Đóng thẻ `odoo`.

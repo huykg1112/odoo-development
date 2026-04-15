@@ -1,0 +1,225 @@
+# Giải thích file data/pages/home.xml (line-by-line)
+
+Nguồn: data/pages/home.xml
+
+## Giải thích theo dòng
+- L1: Khai báo XML và encoding UTF-8.
+- L2: Mở thẻ `odoo`, `noupdate=1`.
+- L3: Comment tắt homepage mặc định.
+- L4: Record `website.homepage` (view mặc định).
+- L5: `active=False` để tắt.
+- L6: Kết thúc record.
+- L7: Comment bắt đầu trang Home.
+- L8: Record `page_home` tạo trang website.
+- L9: Tên trang.
+- L10: `is_published=True` xuất bản trang.
+- L11: `key` định danh QWeb template.
+- L12: URL `/` là trang chủ.
+- L13: `type=qweb` dùng QWeb.
+- L14: `header_overlay=True` header phủ lên hero.
+- L15: Bắt đầu nội dung `arch`.
+- L16: Template `t-name` của trang Home.
+- L17: Gọi layout chung `website.layout`.
+- L18: Comment Title.
+- L19: Set `additional_title` cho thẻ `<title>`.
+- L20: Comment Content.
+- L21: Mở `div#wrap` vùng nội dung.
+- L22: Comment carousel custom.
+- L23: Section snippet carousel.
+- L24: Div carousel Bootstrap, interval 10s.
+- L25: Indicators list.
+- L26: Indicator slide 0.
+- L27: Indicator slide 1.
+- L28: Kết thúc indicators.
+- L29: Mở `carousel-inner`.
+- L30: Comment Slide 01.
+- L31: Slide 01 item (active).
+- L32: Container không thể xóa.
+- L33: Row nội dung.
+- L34: Cột text trái.
+- L35: Comment ảnh animation.
+- L36: Ảnh sticker với animation.
+- L37: Comment text animation.
+- L38: Tiêu đề H1.
+- L39: Span dòng 1.
+- L40: Span dòng 2.
+- L41: Span dòng 3.
+- L42: Đóng H1.
+- L43: Đoạn mô tả + animation.
+- L44: Nút CTA đến /shop (dòng mở).
+- L45: Text nút.
+- L46: Icon mũi tên trong nút.
+- L47: Đóng thẻ `a`.
+- L48: Kết thúc cột text.
+- L49: Cột ảnh phải.
+- L50: Comment ảnh animation.
+- L51: Ảnh drone với animation.
+- L52: Wrapper bubble badge.
+- L53: Bubble 1.
+- L54: Dòng text 1.
+- L55: Dòng text 2.
+- L56: Kết thúc bubble 1.
+- L57: Bubble 2.
+- L58: Wrapper rating.
+- L59: Icon sao active.
+- L60: Sao 1.
+- L61: Sao 2.
+- L62: Sao 3.
+- L63: Sao 4.
+- L64: Đóng span active.
+- L65: Span sao inactive.
+- L66: Sao rỗng.
+- L67: Đóng span inactive.
+- L68: Kết thúc rating.
+- L69: Text số review.
+- L70: Kết thúc bubble 2.
+- L71: Kết thúc bubble wrapper.
+- L72: Kết thúc cột ảnh.
+- L73: Kết thúc row.
+- L74: Kết thúc container.
+- L75: Kết thúc slide 01.
+- L76: Comment Slide 02.
+- L77: Slide 02 item.
+- L78: Container.
+- L79: Row.
+- L80: Cột text.
+- L81: Ảnh sticker.
+- L82: Tiêu đề H1 ngắn.
+- L83: Mô tả.
+- L84: Nút CTA (mở).
+- L85: Text nút.
+- L86: Icon mũi tên.
+- L87: Đóng nút.
+- L88: Kết thúc cột text.
+- L89: Cột ảnh.
+- L90: Ảnh drone.
+- L91: Wrapper bubble.
+- L92: Bubble 1.
+- L93: Text dòng 1.
+- L94: Text dòng 2.
+- L95: Kết thúc bubble 1.
+- L96: Bubble 2.
+- L97: Wrapper rating.
+- L98: Span sao active.
+- L99: Sao 1.
+- L100: Sao 2.
+- L101: Sao 3.
+- L102: Sao 4.
+- L103: Đóng span active.
+- L104: Span sao inactive.
+- L105: Sao rỗng.
+- L106: Đóng span inactive.
+- L107: Kết thúc rating.
+- L108: Text số review.
+- L109: Kết thúc bubble 2.
+- L110: Kết thúc bubble wrapper.
+- L111: Kết thúc cột ảnh.
+- L112: Kết thúc row.
+- L113: Kết thúc container.
+- L114: Kết thúc slide 02.
+- L115: Đóng carousel-inner.
+- L116: Đóng carousel.
+- L117: Kết thúc section carousel.
+- L118: Comment 3 big boxes.
+- L119: Wrapper không cho edit.
+- L120: Section s_color_blocks_2.
+- L121: Container.
+- L122: Row.
+- L123: Box lớn 1 (Airproof Robin).
+- L124: Overlay filter.
+- L125: H2 tiêu đề.
+- L126: Mô tả h3.
+- L127: Nút Discover more.
+- L128: Kết thúc box 1.
+- L129: Box 2 (Accessories).
+- L130: Overlay filter.
+- L131: H2 tiêu đề.
+- L132: Mô tả.
+- L133: Link + icon.
+- L134: Kết thúc box 2.
+- L135: Box 3 (Airproof school).
+- L136: Overlay filter.
+- L137: H2 tiêu đề.
+- L138: Mô tả.
+- L139: Link + icon.
+- L140: Kết thúc box 3.
+- L141: Kết thúc row.
+- L142: Kết thúc container.
+- L143: Kết thúc section.
+- L144: Đóng wrapper no-edit.
+- L145: Comment section text + 4 columns.
+- L146: Section s_text_block.
+- L147: Container.
+- L148: Row grid mode.
+- L149: Grid item tiêu đề.
+- L150: H2 tiêu đề.
+- L151: Mô tả paragraph.
+- L152: Kết thúc grid item tiêu đề.
+- L153: Comment animation columns.
+- L154: Cột 1 (Immersive Flight).
+- L155: Icon glasses.
+- L156: H3.
+- L157: Mô tả.
+- L158: Kết thúc cột 1.
+- L159: Cột 2 (4K Video).
+- L160: Icon 4K.
+- L161: H3.
+- L162: Mô tả.
+- L163: Kết thúc cột 2.
+- L164: Cột 3 (Palm-Sized).
+- L165: Icon hand-drone.
+- L166: H3.
+- L167: Mô tả.
+- L168: Kết thúc cột 3.
+- L169: Cột 4 (Intuitive Control).
+- L170: Icon control.
+- L171: H3.
+- L172: Mô tả.
+- L173: Kết thúc cột 4.
+- L174: Kết thúc row grid.
+- L175: Kết thúc container.
+- L176: Kết thúc section text.
+- L177: Comment latest products.
+- L178: Section dynamic snippet products.
+- L179: Container.
+- L180: Row.
+- L181: Title section của dynamic snippet.
+- L182: Div wrapper.
+- L183: H2 tiêu đề.
+- L184: Kết thúc div.
+- L185: Kết thúc title section.
+- L186: Content section cho dynamic snippet.
+- L187: Wrapper hidden when edit.
+- L188: Warning khi thiếu filter/template.
+- L189: Nội dung cảnh báo.
+- L190: Kết thúc warning.
+- L191: Kết thúc wrapper.
+- L192: Placeholder template.
+- L193: Kết thúc content section.
+- L194: Kết thúc row.
+- L195: Kết thúc container.
+- L196: Kết thúc section dynamic snippet.
+- L197: Comment section text-image + shape.
+- L198: Section s_text_image với background và shape.
+- L199: Div shape overlay.
+- L200: Container.
+- L201: Row align-items-center.
+- L202: Cột ảnh trái.
+- L203: Comment ảnh.
+- L204: Ảnh drone flying.
+- L205: Kết thúc cột ảnh.
+- L206: Cột text phải.
+- L207: Span tagline.
+- L208: H2 tiêu đề.
+- L209: Mô tả.
+- L210: Nút Read more + icon.
+- L211: Kết thúc cột text.
+- L212: Kết thúc row.
+- L213: Kết thúc container.
+- L214: Kết thúc section text-image.
+- L215: Đóng div#wrap.
+- L216: Kết thúc t-call layout.
+- L217: Kết thúc template t-name.
+- L218: Kết thúc field arch.
+- L219: Kết thúc record page_home.
+- L220: Đóng thẻ `odoo`.

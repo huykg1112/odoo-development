@@ -1,0 +1,161 @@
+# Giải thích file data/pages/contact.xml (line-by-line)
+
+Nguồn: data/pages/contact.xml
+
+## Giải thích theo dòng
+- L1: Khai báo XML và encoding UTF-8.
+- L2: Mở thẻ `odoo`, `noupdate=1`.
+- L3: Comment tắt contact mặc định.
+- L4: Record `website.contactus`.
+- L5: `active=False` tắt view.
+- L6: Kết thúc record.
+- L7: Comment trang Contact us.
+- L8: Record `page_contact` tạo trang.
+- L9: Tên trang.
+- L10: `is_published=True`.
+- L11: `key` định danh template.
+- L12: URL `/contactus`.
+- L13: `website_id=1`.
+- L14: `type=qweb`.
+- L15: Bắt đầu `arch`.
+- L16: Template t-name.
+- L17: Gọi layout chung.
+- L18: Comment Title.
+- L19: Set `additional_title`.
+- L20: Comment Content.
+- L21: Lấy partner của visitor hiện tại.
+- L22: Khai báo dict `contactus_form_values`.
+- L23: `email_to` lấy từ company.
+- L24: `name` lấy từ params.
+- L25: `phone` lấy từ params.
+- L26: `email_from` lấy từ params.
+- L27: `company` lấy từ params.
+- L28: `subject` lấy từ params.
+- L29: Kết thúc dict.
+- L30: Gắn dict vào data-values cho form.
+- L31: Mở `div#wrap`.
+- L32: Comment Cover.
+- L33: Section title với background image.
+- L34: Overlay màu đen 50%.
+- L35: Container.
+- L36: H1 tiêu đề.
+- L37: Kết thúc container.
+- L38: Kết thúc section cover.
+- L39: Section text block.
+- L40: Container.
+- L41: Row.
+- L42: Cột trái (form).
+- L43: Đoạn giới thiệu.
+- L44: Comment Form.
+- L45: Section s_website_form.
+- L46: Container.
+- L47: Thẻ form và cấu hình submit.
+- L48: Wrapper các dòng form.
+- L49: Comment form fields.
+- L50: Field Name (required).
+- L51: Label name.
+- L52: Text label.
+- L53: Dấu bắt buộc.
+- L54: Kết thúc label.
+- L55: Input name.
+- L56: Kết thúc field.
+- L57: Field Email (required).
+- L58: Label email.
+- L59: Text label.
+- L60: Dấu bắt buộc.
+- L61: Kết thúc label.
+- L62: Input email.
+- L63: Kết thúc field.
+- L64: Field Company.
+- L65: Label company.
+- L66: Text label.
+- L67: Kết thúc label.
+- L68: Input company.
+- L69: Kết thúc field.
+- L70: Field VAT (ẩn theo điều kiện).
+- L71: Label VAT.
+- L72: Text label.
+- L73: Dấu bắt buộc.
+- L74: Kết thúc label.
+- L75: Input VAT.
+- L76: Kết thúc field.
+- L77: Field Message (required).
+- L78: Label message.
+- L79: Text label.
+- L80: Dấu bắt buộc.
+- L81: Kết thúc label.
+- L82: Textarea message.
+- L83: Kết thúc field.
+- L84: Field ẩn email_to.
+- L85: Row wrapper.
+- L86: Label rỗng.
+- L87: Span rỗng.
+- L88: Kết thúc label.
+- L89: Cột input.
+- L90: Input hidden email_to.
+- L91: Mô tả nhỏ.
+- L92: Nội dung mô tả.
+- L93: Kết thúc mô tả.
+- L94: Kết thúc cột.
+- L95: Kết thúc row.
+- L96: Kết thúc field ẩn.
+- L97: Khu vực submit.
+- L98: Label giả để canh lề.
+- L99: Nút Send message.
+- L100: Span kết quả form.
+- L101: Kết thúc submit.
+- L102: Kết thúc rows.
+- L103: Kết thúc form.
+- L104: Comment thank you message.
+- L105: Wrapper message (ẩn).
+- L106: Wrapper structure.
+- L107: Section text block.
+- L108: Container text-center.
+- L109: Icon check.
+- L110: H2 cảm ơn.
+- L111: Paragraph.
+- L112: Dòng 1.
+- L113: Dòng 2 + link về home.
+- L114: Kết thúc paragraph.
+- L115: Kết thúc container.
+- L116: Kết thúc section.
+- L117: Kết thúc wrapper structure.
+- L118: Kết thúc message wrapper.
+- L119: Kết thúc container.
+- L120: Kết thúc section form.
+- L121: Kết thúc cột trái.
+- L122: Comment cột phải + map.
+- L123: Cột phải.
+- L124: H2 Contact details.
+- L125: Dòng địa chỉ (1).
+- L126: Dòng địa chỉ (2).
+- L127: Dòng địa chỉ (3).
+- L128: Kết thúc đoạn địa chỉ.
+- L129: Đoạn điện thoại.
+- L130: Icon phone.
+- L131: Link tel.
+- L132: Kết thúc đoạn.
+- L133: Đoạn email.
+- L134: Icon envelop.
+- L135: Link mailto.
+- L136: Kết thúc đoạn.
+- L137: Section map.
+- L138: Wrapper map.
+- L139: Wrapper hidden info.
+- L140: Warning missing address.
+- L141: Nội dung warning.
+- L142: Kết thúc warning.
+- L143: Kết thúc wrapper hidden.
+- L144: Iframe Google Maps.
+- L145: Kết thúc wrapper map.
+- L146: Kết thúc section map.
+- L147: Kết thúc cột phải.
+- L148: Kết thúc row.
+- L149: Kết thúc container.
+- L150: Kết thúc section text block.
+- L151: Kết thúc div#wrap.
+- L152: Kết thúc t-call.
+- L153: Kết thúc template.
+- L154: Kết thúc field arch.
+- L155: Kết thúc record.
+- L156: Đóng thẻ `odoo`.
