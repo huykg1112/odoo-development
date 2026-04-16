@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_pk_hoan_hao" model="ir.actions.act_url">
+        <field name="name">Phòng Khám Hòan Hảo</field>
+        <field name="url">/</field>
+    </record>
+    <menuitem
+        id="menu_pk_hoan_hao"
+        name="Phòng Khám Hòan Hảo"
+        sequence="1"
+        action="action_pk_hoan_hao"
+        web_icon="odoo_website_theme,static/description/icon.png"/>
+</odoo>

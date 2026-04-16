@@ -1,0 +1,54 @@
+
+
+
+// ✅ CHUẨN ODOO 18
+$o-color-palettes: map-merge($o-color-palettes,
+    (
+        'pk_hoan_hao': (
+            'o-color-1': #005959,
+            'o-color-2': #60C3AC,
+            'o-color-3': #FEBE10,
+            'o-color-4': #F6FBFA,
+            'o-color-5': #94D2BA,
+
+            'o-cc1-btn-secondary': 'o-color-5',
+            'o-cc1-link': 'o-color-5',
+            'o-cc2-btn-primary': 'o-color-4',
+            'o-cc2-h2': 'o-color-4',
+            'o-cc3-btn-primary': 'o-color-5',
+            'o-cc5-link': 'o-color-4',
+            'o-cc5-h6': 'o-color-5',
+
+        ),
+        
+    )
+);
+
+$o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'pk_hoan_hao');
+
+$o-website-values-palettes: (
+   (
+        'menu-gradient': linear-gradient(135deg, #005959 0%, #60C3AC 100%),
+        'header-boxed-gradient': [your-gradient],
+        'footer-gradient': [your-gradient],
+        'copyright-gradient': [your-gradient],
+        'header-template': 'pk_hoan_hao',
+        'footer-template': 'pk_hoan_hao',
+        'color-palettes-name': 'pk_hoan_hao',
+        'btn-border-radius': 0.5rem,
+        'btn-padding-y': 0.7rem,
+        'btn-font-weight': 600,
+        
+        // Forms
+        'input-border-radius': 0.5rem,
+        'input-border-color': #dfe7e5,
+        'input-background-color': #f6fbfa,
+        'input-focus-border-color': #60C3AC,
+        'input-focus-box-shadow': 0 0 0 3px rgba(96, 195, 172, 0.15),
+        // Navbar
+        'navbar-light-color': #005959,
+        'navbar-light-hover-color': darken(#005959, 10%),
+        'btn-padding-x': 1.5rem,
+   ),
+);
+
