@@ -1,0 +1,83 @@
+
+.bg-clinical {
+    background-image: url("https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop");
+    background-size: cover;
+    background-position: center;
+}
+
+.pk-login-card {
+    max-width: 1100px;
+    min-height: 520px;
+    animation: pk-header-slide 0.5s ease-out both;
+}
+
+.pk-login-panel {
+    width: 100%;
+}
+
+.pk-login-panel--logo {
+    position: relative;
+    z-index: 1;
+}
+
+.pk-login-panel--logo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("/pk_hoan_hao/static/description/icon.png");
+    background-repeat: no-repeat;
+    background-position: center 90%;
+    background-size: 80% auto;
+    opacity: 0.4; /* 👈 chỉnh độ mờ ở đây */
+    z-index: -1;
+}
+
+.pk-login-form {
+    width: 100%;
+}
+
+
+.clinical-green {
+    background-color: #00875a;
+}
+
+.pk-login-form .form-control {
+    background-color: #f3f4f6;
+    border: none;
+    padding: 12px 16px;
+}
+
+.pk-login-form .form-control:focus {
+    background-color: #f3f4f6;
+    box-shadow: 0 0 0 3px rgba(0, 135, 90, 0.25);
+}
+
+.pk-login-form .oe_login_form{
+    max-width: 100%;
+    margin: 0;
+}
+.pk-login-form .btn-login:hover,
+.pk-login-form .btn-login:focus,
+.pk-login-form .btn-login:active {
+    background-color: #00704a !important;
+    border-color: #00704a !important;
+}
+
+.pk-login-eye {
+    background: transparent;
+}
+
+.tracking-widest {
+    letter-spacing: 0.12em;
+}
+
+@media (min-width: 768px) {
+    .pk-login-panel {
+        width: 41.6667%;
+    }
+
+    .pk-login-form {
+        width: 58.3333%;
+    }
+}

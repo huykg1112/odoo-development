@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pk_login" inherit_id="web.login" name="PK Login Layout" priority="50">
+        <xpath expr="//t[@t-call='web.login_layout']" position="replace">
+            <t t-call="web.login_layout">
+                <t t-set="no_header" t-value="True"/>
+                <t t-set="no_footer" t-value="True"/>
+                <owl-component t-if="not login" name="web.user_switch"/>
+                <div class="pk-login-page bg-clinical min-vh-100 d-flex align-items-center justify-content-center p-3 p-md-4">
+                    <div class="pk-login-card bg-white rounded-4 shadow-lg overflow-hidden d-flex flex-column flex-md-row w-100">
+                        <div class="pk-login-panel pk-login-panel--logo clinical-green text-white p-5 d-flex flex-column justify-content-between">
+                            <div>
+                                <h1 class="display-6 fw-bold lh-tight mb-4">
+                                    Elevating health to an ethereal standard of care.
+                                </h1>
+                                <p class="text-white-50 fs-6">
+                                    Step into a workspace designed for restorative medicine and patient-centric excellence.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pk-login-form p-5 d-flex flex-column justify-content-center">
+                            <h2 class="h3 fw-bold text-dark mb-2">Welcome Back</h2>
+                            <p class="text-muted mb-5">Please enter your information to log in.</p>
+
+                            <form t-attf-class="oe_login_form #{'' if login else 'd-none'}" role="form" t-attf-action="/web/login" method="post" onsubmit="this.action = '/web/login' + location.hash">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                <div class="mb-3" t-if="databases and len(databases) &gt; 1">
+                                    <label for="db" class="col-form-label">Database</label>
+                                    <div class="input-group">
+                                        <input type="text" name="db" t-att-value="request.db" id="db" class="form-control" required="required" readonly="readonly"/>
+                                        <a role="button" href="/web/database/selector" class="btn btn-secondary">Select <i class="fa fa-database" role="img" aria-label="Database" title="Database"/></a>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4 field-login">
+                                    <label for="login" class="form-label text-uppercase text-secondary fw-bold small tracking-widest mb-2">
+                                        EMAIL OR USERNAME
+                                    </label>
+                                    <input type="text" name="login" t-att-value="login" id="login" class="form-control form-control-lg rounded-3" placeholder="name@clinic.com" required="required" autocapitalize="off" autocomplete="username"/>
+                                </div>
+
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <label for="password" class="form-label text-uppercase text-secondary fw-bold small tracking-widest mb-0">PASSWORD</label>
+                                        <a t-if="reset_password_enabled" class="text-decoration-none small fw-bold text-success" tabindex="1" t-attf-href="/web/reset_password?{{ keep_query() }}">Forgot Password?</a>
+                                    </div>
+                                    <div class="position-relative">
+                                        <input type="password" name="password" id="password" class="form-control form-control-lg rounded-3" placeholder="••••••••" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+                                        <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y me-3 text-muted border-0 pk-login-eye"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="remember" name="remember" value="1"/>
+                                    <label class="form-check-label text-muted" for="remember">Remember me</label>
+                                </div>
+
+                                <p class="alert alert-danger" t-if="error" role="alert">
+                                    <t t-esc="error"/>
+                                </p>
+                                <p class="alert alert-success" t-if="message" role="status">
+                                    <t t-esc="message"/>
+                                </p>
+
+                                <div class="oe_login_buttons d-grid mb-1 pt-2">
+                                    <button type="submit" class="btn btn-login clinical-green text-white w-100 py-3 fw-semibold rounded-3 shadow-sm fs-5">Log in</button>
+                                    <t t-if="debug">
+                                        <button type="submit" name="redirect" value="/web/become" class="btn btn-link btn-sm">Log in as superuser</button>
+                                    </t>
+                                    <div class="o_login_auth"/>
+                                </div>
+
+                                <input type="hidden" name="type" value="password"/>
+                                <input type="hidden" name="redirect" t-att-value="redirect"/>
+
+                                <p class="text-center text-muted mt-4 mb-0">
+                                    Don't have an account?
+                                    <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}" class="text-success fw-bold text-decoration-none">Sign up now!</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

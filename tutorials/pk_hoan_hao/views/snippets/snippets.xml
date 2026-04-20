@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="snippets_pk_badge" inherit_id="website.snippets" name="PK Badge Snippet">
+        <xpath expr="//snippets[@id='snippet_content']" position="inside">
+            <t t-snippet="pk_hoan_hao.s_pk_badge" string="PK Badge"/>
+        </xpath>
+    </template>
+</odoo>

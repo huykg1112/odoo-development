@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Phòng Khám Hoàn Hảo</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-clinical {
+            background-image: url('https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .clinical-green {
+            background-color: #00875A;
+        }
+        .clinical-green:hover {
+            background-color: #006d4a;
+        }
+        .form-control {
+            background-color: #f3f4f6;
+            border: none;
+            padding: 12px 16px;
+        }
+        .form-control:focus {
+            background-color: #f3f4f6;
+            box-shadow: 0 0 0 3px rgba(0, 135, 90, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-clinical min-vh-100 d-flex align-items-center justify-content-center p-3 p-md-4">
+
+    <!-- Main Card Container -->
+    <div class="bg-white rounded-4 shadow-lg overflow-hidden d-flex flex-column flex-md-row w-100" 
+         style="max-width: 1100px; min-height: 520px;">
+
+        <!-- Left Side: Green Panel -->
+        <div class="clinical-green text-white p-5 p-md-5 d-flex flex-column justify-content-between col-md-5">
+            <div>
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                        <path d="M12 11h4"/>
+                        <path d="M12 16h4"/>
+                        <path d="M8 11h.01"/>
+                        <path d="M8 16h.01"/>
+                        <path d="M12 4h.01"/>
+                        <path d="M16 4h.01"/>
+                        <path d="M8 4h.01"/>
+                    </svg>
+                    <span class="fw-bold tracking-widest text-uppercase fs-6">PHÒNG KHÁM HOÀN HẢO</span>
+                </div>
+                
+                <h1 class="display-6 fw-bold lh-tight mb-4">
+                    Elevating health to an ethereal standard of care.
+                </h1>
+                <p class="text-white-50 fs-6">
+                    Step into a workspace designed for restorative medicine and patient-centric excellence.
+                </p>
+            </div>
+            
+            <div class="mt-auto pt-5 text-white-50 fw-medium small">
+                PHÒNG KHÁM HOÀN HẢO • Clinical Excellence
+            </div>
+        </div>
+
+        <!-- Right Side: Login Form -->
+        <div class="p-5 p-md-5 col-md-7 d-flex flex-column justify-content-center">
+            <h2 class="h3 fw-bold text-dark mb-2">Chào mừng trở lại</h2>
+            <p class="text-muted mb-5">Vui lòng nhập thông tin để đăng nhập.</p>
+
+            <form onsubmit="event.preventDefault();" class="needs-validation" novalidate>
+                <!-- Email / Phone -->
+                <div class="mb-4">
+                    <label class="form-label text-uppercase text-secondary fw-bold small tracking-widest mb-2">
+                        EMAIL HOẶC SỐ ĐIỆN THOẠI
+                    </label>
+                    <input type="text" class="form-control form-control-lg rounded-3" 
+                           placeholder="name@clinic.com" required>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <label class="form-label text-uppercase text-secondary fw-bold small tracking-widest mb-0">
+                            MẬT KHẨU
+                        </label>
+                        <a href="#" class="text-decoration-none small fw-bold text-success">Quên mật khẩu?</a>
+                    </div>
+                    <div class="position-relative">
+                        <input type="password" class="form-control form-control-lg rounded-3" 
+                               placeholder="••••••••" required>
+                        <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y me-3 text-muted border-0">
+                            👁️
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="remember" style="accent-color: #00875A;">
+                    <label class="form-check-label text-muted" for="remember">
+                        Lưu đăng nhập
+                    </label>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" 
+                        class="btn clinical-green text-white w-100 py-3 fw-semibold rounded-3 shadow-sm fs-5">
+                    Đăng nhập
+                </button>
+            </form>
+
+            <!-- Sign Up Link -->
+            <p class="text-center text-muted mt-5 mb-0">
+                Chưa có tài khoản? 
+                <a href="#" class="text-success fw-bold text-decoration-none">Đăng ký ngay!</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (nếu cần) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

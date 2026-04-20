@@ -1,12 +1,21 @@
 // Header styling for PK Hoan Hao theme
+
+li::marker{
+    color:  o-color('white') 
+}
 #wrapwrap {
 	.pk-header {
 
+        position: sticky;
+		top: 0;
+        z-index: 1030;
+
         .pk-header-top{
-            position: sticky;
-		    top: 0;
-            z-index: 1030;
             animation: pk-header-slide 0.5s ease-out both;
+
+            .container{
+                padding: 0;
+            }
 
             .pk-topbar {
                 background-color: #009774;
@@ -33,6 +42,8 @@
             }
 
             .pk-nav-link {
+                padding-top: 0;
+                padding-bottom: 0;
                 position: relative;
                 font-size: 16px;
                 color: #374151;
@@ -71,6 +82,10 @@
                 text-decoration: none;
             }
 
+            .pk-nav-actions .btn{
+                padding: 0 !important;
+            }
+
             .pk-account-link {
                 font-weight: 500;
             }
@@ -95,6 +110,7 @@
 		.pk-offcanvas .offcanvas-header {
 			background-color: o-color('o-color-1');
 			color: o-color('white');
+            height: 74px;
 		}
 
 		.pk-offcanvas .pk-logo-link img {
@@ -137,10 +153,14 @@
 			width: 100%;
 		}
 
-		@media (max-width: 767.98px) {
+		@media (max-width: 768px) {
 			.pk-logo-link img {
 				height: 100px;
 			}
+
+            .pk-navbar {
+                padding: 18px 16px !important;
+            }
 
 			.pk-nav-link:hover::after,
 			.pk-nav-link.active::after {

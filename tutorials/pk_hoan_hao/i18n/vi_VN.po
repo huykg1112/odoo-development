@@ -1,0 +1,229 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pk_hoan_hao
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-17 08:38+0000\n"
+"PO-Revision-Date: 2026-04-17 08:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.header
+msgid "<i class=\"fa fa-envelope-o\"/> hoanhao@health.com"
+msgstr "<i class=\"fa fa-envelope-o\"/> hoanhao@health.com"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.header
+msgid "<i class=\"fa fa-phone\"/> 19002115"
+msgstr "<i class=\"fa fa-phone\"/> 19002115"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge
+msgid ""
+"<span class=\"pk-badge pk-badge--default pk-badge--md pk-badge--pill\">\n"
+"                    Badge\n"
+"                </span>"
+msgstr "<span class=\"pk-badge pk-badge--default pk-badge--md pk-badge--pill\">\n"
+"                    Huy hiệu\n"
+"                </span>"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Background"
+msgstr "Màu nền"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.header
+msgid "Book Appointment"
+msgstr "Đặt lịch hẹn"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Border Color"
+msgstr "Màu viền"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Database"
+msgstr "Cơ sở dữ liệu"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Default"
+msgstr "Mặc định"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Destructive"
+msgstr "Phá hủy"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Don't have an account?"
+msgstr "Bạn chưa có tài khoản?"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "EMAIL OR USERNAME"
+msgstr "EMAIL HOẶC TÊN ĐĂNG NHẬP"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Elevating health to an ethereal standard of care."
+msgstr "Nâng tầm sức khỏe lên một tiêu chuẩn cao cấp về chăm sóc."
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Forgot Password?"
+msgstr "Quên mật khẩu?"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Large"
+msgstr "Lớn"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Log in"
+msgstr "Đăng nhập"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Log in as superuser"
+msgstr "Đăng nhập với tư cách người dùng chính"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Medium"
+msgstr "Trung bình"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.header
+msgid "Monday - Saturday: 7:00 - 12:00 | 13:30 - 17:00"
+msgstr "Thứ Hai - Thứ Bảy: 7:00 - 12:00 | 13:30 - 17:00"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Outline"
+msgstr "Phác thảo"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "PASSWORD"
+msgstr "MẬT KHẨU"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.snippets_pk_badge
+msgid "PK Badge"
+msgstr "Huy hiệu PK"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.template_header_opt
+msgid "PK Hoan Hao"
+msgstr "Phòng Khám Hoàn Hảo"
+
+#. module: pk_hoan_hao
+#: model:ir.actions.act_url,name:pk_hoan_hao.action_pk_hoan_hao
+#: model:ir.ui.menu,name:pk_hoan_hao.menu_pk_hoan_hao
+msgid "Phòng Khám Hòan Hảo"
+msgstr "Phòng Khám Hoàn Hảo"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Pill"
+msgstr "Viên"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Please enter your information to log in."
+msgstr "Vui lòng nhập thông tin của bạn để đăng nhập."
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Radius"
+msgstr "Bán kính"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Remember me"
+msgstr "Nhớ tôi"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Rounded"
+msgstr "Tròn"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Secondary"
+msgstr "Phụ"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid ""
+"Select <i class=\"fa fa-database\" role=\"img\" aria-label=\"Database\" "
+"title=\"Database\"/>"
+msgstr ""
+"Select <i class=\"fa fa-database\" role=\"img\" aria-label=\"Database\" "
+"title=\"Database\"/>"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Sign up now!"
+msgstr "Đăng ký ngay!"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Size"
+msgstr "Kích thước"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Small"
+msgstr "Nhỏ"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Square"
+msgstr "Vuông"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid ""
+"Step into a workspace designed for restorative medicine and patient-centric "
+"excellence."
+msgstr "Bước vào một không gian làm việc được thiết kế cho y học phục hồi chức năng và sự xuất sắc tập trung vào bệnh nhân."
+
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Style"
+msgstr "Phong cách"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Text Color"
+msgstr "Màu chữ"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.s_pk_badge_options
+msgid "Uppercase"
+msgstr "Viết hoa"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "Welcome Back"
+msgstr "Chào mừng trở lại"
+
+#. module: pk_hoan_hao
+#: model_terms:ir.ui.view,arch_db:pk_hoan_hao.pk_login
+msgid "name@clinic.com"
+msgstr "name@clinic.com"

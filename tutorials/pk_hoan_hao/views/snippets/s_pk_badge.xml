@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Badge snippet -->
+    <template id="s_pk_badge" name="PK Badge">
+        <div class="s_pk_badge o_snippet_drop_in_only" data-snippet="s_pk_badge" data-name="PK Badge">
+                <span class="pk-badge pk-badge--default pk-badge--md pk-badge--pill">
+                    Badge
+                </span>
+        </div>
+    </template>
+
+    <!-- Badge options -->
+    <template id="s_pk_badge_options" inherit_id="website.snippet_options" name="PK Badge - Options">
+        <xpath expr="." position="inside">
+            <div data-selector=".s_pk_badge" data-name="PK Badge">
+                <we-select string="Style" data-apply-to=".pk-badge">
+                    <we-button data-select-class="pk-badge--default">Default</we-button>
+                    <we-button data-select-class="pk-badge--secondary">Secondary</we-button>
+                    <we-button data-select-class="pk-badge--destructive">Destructive</we-button>
+                    <we-button data-select-class="pk-badge--outline">Outline</we-button>
+                </we-select>
+
+                <we-select string="Size" data-apply-to=".pk-badge">
+                    <we-button data-select-class="pk-badge--sm">Small</we-button>
+                    <we-button data-select-class="pk-badge--md">Medium</we-button>
+                    <we-button data-select-class="pk-badge--lg">Large</we-button>
+                </we-select>
+
+                <we-select string="Radius" data-apply-to=".pk-badge">
+                    <we-button data-select-class="pk-badge--pill">Pill</we-button>
+                    <we-button data-select-class="pk-badge--rounded">Rounded</we-button>
+                    <we-button data-select-class="pk-badge--square">Square</we-button>
+                </we-select>
+
+                <we-checkbox string="Uppercase" data-apply-to=".pk-badge" data-select-class="pk-badge--uppercase"/>
+
+                <we-colorpicker string="Background" data-select-style="true" data-css-property="background-color" data-apply-to=".pk-badge"/>
+                <we-colorpicker string="Text Color" data-select-style="true" data-css-property="color" data-apply-to=".pk-badge"/>
+                <we-colorpicker string="Border Color" data-select-style="true" data-css-property="border-color" data-apply-to=".pk-badge"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
