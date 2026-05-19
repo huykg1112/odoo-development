@@ -1,0 +1,811 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * bakery
+#
+# "Tiffany Chang (tic)" <tic@odoo.com>, 2025.
+# "Manon Rondou (ronm)" <ronm@odoo.com>, 2025, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-10 18:39+0000\n"
+"PO-Revision-Date: 2026-04-14 15:08+0000\n"
+"Last-Translator: \"Manon Rondou (ronm)\" <ronm@odoo.com>\n"
+"Language-Team: French <https://translate.odoo.com/projects/odoo-s19-2/bakery/"
+"fr/>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.16.2\n"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid ""
+"<br/>At our bakery, every creation is made with love, using only the finest "
+"natural ingredients, to deliver treats that are as wholesome as they are "
+"delicious—bringing warmth and happiness to your table with every bite.<br/"
+"><br/>"
+msgstr ""
+"<br/>Dans notre boulangerie, chaque création est préparée avec amour à "
+"partir des meilleurs ingrédients naturels, pour des douceurs aussi saines "
+"que savoureuses. Offrez-vous un instant de chaleur et de bonheur à chaque "
+"bouchée.<br/><br/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid ""
+"<i class=\"fa fa-angle-left me-2 fw-light\"/>\n"
+"                                        Return to shipping"
+msgstr ""
+"<i class=\"fa fa-angle-left me-2 fw-light\"/>\n"
+"                                        Retour à l’expédition"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<i class=\"o_editor_banner_icon mb-3 fst-normal\">⚠️</i>"
+msgstr "<i class=\"o_editor_banner_icon mb-3 fst-normal\">⚠️</i>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<i class=\"o_editor_banner_icon mb-3 fst-normal\">💡</i>"
+msgstr "<i class=\"o_editor_banner_icon mb-3 fst-normal\">💡</i>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<i class=\"o_editor_banner_icon mb-3 fst-normal\">🚀</i>"
+msgstr "<i class=\"o_editor_banner_icon mb-3 fst-normal\">🚀</i>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid "<span class=\"px-3\">or</span>"
+msgstr "<span class=\"px-3\">ou</span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid "<span class=\"s_website_form_label_content\">Delivery Date</span>"
+msgstr "<span class=\"s_website_form_label_content\">Date de livraison</span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Email</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">E-mail</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Name</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">Nom</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid "<span class=\"s_website_form_label_content\">Phone Number</span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">Numéro de téléphone</span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Question</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">Question</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Subject</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">Sujet</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<span style=\"font-size: 36px;\"><strong>Bakery </strong></span>"
+msgstr "<span style=\"font-size: 36px;\"><strong>Boulangerie</strong></span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Accept flexible payments</strong>: Provide multiple payment options "
+"(cash, card, mobile)."
+msgstr ""
+"<strong>Acceptez des paiements flexibles</strong> : proposez plusieurs "
+"options de paiement (espèces, carte, téléphone mobile)."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Bulk orders for events</strong>: Allow customers to place large "
+"orders for events like company breakfasts, ensuring they can select from a "
+"variety of breads, pastries, and baked goods with flexible delivery or "
+"pickup options."
+msgstr ""
+"<strong>Commandes en gros pour événements</strong> : Offrez à vos clients la "
+"possibilité de passer de grandes commandes pour leurs événements, comme des "
+"petits-déjeuners d’entreprise. Proposez un large choix de pains, "
+"viennoiseries et pâtisseries, avec des options de livraison ou de retrait "
+"flexibles."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Choose the best vendor</strong>: Pick the vendor offering the best "
+"deal for the requested materials."
+msgstr ""
+"<strong>Choisissez le meilleur fournisseur</strong> : sélectionnez la "
+"meilleure offre pour votre demande."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Create a purchase order</strong>: Select the materials you need for "
+"your breads and pastries."
+msgstr ""
+"<strong>Créez un bon de commande</strong> : Choisissez les matières "
+"premières essentielles à la préparation de vos pains et pâtisseries."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Employee scheduling:</strong> Use the <strong>Planning App</strong> "
+"to create and manage employee schedules, ensuring you have the right staff "
+"at the right times for busy days and specific orders."
+msgstr ""
+"<strong>Planification des employés</strong> : Utilisez l'application "
+"<strong>Planification</strong> pour organiser et gérer les horaires, afin "
+"d'assurer la présence du personnel nécessaire lors des journées chargées et "
+"des commandes spécifiques."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Pre-order system</strong>: Enable customers to place orders in "
+"advance, ensuring product availability and timely preparation, especially "
+"during busy times like Sunday mornings or holidays."
+msgstr ""
+"<strong>Système de précommande</strong> : Offrez à vos clients la "
+"possibilité de commander à l’avance pour garantir la disponibilité des "
+"produits et une préparation optimale, notamment lors des périodes de forte "
+"affluence comme les dimanches matins ou les jours fériés."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Restaurant mode</strong>: Manage tables, orders, and payments with "
+"the Point of Sale system if you offer an \"eat-in\" option."
+msgstr ""
+"<strong>Mode restaurant</strong> : Gérez les tables, les commandes et les "
+"paiements avec le système de Point de Vente si vous proposez un service de "
+"consommation sur place."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Take orders in Point of Sale</strong>: Process in-store bread, loaf "
+"and pastries orders quickly using the Point of Sale system."
+msgstr ""
+"<strong>Prise de commandes dans le Point de Vente</strong> : Accélérez le "
+"traitement des commandes en magasin pour pains, baguettes et viennoiseries "
+"grâce à un système de Point de Vente efficace."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>You didn't import demo data?</strong> You can still do it. Go to "
+"<strong>Apps &gt; Industries &gt; Upgrade your Bakery Package</strong> and "
+"check the related box."
+msgstr ""
+"<strong>Vous n’avez pas importé les données de démonstration ?</strong> Vous "
+"pouvez encore le faire. Allez dans <strong>Applications > Industries > "
+"Mettre à niveau le pack Boulangerie</strong> et cochez la case "
+"correspondante."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "About us"
+msgstr "À propos de nous"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_36_product_template
+msgid "Almond Croissant"
+msgstr "Croissant aux amandes"
+
+#. module: bakery
+#: model:product.template,description_sale:bakery.product_sourdough_loaf_product_template
+msgid "Artisan sourdough bread with a crisp crust and soft interior."
+msgstr ""
+"Pain artisanal au levain, croustillant à l'extérieur et moelleux à "
+"l'intérieur."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_38_product_template
+msgid "Bagel"
+msgstr "Bagel"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_33_product_template
+msgid "Baguette"
+msgstr "Baguette"
+
+#. module: bakery
+#: model:hr.department,name:bakery.hr_department_3
+msgid "Baker"
+msgstr "Boulanger"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Bakery"
+msgstr "Boulangerie"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_56_product_template
+msgid "Baking Powder"
+msgstr "Levure en poudre"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Basics"
+msgstr "Les bases"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_39_product_template
+msgid "Bretzel"
+msgstr "Bretzel"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_41_product_template
+msgid "Butter"
+msgstr "Beurre"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"By uploading this module's demo data, your database has been filled with a "
+"few contacts."
+msgstr ""
+"En téléchargeant les données de démonstration de ce module, votre base de "
+"données a été enrichie de quelques contacts."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_40_product_template
+msgid "Canelé "
+msgstr "Canelé "
+
+#. module: bakery
+#: model:product.template,name:bakery.product_cinnamon_roll_product_template
+msgid "Cinnamon Roll"
+msgstr "Roulés à la cannelle"
+
+#. module: bakery
+#: model:crm.tag,name:bakery.crm_tag_1
+msgid "Company Event"
+msgstr "Événement d'entreprise"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Connect with us"
+msgstr "Rejoignez-nous"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3524
+msgid "Contact Us"
+msgstr "Contactez-nous"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Contact us"
+msgstr "Contactez-nous"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid ""
+"Continue checkout\n"
+"                                        <i class=\"fa fa-angle-right ms-2 fw-"
+"light\"/>"
+msgstr ""
+"Poursuivre le paiement\n"
+"                                        <i class=\"fa fa-angle-right ms-2 fw-"
+"light\"/>"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_37_product_template
+msgid "Cookie"
+msgstr "Cookie"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Craft your perfect breads, loaves, and pastries with ease, on our "
+"<strong>Manufacturing app</strong>, by creating manufacturing orders based "
+"on customer demand and linking the necessary ingredients to each product."
+msgstr ""
+"Créez facilement vos pains, baguettes et pâtisseries parfaits avec notre "
+"application <strong>Fabrication</strong>. Générez des ordres de fabrication "
+"en fonction de la demande et associez les ingrédients nécessaires à chaque "
+"produit."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_34_product_template
+msgid "Croissant"
+msgstr "Croissant"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Discover our fresh baked delights!"
+msgstr "Découvrez nos viennoiseries fraîchement sorties du four !"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Do you want to go further?"
+msgstr "Vous souhaitez aller plus loin ?"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Easily handle your <strong>accounting</strong> with the integrated "
+"<em>Accounting App</em>."
+msgstr ""
+"Gérez votre <strong>comptabilité</strong> en toute simplicité avec "
+"l’application <em>Comptabilité</em> intégrée."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Ensure your customers can enjoy freshly baked croissants—even on busy sunny "
+"Sunday mornings when stock is quickly running low!🌞"
+msgstr ""
+"Faites plaisir à vos clients avec des croissants tout juste sortis du four, "
+"même lors de dimanches ensoleillés où ils partent en un clin d’œil ! 🌞"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Expand sales online and offer convenience for customers."
+msgstr ""
+"Boostez vos ventes en ligne tout en offrant une expérience pratique et "
+"fluide à vos clients."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid "Extra info"
+msgstr "Infos supplémentaires"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Extra page"
+msgstr "Page supplémentaire"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Facebook"
+msgstr "Facebook"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_53_product_template
+msgid "Flour"
+msgstr "Farine"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Follow us"
+msgstr "Suivez-nous"
+
+#. module: bakery
+#. odoo-javascript
+#: code:addons/bakery/static/src/js/my_tour.js:0
+msgid "Get on track and explore our recommendations for your Odoo usage here!"
+msgstr ""
+"Prenez un bon départ et découvrez ici nos recommandations pour votre "
+"utilisation d’Odoo !"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Grow your business with e-commerce"
+msgstr "Faites croître votre entreprise grâce à l'e-commerce"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid "Have a question about our bakery or treats?"
+msgstr "Une question sur notre boulangerie ou nos gourmandises ?"
+
+#. module: bakery
+#: model:hr.job,name:bakery.hr_job_1
+msgid "Head Baker"
+msgstr "Chef boulanger"
+
+#. module: bakery
+#: model:product.template,description_sale:bakery.product_multigrain_bread_product_template
+msgid "Hearty multigrain loaf with seeds and grains for extra nutrition."
+msgstr ""
+"Un pain multi-céréales généreux avec des graines et des céréales pour un "
+"apport nutritionnel supplémentaire."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Home"
+msgstr "Accueil"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Industry"
+msgstr "Secteur d'activité"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Legal"
+msgstr "Juridique"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Maintain stock of fresh ingredients."
+msgstr "Gardez un stock d'ingrédients frais."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Manage orders and payments"
+msgstr "Gérez les commandes et les paiements"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Manage your <strong>team</strong> efficiently and integrate them into all "
+"processes with the <em>Employees App</em>."
+msgstr ""
+"Gérez votre <strong>équipe</strong> efficacement et intégrez-la dans tous "
+"les processus grâce à l’application <em>Employés</em>."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_multigrain_bread_product_template
+msgid "Multigrain Bread"
+msgstr "Pain multicéréales"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Odoo is entirely integrated into an App. Download it to turn your phone into "
+"a tool to manage your entire workflow."
+msgstr ""
+"Odoo est entièrement intégré dans une application. Téléchargez-la et "
+"transformez votre téléphone en un outil pour gérer l'ensemble de votre flux "
+"de travail."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Odoo offers endless customization possibilities for your bakery:"
+msgstr ""
+"Odoo offre des possibilités de personnalisation infinies pour votre "
+"boulangerie :"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Of course, this is just an overview of the features included in this "
+"package. Feel free to add new apps, delete/modify demo data, and test "
+"everything around!"
+msgstr ""
+"Bien entendu, il ne s'agit que d'un aperçu des fonctionnalités incluses dans "
+"ce paquet. N'hésitez pas à ajouter de nouvelles applications, à supprimer/"
+"modifier les données de démonstration et à tout tester !"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Our Story"
+msgstr "Notre histoire"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_35_product_template
+msgid "Pain au Chocolat"
+msgstr "Pain au Chocolat"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_32_product_template
+msgid "Pasteis de Nata"
+msgstr "Pasteis de Nata"
+
+#. module: bakery
+#: model:hr.department,name:bakery.hr_department_2
+msgid "Pastry Chef"
+msgstr "Chef pâtissier"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Products"
+msgstr "Produits"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Purchase raw materials"
+msgstr "Achetez des matières premières"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"Reach out to us—we’re here to help and will get back to you as soon as we "
+"can!&amp;nbsp;<br/>"
+msgstr ""
+"Contactez-nous, nous sommes là pour vous aider et nous vous répondrons dès "
+"que possible !<br/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Schedule a demo"
+msgstr "Planifier une démonstration"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "See All"
+msgstr "Voir tout"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "See all <i class=\"fa fa-long-arrow-right ms-2\"/>"
+msgstr "Voir tout <i class=\"fa fa-long-arrow-right ms-2\"/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Services"
+msgstr "Services"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid ""
+"Since our humble beginnings as a small neighborhood bakery, we’ve been "
+"dedicated to crafting baked goods that bring people together. What started "
+"as a passion for simple, natural ingredients has grown into a beloved "
+"community hub where every treat is made with love and care."
+msgstr ""
+"Depuis nos débuts modestes en tant que petite boulangerie de quartier, nous "
+"avons toujours eu à cœur de créer des produits qui rassemblent les gens. "
+"Animés par une passion pour des ingrédients simples et naturels, nous sommes "
+"devenus un lieu incontournable de la communauté, où chaque gourmandise est "
+"préparée avec amour et savoir-faire."
+
+#. module: bakery
+#: model:product.template,description_sale:bakery.product_cinnamon_roll_product_template
+msgid ""
+"Soft dough with a buttery cinnamon filling, topped with cream cheese icing."
+msgstr ""
+"Pâte tendre fourrée à la cannelle et au beurre, recouverte d'un glaçage au "
+"cream cheese."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_sourdough_loaf_product_template
+msgid "Sourdough Bread"
+msgstr "Pain au levain"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Streamline in-store order processing and offer flexible payment options."
+msgstr ""
+"Optimisez le traitement des commandes en magasin et proposez des options de "
+"paiement flexibles."
+
+#. module: bakery
+#: model:hr.job,name:bakery.hr_job_2
+msgid "Student"
+msgstr "Étudiant"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid "Submit"
+msgstr "Soumettre"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_54_product_template
+msgid "Sugar"
+msgstr "Sucre"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The <strong><font class=\"text-o-color-1\">Point of Sale App</font></strong> "
+"manages in-store orders and payments."
+msgstr ""
+"L'application <strong><font class=\"text-o-color-1\">Point de Vente</font></"
+"strong> gère les commandes et paiements en magasin."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The <strong><font class=\"text-o-color-1\">Purchase App</font></strong> "
+"manages raw material orders and vendors."
+msgstr ""
+"L'application <strong><font class=\"text-o-color-1\">Achats</font></strong> "
+"gère les commandes de matières premières et les fournisseurs."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The <strong><font class=\"text-o-color-1\">Website &amp; E-commerce App</"
+"font></strong> enables online sales and offer Pick up at Store options."
+msgstr ""
+"Les applications <strong><font class=\"text-o-color-1\">Site Web & "
+"eCommerce</font></strong> permettent de vendre en ligne et de proposer des "
+"options de retrait en magasin."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The package features the <strong>Point of Sale (POS)</strong> app for "
+"seamless in-store sales and the <strong>Sales</strong> app for managing "
+"orders. For bakeries looking to expand online, the <strong>Website</strong> "
+"and <strong>E-commerce</strong> apps allow you to showcase products and "
+"offer <strong>Pick up at Store</strong> options."
+msgstr ""
+"Le pack inclut l’application <strong>Point de Vente</strong> pour des ventes "
+"en magasin fluides et l’app <strong>Ventes</strong> pour la gestion des "
+"commandes. Pour les boulangeries souhaitant se développer en ligne, les "
+"applications <strong>Site Web</strong> et <strong>eCommerce</strong> "
+"permettent de mettre en avant les produits et d’offrir des options de "
+"<strong>retrait en magasin</strong>."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The<strong> <font class=\"text-o-color-1\">Sales App</font></strong> "
+"streamlines customer orders and quotations, such as managing company events "
+"or coffee shop orders."
+msgstr ""
+"L'application <strong><font class=\"text-o-color-1\">Ventes</font></strong> "
+"facilite la gestion des commandes et des devis, qu'il s'agisse d'événements "
+"d'entreprise ou de commandes."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"These all go free in your current subscription; feel free to explore! 🙃"
+msgstr ""
+"Tous ces services sont compris dans votre abonnement actuel ; n'hésitez pas "
+"à les découvrir ! 🙃"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"This set up is ideal for bakeries specializing in bread, pastries, cakes, "
+"and custom orders, such as corporate breakfasts. It suits businesses serving "
+"walk-in customers, managing larger orders for cafes and restaurants, or "
+"delivering to multiple points of sale."
+msgstr ""
+"Cette configuration est idéale pour les boulangeries spécialisées dans le "
+"pain, les viennoiseries, les pâtisseries et les commandes sur mesure, comme "
+"les petits-déjeuners d’entreprise. Elle convient aussi bien aux commerces "
+"accueillant des clients en boutique qu’à ceux gérant de grandes commandes "
+"pour cafés et restaurants. Elle est également adaptée aux livraisons vers "
+"plusieurs points de vente."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Track stock in real-time, manage multiple storage locations, automate "
+"restocking, and monitor expiration dates to ensure ingredient freshness and "
+"avoid shortages, with our<strong> Inventory app</strong>."
+msgstr ""
+"Suivez les stocks en temps réel, gérez plusieurs lieux de stockage, "
+"automatisez le réapprovisionnement et surveillez les dates de péremption "
+"pour garantir la fraîcheur des ingrédients et éviter les ruptures, grâce à "
+"notre application <strong>Inventaire</strong>."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Use Case"
+msgstr "Cas d'utilisation"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Use the <strong>Quality App</strong> to perform product checks upon receipt "
+"to ensure they meet your standards."
+msgstr ""
+"Utilisez l’application <strong>Qualité</strong> pour effectuer des contrôles "
+"de produits à la réception et vous assurer qu’ils répondent à vos exigences."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Use the Reporting in the Sales app to analyze trends such as higher order "
+"volumes on sunny days, weekends, or holidays, helping you plan better for "
+"peak times."
+msgstr ""
+"Analysez les tendances avec les rapports de l’application Ventes, comme "
+"l’augmentation des commandes les jours ensoleillés, les week-ends ou les "
+"jours fériés. Adaptez votre organisation pour mieux gérer les périodes de "
+"forte affluence."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Useful Links"
+msgstr "Liens utiles"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid ""
+"We are a team of passionate people whose goal is to improve everyone's life "
+"through disruptive products. We build great products to solve your business "
+"problems.\n"
+"                                <br/><br/>Our products are designed for "
+"small to medium size companies willing to optimize their performance."
+msgstr ""
+"Nous sommes une équipe de passionnés déterminés à améliorer le quotidien de "
+"chacun grâce à des produits innovants. Nous développons des solutions "
+"performantes, adaptées aux besoins de votre entreprises.\n"
+"                                <br/><br/>Nos produits sont pensés pour les "
+"petites et moyennes entreprises désireuses d’optimiser leur performances."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Welcome to the <strong>Odoo Bakery Package!</strong>"
+msgstr "Découvrez le package <strong>Odoo Boulangerie</strong> !"
+
+#. module: bakery
+#: model_terms:web_tour.tour,rainbow_man_message:bakery.knowledge_tour
+msgid "Welcome! Happy exploring."
+msgstr "Bienvenue ! Amusez-vous en explorant."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Would you like to discuss your Odoo setup with us or go even further?"
+msgstr ""
+"Vous souhaitez discuter avec nous de l'installation d'Odoo ou approfondir la "
+"question ?"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "X"
+msgstr "X"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"You can access every installed App in your Odoo database on your main "
+"dashboard."
+msgstr ""
+"Vous pouvez accéder à toutes les applications installées dans votre base de "
+"données Odoo depuis votre tableau de bord principal."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"You should be able to execute the following flows to have an overview of "
+"various processes you can quickly execute with this package using Odoo."
+msgstr ""
+"Exécutez les flux suivants pour obtenir un aperçu des différents processus "
+"que vous pouvez facilement gérer avec ce package dans Odoo."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid ""
+"Your Dynamic Snippet will be displayed here... This message is displayed "
+"because you did not provide both a filter and a template to use.<br/>"
+msgstr ""
+"Votre snippet dynamique sera affiché ici... Ce message est affiché parce que "
+"vous n'avez pas défini le filtre et le modèle à utiliser.<br/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "info@yourcompany.example.com"
+msgstr "info@yourcompany.example.com"

@@ -1,0 +1,765 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * bakery
+#
+# Weblate <noreply-mt-weblate@weblate.org>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-10 18:39+0000\n"
+"PO-Revision-Date: 2025-11-17 11:10+0000\n"
+"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
+"Language-Team: Hindi <https://translate.odoo.com/projects/odoo-19/bakery/hi/"
+">\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.12.2\n"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid ""
+"<br/>At our bakery, every creation is made with love, using only the finest "
+"natural ingredients, to deliver treats that are as wholesome as they are "
+"delicious—bringing warmth and happiness to your table with every bite.<br/"
+"><br/>"
+msgstr ""
+"<br/>हमारी बेकरी में, हर चीज़ प्यार से बनाई जाती है. इसमें सिर्फ़ सबसे अच्छी और प्राकृतिक "
+"सामग्री का इस्तेमाल किया जाता है, ताकि आपको ऐसी ट्रीट मिले जो पौष्टिक और स्वादिष्ट, "
+"दोनों हों — जो हर बाइट के साथ आपकी टेबल पर गर्माहट और खुशी लाएं.<br/><br/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid ""
+"<i class=\"fa fa-angle-left me-2 fw-light\"/>\n"
+"                                        Return to shipping"
+msgstr ""
+"<i class=\"fa fa-angle-left me-2 fw-light\"/>\n"
+"                                        शिपिंग पर वापस जाएं"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<i class=\"o_editor_banner_icon mb-3 fst-normal\">⚠️</i>"
+msgstr ""
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<i class=\"o_editor_banner_icon mb-3 fst-normal\">💡</i>"
+msgstr ""
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<i class=\"o_editor_banner_icon mb-3 fst-normal\">🚀</i>"
+msgstr ""
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid "<span class=\"px-3\">or</span>"
+msgstr "<span class=\"px-3\">या</span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid "<span class=\"s_website_form_label_content\">Delivery Date</span>"
+msgstr "<span class=\"s_website_form_label_content\">डिलीवरी की तारीख</span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Email</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">ईमेल</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Name</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">नाम</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid "<span class=\"s_website_form_label_content\">Phone Number</span>"
+msgstr "<span class=\"s_website_form_label_content\">फ़ोन नंबर</span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Question</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">सवाल</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Subject</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">विषय</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<span style=\"font-size: 36px;\"><strong>Bakery </strong></span>"
+msgstr "<span style=\"font-size: 36px;\"><strong>बेकरी </strong></span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Accept flexible payments</strong>: Provide multiple payment options "
+"(cash, card, mobile)."
+msgstr ""
+"<strong>आसान तरीके से पेमेंट स्वीकार करें</strong>: पेमेंट के लिए कई विकल्प दें (नकद, कार्ड, "
+"मोबाइल)।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Bulk orders for events</strong>: Allow customers to place large "
+"orders for events like company breakfasts, ensuring they can select from a "
+"variety of breads, pastries, and baked goods with flexible delivery or "
+"pickup options."
+msgstr ""
+"<strong>इवेंट के लिए एक साथ ज़्यादा ऑर्डर</strong>: ग्राहकों को कंपनी के ब्रेकफ़ास्ट जैसे "
+"इवेंट के लिए ज़्यादा ऑर्डर देने की अनुमति दें. इससे, वे कई तरह की ब्रेड, पेस्ट्री और बेकरी के "
+"सामान में से चुनकर मनचाहे समय पर सामान डिलीवर या पिकअप करवा सकते हैं।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Choose the best vendor</strong>: Pick the vendor offering the best "
+"deal for the requested materials."
+msgstr ""
+"<strong>सबसे बेहतरीन वेंडर चुनें</strong>: अनुरोध की गई सामग्री के लिए सबसे अच्छी डील देने "
+"वाले वेंडर को चुनें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Create a purchase order</strong>: Select the materials you need for "
+"your breads and pastries."
+msgstr ""
+"<strong>एक परचेज़ ऑर्डर बनाएं</strong>: अपनी ब्रेड और पेस्ट्री के लिए ज़रूरी सामग्री चुनें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Employee scheduling:</strong> Use the <strong>Planning App</strong> "
+"to create and manage employee schedules, ensuring you have the right staff "
+"at the right times for busy days and specific orders."
+msgstr ""
+"<strong>कर्मचारी शेड्यूलिंग:</strong> कर्मचारियों के शेड्यूल बनाने और उन्हें मैनेज करने के लिए "
+"<strong>प्लानिंग ऐप</strong> का इस्तेमाल करें, ताकि व्यस्त दिनों और खास ऑर्डर के लिए "
+"सही समय पर आपके पास सही कर्मचारी हों।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Pre-order system</strong>: Enable customers to place orders in "
+"advance, ensuring product availability and timely preparation, especially "
+"during busy times like Sunday mornings or holidays."
+msgstr ""
+"<strong>प्री-ऑर्डर सिस्टम</strong>: ग्राहकों को पहले से ऑर्डर देने की अनुमति दें, ताकि "
+"खास तौर पर रविवार की सुबह या छुट्टियों जैसे व्यस्त समय के दौरान, प्रॉडक्ट की उपलब्धता और "
+"समय पर तैयारी सुनिश्चित हो सके।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Restaurant mode</strong>: Manage tables, orders, and payments with "
+"the Point of Sale system if you offer an \"eat-in\" option."
+msgstr ""
+"<strong>रेस्टोरेंट मोड</strong>: अगर आप \"ईट-इन\" विकल्प देते हैं, तो पॉइंट ऑफ़ सेल "
+"सिस्टम से टेबल, ऑर्डर और भुगतान मैनेज करें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Take orders in Point of Sale</strong>: Process in-store bread, loaf "
+"and pastries orders quickly using the Point of Sale system."
+msgstr ""
+"<strong>पॉइंट ऑफ़ सेल में ऑर्डर लें</strong>: पॉइंट ऑफ़ सेल सिस्टम का इस्तेमाल करके, स्टोर में "
+"ब्रेड, लोफ़ और पेस्ट्री के ऑर्डर तुरंत प्रोसेस करें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>You didn't import demo data?</strong> You can still do it. Go to "
+"<strong>Apps &gt; Industries &gt; Upgrade your Bakery Package</strong> and "
+"check the related box."
+msgstr ""
+"<strong>क्या आपने डेमो डेटा इंपोर्ट नहीं किया?</strong> आप अभी भी कर सकते हैं. "
+"<strong>ऐप्लिकेशन &gt; इंडस्ट्री &gt;> अपने बैकरी पैकेज अपग्रेड करें</strong> पर जाएं और "
+"संबंधित बॉक्स को चुनें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "About us"
+msgstr "हमारे बारे में"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_36_product_template
+msgid "Almond Croissant"
+msgstr "बादामी क्रोइसैन"
+
+#. module: bakery
+#: model:product.template,description_sale:bakery.product_sourdough_loaf_product_template
+msgid "Artisan sourdough bread with a crisp crust and soft interior."
+msgstr "आर्टिज़न सॉवरडो ब्रेड जिसका ऊपरी हिस्सा क्रिस्प और अंदरूनी हिस्सा नरम होता है।"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_38_product_template
+msgid "Bagel"
+msgstr "बैगल"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_33_product_template
+msgid "Baguette"
+msgstr "बैगेट"
+
+#. module: bakery
+#: model:hr.department,name:bakery.hr_department_3
+msgid "Baker"
+msgstr "बेकर"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Bakery"
+msgstr "बेकरी"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_56_product_template
+msgid "Baking Powder"
+msgstr "बेकिंग पाउडर"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Basics"
+msgstr "बेसिक"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_39_product_template
+msgid "Bretzel"
+msgstr "ब्रेत्ज़ेल"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_41_product_template
+msgid "Butter"
+msgstr "बटर"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"By uploading this module's demo data, your database has been filled with a "
+"few contacts."
+msgstr "इस मॉड्यूल के डेमो डेटा को अपलोड करके, आपका डेटाबेस कुछ संपर्कों से भर गया है।"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_40_product_template
+msgid "Canelé "
+msgstr "Canelé "
+
+#. module: bakery
+#: model:product.template,name:bakery.product_cinnamon_roll_product_template
+msgid "Cinnamon Roll"
+msgstr "सिनमन रोल"
+
+#. module: bakery
+#: model:crm.tag,name:bakery.crm_tag_1
+msgid "Company Event"
+msgstr "कंपनी इवेंट"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Connect with us"
+msgstr "हमसे जुड़ें"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3524
+msgid "Contact Us"
+msgstr "संपर्क करें"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Contact us"
+msgstr "संपर्क करें"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid ""
+"Continue checkout\n"
+"                                        <i class=\"fa fa-angle-right ms-2 fw-"
+"light\"/>"
+msgstr ""
+"चेकआउट जारी रखें\n"
+"                                        <i class=\"fa fa-angle-right ms-2 fw-"
+"light\"/>"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_37_product_template
+msgid "Cookie"
+msgstr "कुकी"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Craft your perfect breads, loaves, and pastries with ease, on our "
+"<strong>Manufacturing app</strong>, by creating manufacturing orders based "
+"on customer demand and linking the necessary ingredients to each product."
+msgstr ""
+"हमारे <strong>मैन्युफ़ैक्चरिंग ऐप</strong> की मदद से आसानी से अपनी बेहतरीन ब्रेड, लोफ़ और "
+"पेस्ट्री बनाएं, ग्राहक की मांग के आधार पर मैन्युफ़ैक्चरिंग ऑर्डर बनाएं और हर प्रॉडक्ट के लिए "
+"ज़रूरी सामग्री जोड़ें।"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_34_product_template
+msgid "Croissant"
+msgstr "क्रोइसैन"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Discover our fresh baked delights!"
+msgstr "हमारी ताज़ी बेक्ड चीज़ें देखें!"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Do you want to go further?"
+msgstr "क्या आप आगे बढ़ना चाहते हैं?"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Easily handle your <strong>accounting</strong> with the integrated "
+"<em>Accounting App</em>."
+msgstr ""
+"इंटिग्रेट किए गए <em>अकाउंटिंग ऐप</em> से अपनी <strong>अकाउंटिंग</strong> आसानी से "
+"मैनेज करें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Ensure your customers can enjoy freshly baked croissants—even on busy sunny "
+"Sunday mornings when stock is quickly running low!🌞"
+msgstr ""
+"पक्का करें कि आपके ग्राहक ताज़ा बेक किए गए क्रोइसैन का आनंद ले सकें — यहां तक कि व्यस्त और "
+"धूप वाली रविवार की सुबह में भी, जब स्टॉक तेज़ी से ख़त्म हो रहा हो!🌞"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Expand sales online and offer convenience for customers."
+msgstr "ऑनलाइन सेल्स बढ़ाएं और ग्राहकों को सुविधा दें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid "Extra info"
+msgstr "अतिरिक्त जानकारी"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Extra page"
+msgstr "अतिरिक्त पेज"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Facebook"
+msgstr ""
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_53_product_template
+msgid "Flour"
+msgstr "फ्लोर"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Follow us"
+msgstr "हमें फ़ॉलो करें"
+
+#. module: bakery
+#. odoo-javascript
+#: code:addons/bakery/static/src/js/my_tour.js:0
+msgid "Get on track and explore our recommendations for your Odoo usage here!"
+msgstr ""
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Grow your business with e-commerce"
+msgstr "ई-कॉमर्स की मदद से अपना कारोबार बढ़ाएं"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid "Have a question about our bakery or treats?"
+msgstr "क्या हमारी बेकरी या ट्रीट के बारे में कोई सवाल है?"
+
+#. module: bakery
+#: model:hr.job,name:bakery.hr_job_1
+msgid "Head Baker"
+msgstr "हेड बेकर"
+
+#. module: bakery
+#: model:product.template,description_sale:bakery.product_multigrain_bread_product_template
+msgid "Hearty multigrain loaf with seeds and grains for extra nutrition."
+msgstr "अतिरिक्त पोषण के लिए बीज और अनाज से बनी मल्टीग्रेन लोफ़।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Home"
+msgstr "घर"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Industry"
+msgstr "इंडस्ट्री"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Legal"
+msgstr "लीगल"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "LinkedIn"
+msgstr ""
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Maintain stock of fresh ingredients."
+msgstr "ताज़ी सामग्री का स्टॉक बनाए रखें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Manage orders and payments"
+msgstr "ऑर्डर और पेमेंट मैनेज करें"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Manage your <strong>team</strong> efficiently and integrate them into all "
+"processes with the <em>Employees App</em>."
+msgstr ""
+"<em>एम्प्लॉई ऐप</em> से अपनी <strong>टीम</strong> को अच्छे से मैनेज करें और उन्हें सभी "
+"कामों में शामिल करें।"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_multigrain_bread_product_template
+msgid "Multigrain Bread"
+msgstr "मल्टीग्रेन ब्रेड"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Odoo is entirely integrated into an App. Download it to turn your phone into "
+"a tool to manage your entire workflow."
+msgstr ""
+"Odoo पूरी तरह से एक ऐप्लिकेशन में उपलब्ध है. इसे डाउनलोड करके, फ़ोन से ही अपना पूरा काम "
+"मैनेज करें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Odoo offers endless customization possibilities for your bakery:"
+msgstr "Odoo आपकी बेकरी को अपनी ज़रूरत के हिसाब से बदलने के लिए कई विकल्प देता है:"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Of course, this is just an overview of the features included in this "
+"package. Feel free to add new apps, delete/modify demo data, and test "
+"everything around!"
+msgstr ""
+"यह इस पैकेज में शामिल सुविधाओं का बस एक ओवरव्यू है. बेझिझक नए ऐप जोड़ें, डेमो डेटा मिटाएं/"
+"बदलें, और सब कुछ आज़माकर देखें!"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Our Story"
+msgstr "हमारी कहानी"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_35_product_template
+msgid "Pain au Chocolat"
+msgstr ""
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_32_product_template
+msgid "Pasteis de Nata"
+msgstr ""
+
+#. module: bakery
+#: model:hr.department,name:bakery.hr_department_2
+msgid "Pastry Chef"
+msgstr "पेस्ट्री शेफ़"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Products"
+msgstr "प्रॉडक्ट"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Purchase raw materials"
+msgstr "कच्चा माल खरीदें"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"Reach out to us—we’re here to help and will get back to you as soon as we "
+"can!&amp;nbsp;<br/>"
+msgstr ""
+"हमसे संपर्क करें—हम यहां मदद के लिए हैं और जल्द से जल्द आपसे संपर्क करेंगे!&amp;nbsp;<br/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Schedule a demo"
+msgstr "डेमो शेड्यूल करें"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "See All"
+msgstr "सभी देखें"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "See all <i class=\"fa fa-long-arrow-right ms-2\"/>"
+msgstr "सभी देखें<i class=\"fa fa-long-arrow-right ms-2\"/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Services"
+msgstr "सर्विस"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid ""
+"Since our humble beginnings as a small neighborhood bakery, we’ve been "
+"dedicated to crafting baked goods that bring people together. What started "
+"as a passion for simple, natural ingredients has grown into a beloved "
+"community hub where every treat is made with love and care."
+msgstr ""
+"एक छोटी सी बेकरी से शुरू होकर, हम लोगों को जोड़ने वाले स्वादिष्ट बेक्ड सामान बनाते रहे हैं. "
+"साधारण सामग्री के प्रति हमारा प्यार अब एक ऐसी जगह बन गया है, जहां हर चीज़ दिल से "
+"बनाई जाती है।"
+
+#. module: bakery
+#: model:product.template,description_sale:bakery.product_cinnamon_roll_product_template
+msgid ""
+"Soft dough with a buttery cinnamon filling, topped with cream cheese icing."
+msgstr "नरम आटा, जिस पर बटर और दालचीनी की फिलिंग है और ऊपर क्रीम चीज़ की आइसिंग है।"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_sourdough_loaf_product_template
+msgid "Sourdough Bread"
+msgstr "खमीर ब्रेड"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Streamline in-store order processing and offer flexible payment options."
+msgstr "स्टोर में ऑर्डर प्रोसेस करने और पेमेंट के कई विकल्प देने को बेहतर बनाएं।"
+
+#. module: bakery
+#: model:hr.job,name:bakery.hr_job_2
+msgid "Student"
+msgstr "छात्र"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid "Submit"
+msgstr "सबमिट करें"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_54_product_template
+msgid "Sugar"
+msgstr "चीनी"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The <strong><font class=\"text-o-color-1\">Point of Sale App</font></strong> "
+"manages in-store orders and payments."
+msgstr ""
+"<strong><font class=\"text-o-color-1\">पॉइंट ऑफ़ सेल ऐप्लिकेशन</font></strong>, "
+"स्टोर में होने वाले ऑर्डर और भुगतान को मैनेज करता है।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The <strong><font class=\"text-o-color-1\">Purchase App</font></strong> "
+"manages raw material orders and vendors."
+msgstr ""
+"<strong><font class=\"text-o-color-1\">परचेज़ ऐप्लिकेशन</font></strong> कच्चे माल "
+"के ऑर्डर और वेंडर को मैनेज करता है।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The <strong><font class=\"text-o-color-1\">Website &amp; E-commerce App</"
+"font></strong> enables online sales and offer Pick up at Store options."
+msgstr ""
+"<strong><font class=\"text-o-color-1\">वेबसाइट &amp; ई-कॉमर्स ऐप्लिकेशन</font></"
+"strong> ऑनलाइन सेल्स और स्टोर से पिकअप की सुविधा देता है।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The package features the <strong>Point of Sale (POS)</strong> app for "
+"seamless in-store sales and the <strong>Sales</strong> app for managing "
+"orders. For bakeries looking to expand online, the <strong>Website</strong> "
+"and <strong>E-commerce</strong> apps allow you to showcase products and "
+"offer <strong>Pick up at Store</strong> options."
+msgstr ""
+"इस पैकेज में इन-स्टोर बिक्री के लिए <strong>पॉइंट ऑफ़ सेल (पीओएस)</strong> ऐप और ऑर्डर "
+"मैनेज करने के लिए <strong>सेल्स</strong> ऐप है. जो बेकरी ऑनलाइन सेल्स बढ़ाना चाहती हैं, "
+"उनके लिए <strong>वेबसाइट</strong> और <strong>ई-कॉमर्स</strong> ऐप प्रॉडक्ट दिखाने "
+"और <strong>स्टोर से पिकअप</strong> का विकल्प देते हैं।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The<strong> <font class=\"text-o-color-1\">Sales App</font></strong> "
+"streamlines customer orders and quotations, such as managing company events "
+"or coffee shop orders."
+msgstr ""
+"<strong><font class=\"text-o-color-1\">सेल्स ऐप्लिकेशन</font></strong> ग्राहकों के "
+"ऑर्डर और कोटेशन को व्यवस्थित करता है, जैसे कि कंपनी के इवेंट या कॉफ़ी शॉप के ऑर्डर मैनेज "
+"करना।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"These all go free in your current subscription; feel free to explore! 🙃"
+msgstr "ये सभी आपकी मौजूदा सदस्यता में मुफ़्त हैं; बेझिझक एक्सप्लोर करें! 🙃"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"This set up is ideal for bakeries specializing in bread, pastries, cakes, "
+"and custom orders, such as corporate breakfasts. It suits businesses serving "
+"walk-in customers, managing larger orders for cafes and restaurants, or "
+"delivering to multiple points of sale."
+msgstr ""
+"यह सेटअप ब्रेड, पेस्ट्री, केक और कॉर्पोरेट ब्रेकफ़ास्ट जैसे कस्टम ऑर्डर में विशेषज्ञ बेकरी के लिए "
+"आदर्श है. यह उन बिज़नेस के लिए सही है जो सीधे ग्राहकों को सेवा देते हैं, कैफ़े और रेस्तरां के लिए "
+"बड़े ऑर्डर मैनेज करते हैं या कई पॉइंट ऑफ़ सेल पर डिलीवरी देते हैं।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Track stock in real-time, manage multiple storage locations, automate "
+"restocking, and monitor expiration dates to ensure ingredient freshness and "
+"avoid shortages, with our<strong> Inventory app</strong>."
+msgstr ""
+"हमारे <strong>इन्वेंट्री ऐप</strong> से स्टॉक को रियल-टाइम में ट्रैक करें, कई स्टोरेज जगहों "
+"को मैनेज करें, रीस्टॉकिंग को ऑटोमेट करें, और सामग्री की ताज़गी सुनिश्चित करने और कमी से बचने "
+"के लिए उसकी समाप्ति की तारीख पर नज़र रखें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Use Case"
+msgstr "इस्तेमाल का उदाहरण"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Use the <strong>Quality App</strong> to perform product checks upon receipt "
+"to ensure they meet your standards."
+msgstr ""
+"<strong>क्वालिटी ऐप</strong> का इस्तेमाल करके, प्रॉडक्ट मिलने पर यह जांच लें कि वे आपके "
+"मानकों के हिसाब से हैं या नहीं।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Use the Reporting in the Sales app to analyze trends such as higher order "
+"volumes on sunny days, weekends, or holidays, helping you plan better for "
+"peak times."
+msgstr ""
+"उच्च ऑर्डर की मात्रा जैसे रुझानों का विश्लेषण करने के लिए सेल्स ऐप में रिपोर्टिंग का इस्तेमाल "
+"करें, जैसे कि धूप वाले दिनों, सप्ताहांत या छुट्टियों में, जिससे आपको व्यस्त समय के लिए बेहतर "
+"योजना बनाने में मदद मिलती है।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Useful Links"
+msgstr "काम के लिंक"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid ""
+"We are a team of passionate people whose goal is to improve everyone's life "
+"through disruptive products. We build great products to solve your business "
+"problems.\n"
+"                                <br/><br/>Our products are designed for "
+"small to medium size companies willing to optimize their performance."
+msgstr ""
+"हम एक जुनूनी टीम हैं जो लोगों की ज़िंदगी बेहतर बनाने के लिए नए प्रॉडक्ट बनाते हैं. हम आपके "
+"बिज़नेस से जुड़ी समस्याओं को हल करने के लिए शानदार प्रॉडक्ट बनाते हैं.\n"
+"                                <br/><br/>हमारे प्रॉडक्ट्स ख़ास तौर पर उन छोटे और "
+"मध्यम बिज़नेस के लिए बनाए गए हैं जो अपनी परफ़ॉर्मेंस को बेहतर बनाना चाहते हैं।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Welcome to the <strong>Odoo Bakery Package!</strong>"
+msgstr "<strong>Odoo बेकरी पैकेज</strong> में आपका स्वागत है!"
+
+#. module: bakery
+#: model_terms:web_tour.tour,rainbow_man_message:bakery.knowledge_tour
+msgid "Welcome! Happy exploring."
+msgstr "आपका स्वागत है! मज़े से खोजबीन करें।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Would you like to discuss your Odoo setup with us or go even further?"
+msgstr ""
+"क्या आप हमसे अपने Odoo सेटअप के बारे में बात करना चाहेंगे या इसे और बेहतर बनाना चाहेंगे?"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "X"
+msgstr ""
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"You can access every installed App in your Odoo database on your main "
+"dashboard."
+msgstr ""
+"आप अपने मुख्य डैशबोर्ड पर अपने Odoo डेटाबेस में इंस्टॉल किए गए हर ऐप को ऐक्सेस कर सकते हैं।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"You should be able to execute the following flows to have an overview of "
+"various processes you can quickly execute with this package using Odoo."
+msgstr ""
+"इस पैकेज में Odoo का इस्तेमाल करके, आप इन फ़्लो को चलाकर उन प्रक्रियाओं का ब्यौरा देख सकते "
+"हैं जिन्हें आप जल्दी से चला सकते हैं।"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid ""
+"Your Dynamic Snippet will be displayed here... This message is displayed "
+"because you did not provide both a filter and a template to use.<br/>"
+msgstr ""
+"आपका डाइनैमिक स्निपेट यहां दिखाया जाएगा... यह मैसेज इसलिए दिखाया गया है, क्योंकि आपने "
+"इस्तेमाल करने के लिए फ़िल्टर और टेंप्लेट, दोनों नहीं दिए हैं.<br/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "info@yourcompany.example.com"
+msgstr ""

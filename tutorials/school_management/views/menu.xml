@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu cấp 1 -->
+    <menuitem
+        id="menu_school_root"
+        name="School Management"
+        sequence="1"
+        web_icon="school_management,static/description/icon.png"/>
+    
+    <!-- Menu cấp 2 -->
+    <menuitem
+        id="menu_school_student"
+        name="Học sinh"
+        parent="menu_school_root"
+        sequence="1"/>
+    <menuitem
+        id="model_school_classroom"
+        name="Lớp học"
+        parent="menu_school_root"
+        sequence="2"/>
+
+    <!-- Menu cấp 3 -->
+    <menuitem
+        id="menu_school_list"
+        name="Danh sách học sinh"
+        parent="menu_school_student"
+        action="action_student"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_classroom_list"
+        name="Danh sách lớp học"
+        parent="model_school_classroom"
+        action="action_classroom"
+        sequence="2"/>
+
+</odoo>

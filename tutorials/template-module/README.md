@@ -6,18 +6,20 @@ New-Item -ItemType File -Force -Path **init**.py, **manifest**.py, controllers\_
 
 # Windows Command Prompt (CMD)
 
+```
 mkdir controllers,data,models,reports,security,
 static\description,static\fonts,static\shapes,
 static\src\css,static\src\img,static\src\js,static\src\scss,static\src\snippets,
 tests,views,wizards
 
-type nul > **init**.py
-type nul > **manifest**.py
-type nul > controllers\_\_init**.py
-type nul > models\_\_init**.py
+type nul > __init__.py
+type nul > __manifest__.py
+type nul > controllers\__init__.py
+type nul > models\__init__.py
 type nul > security\ir.model.access.csv
-type nul > tests\_\_init**.py
-type nul > wizards\_\_init**.py
+type nul > tests\__init__.py
+type nul > wizards\__init__.py
+```
 
 Phân tích câu lệnh của bạn: python odoo\odoo-bin -c odoo\odoo.conf --dev=all
 python odoo\odoo-bin: Đây là lệnh cốt lõi để khởi chạy máy chủ Odoo.

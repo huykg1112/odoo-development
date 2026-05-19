@@ -1,0 +1,800 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * bakery
+#
+# Weblate <noreply-mt-weblate@weblate.org>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-10 18:39+0000\n"
+"PO-Revision-Date: 2025-11-17 11:10+0000\n"
+"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
+"Language-Team: Romanian <https://translate.odoo.com/projects/odoo-19/bakery/"
+"ro/>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 5.12.2\n"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid ""
+"<br/>At our bakery, every creation is made with love, using only the finest "
+"natural ingredients, to deliver treats that are as wholesome as they are "
+"delicious—bringing warmth and happiness to your table with every bite.<br/"
+"><br/>"
+msgstr ""
+"<br/>La brutăria noastră, fiecare creație este făcută cu dragoste, folosind "
+"doar cele mai bune ingrediente naturale, pentru a oferi delicii la fel de "
+"sănătoase pe cât sunt de gustoase—aducând căldură și fericire la masa ta cu "
+"fiecare mușcătură.<br/><br/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid ""
+"<i class=\"fa fa-angle-left me-2 fw-light\"/>\n"
+"                                        Return to shipping"
+msgstr ""
+"<i class=\"fa fa-angle-left me-2 fw-light\"/>\n"
+"                                        Înapoi la livrare"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<i class=\"o_editor_banner_icon mb-3 fst-normal\">⚠️</i>"
+msgstr "<i class=\"o_editor_banner_icon mb-3 fst-normal\">⚠️</i>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<i class=\"o_editor_banner_icon mb-3 fst-normal\">💡</i>"
+msgstr "<i class=\"o_editor_banner_icon mb-3 fst-normal\">💡</i>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<i class=\"o_editor_banner_icon mb-3 fst-normal\">🚀</i>"
+msgstr "<i class=\"o_editor_banner_icon mb-3 fst-normal\">🚀</i>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid "<span class=\"px-3\">or</span>"
+msgstr "<span class=\"px-3\">sau</span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid "<span class=\"s_website_form_label_content\">Delivery Date</span>"
+msgstr "<span class=\"s_website_form_label_content\">Data livrării</span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Email</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">Email</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Name</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">Nume</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid "<span class=\"s_website_form_label_content\">Phone Number</span>"
+msgstr "<span class=\"s_website_form_label_content\">Număr de telefon</span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Question</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">Întrebare</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"<span class=\"s_website_form_label_content\">Subject</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+msgstr ""
+"<span class=\"s_website_form_label_content\">Subiect</span>\n"
+"                                    <span class=\"s_website_form_mark\"> *</"
+"span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "<span style=\"font-size: 36px;\"><strong>Bakery </strong></span>"
+msgstr "<span style=\"font-size: 36px;\"><strong>Brutărie </strong></span>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Accept flexible payments</strong>: Provide multiple payment options "
+"(cash, card, mobile)."
+msgstr ""
+"<strong>Acceptă plăți flexibile</strong>: Oferă mai multe opțiuni de plată "
+"(numerar, card, mobil)."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Bulk orders for events</strong>: Allow customers to place large "
+"orders for events like company breakfasts, ensuring they can select from a "
+"variety of breads, pastries, and baked goods with flexible delivery or "
+"pickup options."
+msgstr ""
+"<strong>Comenzi în cantități mari pentru evenimente</strong>: Permite "
+"clienților să plaseze comenzi mari pentru evenimente precum mic dejunuri de "
+"firmă, asigurându-le posibilitatea de a alege dintr-o varietate de pâini, "
+"produse de patiserie și produse de panificație, cu opțiuni flexibile de "
+"livrare sau ridicare."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Choose the best vendor</strong>: Pick the vendor offering the best "
+"deal for the requested materials."
+msgstr ""
+"<strong>Alege cel mai bun furnizor</strong>: Selectează furnizorul care "
+"oferă cea mai bună ofertă pentru materialele solicitate."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Create a purchase order</strong>: Select the materials you need for "
+"your breads and pastries."
+msgstr ""
+"<strong>Creează o comandă de achiziție</strong>: Selectează materialele de "
+"care ai nevoie pentru pâinile și produsele tale de patiserie."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Employee scheduling:</strong> Use the <strong>Planning App</strong> "
+"to create and manage employee schedules, ensuring you have the right staff "
+"at the right times for busy days and specific orders."
+msgstr ""
+"<strong>Programarea angajaților:</strong> Folosește <strong>aplicația de "
+"planificare</strong> pentru a crea și gestiona programele angajaților, "
+"asigurându-te că ai personalul potrivit la momentul potrivit pentru zilele "
+"aglomerate și comenzile speciale."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Pre-order system</strong>: Enable customers to place orders in "
+"advance, ensuring product availability and timely preparation, especially "
+"during busy times like Sunday mornings or holidays."
+msgstr ""
+"<strong>Sistem de precomandă</strong>: Permite clienților să plaseze comenzi "
+"în avans, asigurând disponibilitatea produselor și pregătirea la timp, mai "
+"ales în perioadele aglomerate, cum ar fi diminețile de duminică sau "
+"sărbătorile."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Restaurant mode</strong>: Manage tables, orders, and payments with "
+"the Point of Sale system if you offer an \"eat-in\" option."
+msgstr ""
+"<strong>Mod restaurant</strong>: Gestionează mesele, comenzile și plățile cu "
+"sistemul Point of Sale dacă oferi opțiunea de servire la masă."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>Take orders in Point of Sale</strong>: Process in-store bread, loaf "
+"and pastries orders quickly using the Point of Sale system."
+msgstr ""
+"<strong>Preia comenzi în Point of Sale</strong>: Procesează rapid comenzile "
+"de pâine și produse de patiserie din magazin folosind sistemul Point of Sale."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"<strong>You didn't import demo data?</strong> You can still do it. Go to "
+"<strong>Apps &gt; Industries &gt; Upgrade your Bakery Package</strong> and "
+"check the related box."
+msgstr ""
+"<strong>Nu ai importat date demo?</strong> Poți face acest lucru oricând. "
+"Mergi la <strong>Aplicații &gt; Industrii &gt; Upgradează pachetul tău de "
+"brutărie</strong> și bifează căsuța corespunzătoare."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "About us"
+msgstr "Despre Noi"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_36_product_template
+msgid "Almond Croissant"
+msgstr "Croissant cu migdale"
+
+#. module: bakery
+#: model:product.template,description_sale:bakery.product_sourdough_loaf_product_template
+msgid "Artisan sourdough bread with a crisp crust and soft interior."
+msgstr "Pâine artizanală cu maia, cu coajă crocantă și interior moale."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_38_product_template
+msgid "Bagel"
+msgstr "Covrig"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_33_product_template
+msgid "Baguette"
+msgstr "Baghetă"
+
+#. module: bakery
+#: model:hr.department,name:bakery.hr_department_3
+msgid "Baker"
+msgstr "Brutar"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Bakery"
+msgstr "Brutărie"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_56_product_template
+msgid "Baking Powder"
+msgstr "Praf de copt"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Basics"
+msgstr "Bază"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_39_product_template
+msgid "Bretzel"
+msgstr "Bretzel"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_41_product_template
+msgid "Butter"
+msgstr "Unt"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"By uploading this module's demo data, your database has been filled with a "
+"few contacts."
+msgstr ""
+"Prin încărcarea datelor demo ale acestui modul, baza dvs. de date a fost "
+"completată cu câteva contacte."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_40_product_template
+msgid "Canelé "
+msgstr "Canelé "
+
+#. module: bakery
+#: model:product.template,name:bakery.product_cinnamon_roll_product_template
+msgid "Cinnamon Roll"
+msgstr "Ruladă cu scorțișoară"
+
+#. module: bakery
+#: model:crm.tag,name:bakery.crm_tag_1
+msgid "Company Event"
+msgstr "Eveniment de companie"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Connect with us"
+msgstr "Conectează-te cu noi"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3524
+msgid "Contact Us"
+msgstr "Contactați-ne"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Contact us"
+msgstr "Contactați-ne"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid ""
+"Continue checkout\n"
+"                                        <i class=\"fa fa-angle-right ms-2 fw-"
+"light\"/>"
+msgstr ""
+"Continuă finalizarea comenzii\n"
+"                                        <i class=\"fa fa-angle-right ms-2 fw-"
+"light\"/>"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_37_product_template
+msgid "Cookie"
+msgstr "Cookie"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Craft your perfect breads, loaves, and pastries with ease, on our "
+"<strong>Manufacturing app</strong>, by creating manufacturing orders based "
+"on customer demand and linking the necessary ingredients to each product."
+msgstr ""
+"Prepară cu ușurință pâini, franzeluțe și produse de patiserie perfecte, "
+"folosind <strong>aplicația de producție</strong>, creând comenzi de "
+"producție pe baza cererii clienților și asociind ingredientele necesare "
+"fiecărui produs."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_34_product_template
+msgid "Croissant"
+msgstr "Croissant"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Discover our fresh baked delights!"
+msgstr "Descoperă delicii proaspăt coapte!"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Do you want to go further?"
+msgstr "Vreți să mergeți mai departe?"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Easily handle your <strong>accounting</strong> with the integrated "
+"<em>Accounting App</em>."
+msgstr ""
+"Gestionează cu ușurință <strong>contabilitatea</strong> cu <em>aplicația de "
+"contabilitate</em> integrată."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Ensure your customers can enjoy freshly baked croissants—even on busy sunny "
+"Sunday mornings when stock is quickly running low!🌞"
+msgstr ""
+"Asigură-te că clienții tăi se pot bucura de croissante proaspăt coapte—chiar "
+"și în diminețile aglomerate și însorite de duminică, când stocul se "
+"epuizează rapid!🌞"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Expand sales online and offer convenience for customers."
+msgstr "Extinde vânzările online și oferă confort clienților."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3576
+msgid "Extra info"
+msgstr "Informații suplimentare"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Extra page"
+msgstr "Pagină suplimentară"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Facebook"
+msgstr "Facebook"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_53_product_template
+msgid "Flour"
+msgstr "Făină"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Follow us"
+msgstr "Urmărește-ne"
+
+#. module: bakery
+#. odoo-javascript
+#: code:addons/bakery/static/src/js/my_tour.js:0
+msgid "Get on track and explore our recommendations for your Odoo usage here!"
+msgstr ""
+"Intrați pe drumul cel bun și explorați recomandările noastre pentru "
+"utilizarea Odoo aici!"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Grow your business with e-commerce"
+msgstr "Dezvoltă-ți afacerea cu e-commerce"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid "Have a question about our bakery or treats?"
+msgstr "Ai o întrebare despre brutăria noastră sau despre produse?"
+
+#. module: bakery
+#: model:hr.job,name:bakery.hr_job_1
+msgid "Head Baker"
+msgstr "Brutar șef"
+
+#. module: bakery
+#: model:product.template,description_sale:bakery.product_multigrain_bread_product_template
+msgid "Hearty multigrain loaf with seeds and grains for extra nutrition."
+msgstr ""
+"Pâine multicereale sățioasă cu semințe și grăunțe pentru extra nutrienți."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Home"
+msgstr "Acasă"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Industry"
+msgstr "Industrie"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Legal"
+msgstr "Aspecte juridice"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Maintain stock of fresh ingredients."
+msgstr "Menține stocul de ingrediente proaspete."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Manage orders and payments"
+msgstr "Gestionează comenzile și plățile"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Manage your <strong>team</strong> efficiently and integrate them into all "
+"processes with the <em>Employees App</em>."
+msgstr ""
+"Gestionează eficient <strong>echipa</strong> și integreaz-o în toate "
+"procesele cu <em>aplicația Angajați</em>."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_multigrain_bread_product_template
+msgid "Multigrain Bread"
+msgstr "Pâine multicereale"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Odoo is entirely integrated into an App. Download it to turn your phone into "
+"a tool to manage your entire workflow."
+msgstr ""
+"Odoo este complet integrat într-o aplicație. Descarc-o pentru a transforma "
+"telefonul într-o unealtă de gestionare a întregului flux de lucru."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Odoo offers endless customization possibilities for your bakery:"
+msgstr "Odoo oferă posibilități infinite de personalizare pentru brutăria ta:"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Of course, this is just an overview of the features included in this "
+"package. Feel free to add new apps, delete/modify demo data, and test "
+"everything around!"
+msgstr ""
+"Desigur, acesta este doar un rezumat al funcționalităților incluse în acest "
+"pachet. Puteți adăuga aplicații noi, șterge/modifica datele demo și testa "
+"orice!"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "Our Story"
+msgstr "Povestea noastră"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_35_product_template
+msgid "Pain au Chocolat"
+msgstr "Pain au Chocolat"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_32_product_template
+msgid "Pasteis de Nata"
+msgstr "Pasteis de Nata"
+
+#. module: bakery
+#: model:hr.department,name:bakery.hr_department_2
+msgid "Pastry Chef"
+msgstr "Patiser"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Products"
+msgstr "Produse"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Purchase raw materials"
+msgstr "Achiziționează materii prime"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid ""
+"Reach out to us—we’re here to help and will get back to you as soon as we "
+"can!&amp;nbsp;<br/>"
+msgstr ""
+"Contactează-ne—suntem aici să te ajutăm și îți vom răspunde cât de repede "
+"putem!&amp;nbsp;<br/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Schedule a demo"
+msgstr "Programați un demo"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "See All"
+msgstr "Vezi tot"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid "See all <i class=\"fa fa-long-arrow-right ms-2\"/>"
+msgstr "Vezi tot <i class=\"fa fa-long-arrow-right ms-2\"/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Services"
+msgstr "Servicii"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid ""
+"Since our humble beginnings as a small neighborhood bakery, we’ve been "
+"dedicated to crafting baked goods that bring people together. What started "
+"as a passion for simple, natural ingredients has grown into a beloved "
+"community hub where every treat is made with love and care."
+msgstr ""
+"Încă de la începuturile noastre modeste ca o mică brutărie de cartier, ne-am "
+"dedicat preparării produselor de panificație care aduc oamenii împreună. "
+"Ceea ce a început ca o pasiune pentru ingrediente simple și naturale a "
+"devenit un loc îndrăgit de comunitate, unde fiecare deliciu este făcut cu "
+"dragoste și grijă."
+
+#. module: bakery
+#: model:product.template,description_sale:bakery.product_cinnamon_roll_product_template
+msgid ""
+"Soft dough with a buttery cinnamon filling, topped with cream cheese icing."
+msgstr ""
+"Aluat moale cu umplutură de scorțișoară și unt, acoperit cu glazură de cremă "
+"de brânză."
+
+#. module: bakery
+#: model:product.template,name:bakery.product_sourdough_loaf_product_template
+msgid "Sourdough Bread"
+msgstr "Pâine cu maia"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Streamline in-store order processing and offer flexible payment options."
+msgstr ""
+"Simplifică procesarea comenzilor în magazin și oferă opțiuni flexibile de "
+"plată."
+
+#. module: bakery
+#: model:hr.job,name:bakery.hr_job_2
+msgid "Student"
+msgstr "Student"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3528
+msgid "Submit"
+msgstr "Trimite"
+
+#. module: bakery
+#: model:product.template,name:bakery.product_product_54_product_template
+msgid "Sugar"
+msgstr "Zahăr"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The <strong><font class=\"text-o-color-1\">Point of Sale App</font></strong> "
+"manages in-store orders and payments."
+msgstr ""
+"<strong><font class=\"text-o-color-1\">Aplicația Point of Sale</font></"
+"strong> gestionează comenzile și plățile din magazin."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The <strong><font class=\"text-o-color-1\">Purchase App</font></strong> "
+"manages raw material orders and vendors."
+msgstr ""
+"<strong><font class=\"text-o-color-1\">Aplicația de achiziții</font></"
+"strong> gestionează comenzile de materii prime și furnizorii."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The <strong><font class=\"text-o-color-1\">Website &amp; E-commerce App</"
+"font></strong> enables online sales and offer Pick up at Store options."
+msgstr ""
+"<strong><font class=\"text-o-color-1\">Aplicația Website &amp; E-commerce</"
+"font></strong> permite vânzări online și oferă opțiunea de ridicare din "
+"magazin."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The package features the <strong>Point of Sale (POS)</strong> app for "
+"seamless in-store sales and the <strong>Sales</strong> app for managing "
+"orders. For bakeries looking to expand online, the <strong>Website</strong> "
+"and <strong>E-commerce</strong> apps allow you to showcase products and "
+"offer <strong>Pick up at Store</strong> options."
+msgstr ""
+"Pachetul include aplicația <strong>Point of Sale (POS)</strong> pentru "
+"vânzări în magazin fără probleme și aplicația <strong>Vânzări</strong> "
+"pentru gestionarea comenzilor. Pentru brutăriile care doresc să se extindă "
+"online, aplicațiile <strong>Website</strong> și <strong>E-commerce</strong> "
+"îți permit să prezinți produsele și să oferi opțiunea <strong>Ridicare din "
+"magazin</strong>."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"The<strong> <font class=\"text-o-color-1\">Sales App</font></strong> "
+"streamlines customer orders and quotations, such as managing company events "
+"or coffee shop orders."
+msgstr ""
+"<strong><font class=\"text-o-color-1\">Aplicația de vânzări</font></strong> "
+"simplifică comenzile și ofertele pentru clienți, precum gestionarea "
+"evenimentelor de companie sau a comenzilor pentru cafenele."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"These all go free in your current subscription; feel free to explore! 🙃"
+msgstr ""
+"Toate acestea sunt gratuite în abonamentul dvs. actual; explorați-le cu "
+"încredere! 🙃"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"This set up is ideal for bakeries specializing in bread, pastries, cakes, "
+"and custom orders, such as corporate breakfasts. It suits businesses serving "
+"walk-in customers, managing larger orders for cafes and restaurants, or "
+"delivering to multiple points of sale."
+msgstr ""
+"Această configurație este ideală pentru brutăriile specializate în pâine, "
+"produse de patiserie, prăjituri și comenzi personalizate, cum ar fi mic "
+"dejunuri corporative. Se potrivește afacerilor care servesc clienți la fața "
+"locului, gestionează comenzi mari pentru cafenele și restaurante sau "
+"livrează către mai multe puncte de vânzare."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Track stock in real-time, manage multiple storage locations, automate "
+"restocking, and monitor expiration dates to ensure ingredient freshness and "
+"avoid shortages, with our<strong> Inventory app</strong>."
+msgstr ""
+"Urmărește stocul în timp real, gestionează mai multe locații de depozitare, "
+"automatizează reaprovizionarea și monitorizează datele de expirare pentru a "
+"asigura prospețimea ingredientelor și a evita lipsurile, cu "
+"<strong>aplicația de inventar</strong>."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Use Case"
+msgstr "Caz de utilizare"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Use the <strong>Quality App</strong> to perform product checks upon receipt "
+"to ensure they meet your standards."
+msgstr ""
+"Folosește <strong>aplicația de calitate</strong> pentru a efectua verificări "
+"ale produselor la recepție, asigurându-te că acestea respectă standardele "
+"tale."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"Use the Reporting in the Sales app to analyze trends such as higher order "
+"volumes on sunny days, weekends, or holidays, helping you plan better for "
+"peak times."
+msgstr ""
+"Folosește rapoartele din aplicația de vânzări pentru a analiza tendințele, "
+"cum ar fi volumele mai mari de comenzi în zilele însorite, în weekend sau de "
+"sărbători, ajutându-te să planifici mai bine perioadele de vârf."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "Useful Links"
+msgstr "Link-uri utile"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid ""
+"We are a team of passionate people whose goal is to improve everyone's life "
+"through disruptive products. We build great products to solve your business "
+"problems.\n"
+"                                <br/><br/>Our products are designed for "
+"small to medium size companies willing to optimize their performance."
+msgstr ""
+"Suntem o echipă de oameni pasionați al căror scop este să îmbunătățească "
+"viața tuturor prin produse inovatoare. Construim produse grozave pentru a "
+"rezolva problemele afacerii tale.\n"
+"                                <br/><br/>Produsele noastre sunt concepute "
+"pentru companii mici și mijlocii care doresc să își optimizeze performanța."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Welcome to the <strong>Odoo Bakery Package!</strong>"
+msgstr "Bine ai venit la <strong>Pachetul Odoo pentru Brutării!</strong>"
+
+#. module: bakery
+#: model_terms:web_tour.tour,rainbow_man_message:bakery.knowledge_tour
+msgid "Welcome! Happy exploring."
+msgstr "Bine ai venit! Spor la explorat."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid "Would you like to discuss your Odoo setup with us or go even further?"
+msgstr ""
+"Doriți să discutați despre configurarea Odoo cu noi sau să mergeți și mai "
+"departe?"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "X"
+msgstr ""
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"You can access every installed App in your Odoo database on your main "
+"dashboard."
+msgstr ""
+"Puteți accesa fiecare aplicație instalată în baza dvs. de date Odoo direct "
+"din tabloul de bord principal."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.welcome_article_body
+msgid ""
+"You should be able to execute the following flows to have an overview of "
+"various processes you can quickly execute with this package using Odoo."
+msgstr ""
+"Ar trebui să poți executa următoarele fluxuri pentru a avea o imagine de "
+"ansamblu asupra diverselor procese pe care le poți realiza rapid cu acest "
+"pachet folosind Odoo."
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.homepage
+msgid ""
+"Your Dynamic Snippet will be displayed here... This message is displayed "
+"because you did not provide both a filter and a template to use.<br/>"
+msgstr ""
+"Fragmentul tău dinamic va fi afișat aici... Acest mesaj este afișat deoarece "
+"nu ai furnizat atât un filtru, cât și un șablon de utilizat.<br/>"
+
+#. module: bakery
+#: model_terms:ir.ui.view,arch_db:bakery.ir_ui_view_3529
+msgid "info@yourcompany.example.com"
+msgstr "info@yourcompany.example.com"
